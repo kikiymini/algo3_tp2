@@ -1,0 +1,103 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class GPS{
++{static}crearGPSconNicknameYVehiculo(unNickname:String,\nunVehiculo:Vehiculo)
+-agregarAlHistorial(unNickname:String,puntaje:Int)
+}
+class Mapa
+
+class Posicion
+
+Sorpresa --> Posicion
+Obstaculo --> Posicion
+Vehiculo --> Posicion
+
+GPS --> Mapa
+/'class Turno'/
+
+class Jugador{
+-cantidadMovimientos:int
+/'-nickname:String'/
++{static}registrarJugador(unVehiculo:Vehiculo)
+/'¡¡¡¡¡¡VER!!!!!!se puede agregar nickName '/
+}
+/'------------------------------------- '/
+class Movimiento
+
+class Arriba
+class Abajo
+class Derecha
+class Izquierda
+
+Arriba --|> Movimiento
+Abajo --|> Movimiento
+Derecha --|> Movimiento
+Izquierda --|> Movimiento
+/'------------------------------------- '/
+
+class Vehiculo{
+
+}
+
+class Moto{
++crearVehiculo(unModelo:String)
+}
+class Auto{
++crearVehiculo(unModelo:String)
+}
+class 4x4{
++crearVehiculo(unModelo:String)
+}
+
+Moto --|> Vehiculo
+Auto --|> Vehiculo
+4x4 --|> Vehiculo
+
+/'------------------------------------- '/
+class Obstaculo
+
+class Pozo
+class Piquete
+class ControlPolicial
+
+Pozo --|> Obstaculo
+Piquete --|> Obstaculo
+ControlPolicial --|> Obstaculo
+
+/'------------------------------------- '/
+class Sorpresa
+
+class Favorable
+class Desfavorable
+class CambioDeVehiculo
+
+Favorable --|> Sorpresa
+Desfavorable --|> Sorpresa
+CambioDeVehiculo --|> Sorpresa
+CambioDeVehiculo ...> Vehiculo
+
+
+/'------------------------------------- '/
+class Puntaje
+
+/'------------------------------------- '/
+Jugador *---"1" Puntaje
+/'Jugador *-- Turno'/
+Jugador o--"1" Vehiculo
+/'------------------------------------- '/
+Vehiculo --> Movimiento
+/'------------------------------------- '/
+GPS --> "1...*"Jugador
+/'------------------------------------- '/
+Mapa *--"*" Obstaculo
+Mapa *--"*" Sorpresa
+Mapa --> Vehiculo
+
+class HistorialPuntaje{
+-ranking:Hash
+}
+
+GPS --> HistorialPuntaje
+
+@enduml
