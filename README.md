@@ -27,7 +27,7 @@ Aquellos que deseen colaborar con el proyecto pueden consultar la [guía de desa
 
 ## Documentación
 
-* **Para ingresar a la documentación ingrese al siguiente** - [link](https://docs.google.com/document/d/1RL2c1ENu6ayH1FGxFkEgeWXaD8W9IJVD-NVJwz4nLpU/edit)
+* **Para ingresar a la documentación ingrese al siguiente** [link](https://docs.google.com/document/d/1RL2c1ENu6ayH1FGxFkEgeWXaD8W9IJVD-NVJwz4nLpU/edit)
 
 ## Licencia
 
