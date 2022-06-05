@@ -4,6 +4,7 @@
 class GPS{
 +{static}crearGPSconNicknameYVehiculo(unNickname:String,\nunVehiculo:Vehiculo)
 -agregarAlHistorial(unNickname:String,puntaje:Int)
++pedirMovimiento(unMovimiento: Movimiento): void
 }
 class Mapa
 
@@ -13,14 +14,15 @@ Sorpresa --> Posicion
 Obstaculo --> Posicion
 Vehiculo --> Posicion
 
-GPS --> Mapa
+
 /'class Turno'/
 
 class Jugador{
--cantidadMovimientos:int
 /'-nickname:String'/
 +{static}registrarJugador(unVehiculo:Vehiculo)
 /'¡¡¡¡¡¡VER!!!!!!se puede agregar nickName '/
++moverHacia(unMovimiento: movimiento)
++obtenerPuntaje(): Puntaje
 }
 /'------------------------------------- '/
 class Movimiento
@@ -37,8 +39,10 @@ Izquierda --|> Movimiento
 /'------------------------------------- '/
 
 class Vehiculo{
-
+-cantidadMovimientos:int
 }
+
+
 
 class Moto{
 +crearVehiculo(unModelo:String)
@@ -82,22 +86,42 @@ CambioDeVehiculo ...> Vehiculo
 class Puntaje
 
 /'------------------------------------- '/
+
+class Celda{
+
+}
+
+class Contenido {
+
+}
+
+Contenido --> "0..1" Sorpresa
+Contenido --> "0..1" Obstaculo
+Mapa --> "0..*"Celda
+Celda -->"0..1" Contenido
+
+
+/'------------------------------------- '/
 Jugador *---"1" Puntaje
 /'Jugador *-- Turno'/
 Jugador o--"1" Vehiculo
+Jugador -- Mapa
 /'------------------------------------- '/
 Vehiculo --> Movimiento
 /'------------------------------------- '/
-GPS --> "1...*"Jugador
+GPS--> Jugador
 /'------------------------------------- '/
-Mapa *--"*" Obstaculo
-Mapa *--"*" Sorpresa
+
 Mapa --> Vehiculo
 
 class HistorialPuntaje{
 -ranking:Hash
 }
 
+HistorialPuntaje o--> "*" Puntaje
+
 GPS --> HistorialPuntaje
+
+Contenido -->"0..1" Vehiculo
 
 @enduml
