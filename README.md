@@ -10,7 +10,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Carolina Luna Aramayo Zambrana: 106260** - [kikiymini](https://github.com/kikiymini)
 * **Brayan Saiago: 104967** - [brayans22](https://github.com/brayans22)
 * **Tobias Emilio Serpa: 108266** - [Saibot19](https://github.com/Saibot19)
-
+* **Edgardo Francisco Saez: 104896** - [Fanusaez](https://github.com/Fanusaez)
 Corrector: **{Joaquín Fontela}**
 
 ## Aplicación
