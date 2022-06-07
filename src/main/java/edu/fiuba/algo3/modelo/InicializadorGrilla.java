@@ -146,9 +146,9 @@ public class InicializadorGrilla {
 
     // Una pos va a ser multiplo de un valor, cuando pos%valorMultiplo == 0.
     private static int conseguirPosConMaxYMultiplo(int valorMaximo, int valorMultiplo){
-        int pos = RNG.nextInt(valorMaximo) + 1;
+        int pos = RNG.nextInt(valorMaximo - 1) + 1;
         while ( ( pos %valorMultiplo ) != 0){
-            pos = RNG.nextInt(valorMaximo) + 1;
+            pos = RNG.nextInt(valorMaximo - 1) + 1;
         }
 
         return pos;
@@ -156,9 +156,9 @@ public class InicializadorGrilla {
 
     // Una pos va a no ser multiplo de un valor, cuando pos%valorNoMultiplo != 0.
     private static int conseguirPosConMaxYNoMultiplo(int valorMaximo, int valorNoMultiplo){
-        int pos = RNG.nextInt(valorMaximo) + 1;
-        while ( ( pos %valorNoMultiplo ) == 0){
-            pos = RNG.nextInt(valorMaximo) + 1;
+        int pos = RNG.nextInt(valorMaximo - 1) + 1;
+        while ( ( pos % valorNoMultiplo ) == 0){
+            pos = RNG.nextInt(valorMaximo - 1) + 1;
         }
 
         return pos;

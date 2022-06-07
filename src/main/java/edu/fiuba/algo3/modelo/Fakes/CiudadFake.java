@@ -22,5 +22,17 @@ public class CiudadFake extends Ciudad {
         pos.establecerPosY(0);
     }
 
+    public int obtenerPosVehiculoEnX(){
+        return obtenerPosVehiculo().get(0);
+    }
 
+    public int obtenerPosVehiculoEnY(){
+        return obtenerPosVehiculo().get(1);
+    }
+
+    public void setearVehiculoEn(int x , int y){
+        Posicion pos = vehiculo.obtenerPosVehiculo();
+        pos.establecerPosX(x);
+        pos.establecerPosY(y);
+    }
 }

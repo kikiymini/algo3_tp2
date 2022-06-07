@@ -14,9 +14,36 @@ public class TestCiudad {
     public void moverVehiculoDerecha(){
         CiudadFake ciudad = new CiudadFake();
         ciudad.setearVehiculoOrigen();
-        ArrayList<Integer> pos = ciudad.obtenerPosVehiculo();
-        System.out.println(pos.get(0));
-        //ciudad.moverVehiculoDerecha();
-        assertEquals(3, pos.get(0));
+        ciudad.moverVehiculoDerecha();
+        int posX = ciudad.obtenerPosVehiculoEnX();
+        assertEquals(3, posX);
     }
+    @Test
+    public void moverVehiculoIzquierda(){
+        CiudadFake ciudad = new CiudadFake();
+        ciudad.setearVehiculoEn(3, 0);
+        ciudad.moverVehiculoIzquierda();
+        int posX = ciudad.obtenerPosVehiculoEnX();
+        assertEquals(0, posX);
+    }
+
+    @Test
+    public void moverVehiculoAbajo(){
+        CiudadFake ciudad = new CiudadFake();
+        ciudad.setearVehiculoEn(0, 0);
+        ciudad.moverVehiculoAbajo();
+        int posY = ciudad.obtenerPosVehiculoEnY();
+        assertEquals(3, posY);
+    }
+
+    @Test
+    public void moverVehiculoAriba(){
+        CiudadFake ciudad = new CiudadFake();
+        ciudad.setearVehiculoEn(0, 3);
+        ciudad.moverVehiculoArriba();
+        int posY = ciudad.obtenerPosVehiculoEnY();
+        assertEquals(0, posY);
+    }
+
+
 }

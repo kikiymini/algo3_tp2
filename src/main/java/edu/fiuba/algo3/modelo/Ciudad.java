@@ -27,7 +27,7 @@ public class Ciudad {
     }
 
     public void moverVehiculoArriba(){
-        for(int i = 0; i < 2; i++){
+        for(int i = 0; i < 3; i++){
             vehiculo.moverArriba();
             grilla.moverVehiculo(vehiculo);
             if (vehiculo.estasEnEsquiana()) break; // esto rompe pilares poo. No se como manejar caso de piquete
@@ -35,7 +35,7 @@ public class Ciudad {
     }
 
     public void moverVehiculoAbajo(){
-        for(int i = 0; i < 2; i++){
+        for(int i = 0; i < 3; i++){
             vehiculo.moverAbajo();
             grilla.moverVehiculo(vehiculo);
             if (vehiculo.estasEnEsquiana()) break; // esto rompe pilares poo. No se como manejar caso de piquete
@@ -43,7 +43,7 @@ public class Ciudad {
     }
 
     public void moverVehiculoIzquierda(){
-        for(int i = 0; i < 2; i++){
+        for(int i = 0; i < 3; i++){
             vehiculo.moverIzquierda();
             grilla.moverVehiculo(vehiculo);
             if (vehiculo.estasEnEsquiana()) break; // esto rompe pilares poo. No se como manejar caso de piquete
@@ -51,7 +51,7 @@ public class Ciudad {
     }
 
     public void moverVehiculoDerecha(){
-        for(int i = 0; i < 2; i++){
+        for(int i = 0; i < 3; i++){
             vehiculo.moverDerecha();
             grilla.moverVehiculo(vehiculo);
             if (vehiculo.estasEnEsquiana()) break; // esto rompe pilares poo. No se como manejar caso de piquete

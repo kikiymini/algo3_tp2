@@ -70,7 +70,7 @@ public class Grilla {
 
 
     private static int conseguirUnaCantEsquinasPorEje(){
-        return RNG.nextInt(Constantes.cantidadMaximaDeEsquinasPorEje - Constantes.cantidadMinimaDeEsquinasPorEje) + Constantes.cantidadMinimaDeEsquinasPorEje;
+        return RNG.nextInt(Constantes.cantidadMaximaDeEsquinasPorEje - Constantes.cantidadMinimaDeEsquinasPorEje) + Constantes.cantidadMinimaDeEsquinasPorEje;// numero entre cantidad maxima y cantidad minima
     }
 
     public void moverVehiculo(Vehiculo vehiculo) {
