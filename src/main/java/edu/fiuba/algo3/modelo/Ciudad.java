@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Obstaculo.ControlPolicial;
-import edu.fiuba.algo3.modelo.Obstaculo.Piquete;
-import edu.fiuba.algo3.modelo.Obstaculo.Pozo;
+import edu.fiuba.algo3.modelo.Grilla.Grilla;
+import edu.fiuba.algo3.modelo.Grilla.InicializadorGrilla;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 
 import java.util.Random;

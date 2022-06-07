@@ -1,6 +1,9 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Grilla;
 
+import edu.fiuba.algo3.modelo.Accionable;
+import edu.fiuba.algo3.modelo.Constantes;
 import edu.fiuba.algo3.modelo.Obstaculo.Pozo;
+import edu.fiuba.algo3.modelo.Posicion;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 
 import java.util.ArrayList;
@@ -9,10 +12,10 @@ import java.util.Random;
 public class Grilla {
 
     protected ArrayList<ArrayList<Accionable>> grilla;
-    private int tamanioEjeX;
-    private int tamanioEjeY;
-    private int cantEsquinasEjeX;
-    private int cantEsquinasEjeY;
+    protected int tamanioEjeX;
+    protected int tamanioEjeY;
+    protected int cantEsquinasEjeX;
+    protected int cantEsquinasEjeY;
 
     private static Random RNG = new Random();
 

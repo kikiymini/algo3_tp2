@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.Constantes;
 import edu.fiuba.algo3.modelo.Obstaculo.Obstaculo;
 import edu.fiuba.algo3.modelo.Posicion;
 
-public final class TodoTerreno extends Vehiculo{
+public class TodoTerreno extends Vehiculo{
 
     private int pozosComidos;
 
