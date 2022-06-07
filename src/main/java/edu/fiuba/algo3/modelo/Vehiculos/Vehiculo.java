@@ -40,17 +40,19 @@ public abstract class Vehiculo {
         this.posicion.decrementarX();
     }
 
-
     public void modificarMovimientosSegunFactor(double factor) {
         this.movimientos *= factor;
     }
 
-    public abstract int incrementarMovimientosSegunObstaculo(Obstaculo obstaculo);
+    public abstract void incrementarMovimientosSegunObstaculo(Obstaculo obstaculo);
 
     public abstract Vehiculo cambiarVehiculo();
 
+    public void incrementarMovimientosSegunObstaculo(int penalizacion){
+        movimientos += penalizacion;
+    }
 
-    public static Vehiculo obtenerVehiculoAlAzar(Posicion posInicial){
+    public static Vehiculo obtenerVehiculoAlAzar(Posicion posInicial){ //ver
         if (RNG.nextDouble() < Constantes.probabilidadDeObtenerUnaMoto){
             return new Moto(posInicial);
         } else if (RNG.nextDouble() < Constantes.probabilidadDeObtenerUnAuto){

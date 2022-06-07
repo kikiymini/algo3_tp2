@@ -10,15 +10,13 @@ public final class Moto extends Vehiculo{
     }
 
     @Override
-    public int incrementarMovimientosSegunObstaculo(Obstaculo obstaculo){
-        int movimientosIncrementados = obstaculo.aplicarPenalizacion(this);
-        movimientos += movimientosIncrementados;
-
-        return movimientosIncrementados;
+    public void incrementarMovimientosSegunObstaculo(Obstaculo obstaculo){
+        obstaculo.aplicarPenalizacion(this);
     }
 
     public Vehiculo cambiarVehiculo(){
         return new Auto(this.posicion);
     }
+
 
 }

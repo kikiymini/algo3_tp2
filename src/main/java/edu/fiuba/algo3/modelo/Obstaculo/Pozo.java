@@ -9,25 +9,25 @@ import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 
 public final class Pozo implements Obstaculo {
 
-    public int aplicarPenalizacion(Moto moto){
-        return Constantes.penalizacionDeMovimientosPorPozoParaMotoYAuto;
+    public void aplicarPenalizacion(Moto moto){
+        moto.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorPozoParaMotoYAuto);
     }
 
-    public int aplicarPenalizacion(Auto auto) {
-        return Constantes.penalizacionDeMovimientosPorPozoParaMotoYAuto;
+    public void aplicarPenalizacion(Auto auto) {
+        auto.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorPozoParaMotoYAuto);
     }
 
-    public int aplicarPenalizacion(TodoTerreno todoTerreno) {
+    public void aplicarPenalizacion(TodoTerreno todoTerreno) {
         todoTerreno.comerPozo();
         if (todoTerreno.seComioDemasiadosPozos()){
-            return Constantes.penalizacionDeMovimientosPorPozoParaTodoterreno;
+             todoTerreno.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorPozoParaTodoterreno);
         } else {
-            return Constantes.penalizacionDeMovimientosPorPozoEsquivadoParaTodoterreno;
+             todoTerreno.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorPozoEsquivadoParaTodoterreno);
         }
     }
 
-    public int aplicarPenalizacion(Vehiculo vehiculo) {
-        return vehiculo.incrementarMovimientosSegunObstaculo(this);
+    public void aplicarPenalizacion(Vehiculo vehiculo) {
+        vehiculo.incrementarMovimientosSegunObstaculo(this);
     }
 
     public void accionar(Vehiculo vehiculo) {

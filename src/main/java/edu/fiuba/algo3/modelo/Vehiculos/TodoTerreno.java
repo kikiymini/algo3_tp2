@@ -14,11 +14,8 @@ public final class TodoTerreno extends Vehiculo{
     }
 
     @Override
-    public int incrementarMovimientosSegunObstaculo(Obstaculo obstaculo){
-        int movimientosIncrementados = obstaculo.aplicarPenalizacion(this);
-        movimientos += movimientosIncrementados;
-
-        return movimientosIncrementados;
+    public void incrementarMovimientosSegunObstaculo(Obstaculo obstaculo){
+        obstaculo.aplicarPenalizacion(this);
     }
 
     public void darVuelta(){

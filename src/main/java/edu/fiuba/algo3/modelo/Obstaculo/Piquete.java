@@ -9,28 +9,26 @@ import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 
 public final class Piquete implements Obstaculo {
 
-    public int aplicarPenalizacion(Moto moto) {
-        return Constantes.penalizacionDeMovimientosPorPiqueteParaMoto;
+    public void aplicarPenalizacion(Moto moto) {
+        moto.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorPiqueteParaMoto);
     }
 
-    public int aplicarPenalizacion(Auto auto) {
+    public void aplicarPenalizacion(Auto auto) {
         auto.darVuelta();
+        auto.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorPiqueteParaAutoYTodoterreno);
 
-        return Constantes.penalizacionDeMovimientosPorPiqueteParaAutoYTodoterreno;
     }
-
-    public int aplicarPenalizacion(TodoTerreno todoTerreno) {
+    public void aplicarPenalizacion(TodoTerreno todoTerreno) {
         todoTerreno.darVuelta();
-
-        return Constantes.penalizacionDeMovimientosPorPiqueteParaAutoYTodoterreno;
+        todoTerreno.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorPiqueteParaAutoYTodoterreno);
     }
 
-    public int aplicarPenalizacion(Vehiculo vehiculo) {
-        return vehiculo.incrementarMovimientosSegunObstaculo(this);
+    public void aplicarPenalizacion(Vehiculo vehiculo) {
+        vehiculo.incrementarMovimientosSegunObstaculo(this);
     }
 
     public void accionar(Vehiculo vehiculo) {
-        aplicarPenalizacion(vehiculo);
+        vehiculo.incrementarMovimientosSegunObstaculo(this);
     }
 
 }

@@ -8,12 +8,12 @@ import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 
 public interface Obstaculo extends Accionable {
 
-    int aplicarPenalizacion(Vehiculo vehiculo);
+    void aplicarPenalizacion(Vehiculo vehiculo);
 
-    int aplicarPenalizacion(Moto moto);
+    void aplicarPenalizacion(Moto moto);
 
-    int aplicarPenalizacion(Auto auto);
+    void aplicarPenalizacion(Auto auto);
 
-    int aplicarPenalizacion(TodoTerreno todoTerreno);
+    void aplicarPenalizacion(TodoTerreno todoTerreno);
 
 }

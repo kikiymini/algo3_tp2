@@ -15,7 +15,7 @@ public class TestObstaculos {
         Vehiculo moto = new Moto(new Posicion(1, 1));
         Pozo pozo = new Pozo();
         pozo.accionar(moto);
-        assertEquals(3, moto.cantidadDeMovimientos());
+        assertEquals(3,moto.cantidadDeMovimientos());
     }
 
     @Test
@@ -58,7 +58,6 @@ public class TestObstaculos {
         piquete.accionar(moto);
         assertEquals(2, moto.cantidadDeMovimientos());
     }
-
 
 
 }

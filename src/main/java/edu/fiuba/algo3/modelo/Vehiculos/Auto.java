@@ -10,11 +10,9 @@ public final class Auto extends Vehiculo{
     }
 
     @Override
-    public int incrementarMovimientosSegunObstaculo(Obstaculo obstaculo){
-        int movimientosIncrementados = obstaculo.aplicarPenalizacion(this);
-        movimientos += movimientosIncrementados;
+    public void incrementarMovimientosSegunObstaculo(Obstaculo obstaculo){
+        obstaculo.aplicarPenalizacion(this);
 
-        return movimientosIncrementados;
     }
 
     public void darVuelta(){

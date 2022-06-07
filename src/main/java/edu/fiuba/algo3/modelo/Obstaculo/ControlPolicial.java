@@ -13,32 +13,38 @@ public final class ControlPolicial implements Obstaculo {
 
     private final Random RNG = new Random();
 
-    public int aplicarPenalizacion(Moto moto) {
+    public void aplicarPenalizacion(Moto moto) {
         if (RNG.nextDouble() < Constantes.probabilidadDePenalizarEnControlPolicialParaMoto) {
-            return Constantes.penalizacionDeMovimientosPorControlPolicial;
+            moto.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorControlPolicial);
+        }
+        else {
+            moto.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorControlPolicialEsquivado);
         }
 
-        return Constantes.penalizacionDeMovimientosPorControlPolicialEsquivado;
     }
 
-    public int aplicarPenalizacion(Auto auto) {
+    public void aplicarPenalizacion(Auto auto) {
         if (RNG.nextDouble() < Constantes.probabilidadDePenalizarEnControlPolicialParaAuto) {
-            return Constantes.penalizacionDeMovimientosPorControlPolicial;
+            auto.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorControlPolicial);
+        }
+        else {
+            auto.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorControlPolicialEsquivado);
         }
 
-        return Constantes.penalizacionDeMovimientosPorControlPolicialEsquivado;
     }
 
-    public int aplicarPenalizacion(TodoTerreno todoTerreno) {
+    public void aplicarPenalizacion(TodoTerreno todoTerreno) {
         if (RNG.nextDouble() < Constantes.probabilidadDePenalizarEnControlPolicialParaTodoterreno) {
-            return Constantes.penalizacionDeMovimientosPorControlPolicial;
+            todoTerreno.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorControlPolicial);
+        }
+        else{
+            todoTerreno.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorControlPolicialEsquivado);
         }
 
-        return Constantes.penalizacionDeMovimientosPorControlPolicialEsquivado;
     }
 
-    public int aplicarPenalizacion(Vehiculo vehiculo) {
-        return vehiculo.incrementarMovimientosSegunObstaculo(this);
+    public void aplicarPenalizacion(Vehiculo vehiculo) {
+        vehiculo.incrementarMovimientosSegunObstaculo(this);
     }
 
     public void accionar(Vehiculo vehiculo) {
