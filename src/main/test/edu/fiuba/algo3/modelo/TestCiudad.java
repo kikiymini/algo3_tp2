@@ -16,8 +16,7 @@ public class TestCiudad {
         ciudad.setearVehiculoOrigen();
         ArrayList<Integer> pos = ciudad.obtenerPosVehiculo();
         System.out.println(pos.get(0));
-        ciudad.moverVehiculoDerecha();
+        //ciudad.moverVehiculoDerecha();
         assertEquals(3, pos.get(0));
-
     }
 }

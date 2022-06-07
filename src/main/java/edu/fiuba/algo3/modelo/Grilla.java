@@ -49,12 +49,13 @@ public class Grilla {
     }
 
     public Accionable obtenerAccionableEnPosicion(Posicion pos){
-        return grilla.get(pos.obtenerPosY() - 1).get(pos.obtenerPosX());
+        ArrayList<Accionable> calle = grilla.get(pos.obtenerPosY());
+        return calle.get(pos.obtenerPosX());
     }
 
     public void insertarAccionableEnPosicion(Posicion pos, Accionable objeto){
-        ArrayList<Accionable> calle = grilla.get(pos.obtenerPosY() - 1);
-        calle.add(pos.obtenerPosX() - 1, objeto);
+        ArrayList<Accionable> calle = grilla.get(pos.obtenerPosY());
+        calle.add(pos.obtenerPosX(), objeto);
     }
 
     private void asignarCantidadesDeEsquinas(){
@@ -84,7 +85,7 @@ public class Grilla {
         for (int i = 0 ; i < tamanioEjeY; i++){
             ArrayList<Accionable> calle = new ArrayList<>();
             for(int j = 0; j < tamanioEjeX; j++){
-                calle.add(i, new Pozo());
+                calle.add(j, new Pozo());
             }
             grilla.add(calle);
         }
