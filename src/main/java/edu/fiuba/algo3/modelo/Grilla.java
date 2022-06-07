@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Obstaculo.Pozo;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 
 import java.util.ArrayList;
@@ -7,12 +8,11 @@ import java.util.Random;
 
 public class Grilla {
 
-    protected Accionable[][] grilla;
-    private int cantEsquinasEjeX;
-    private int cantEsquinasEjeY;
+    protected ArrayList<ArrayList<Accionable>> grilla;
     private int tamanioEjeX;
     private int tamanioEjeY;
-
+    private int cantEsquinasEjeX;
+    private int cantEsquinasEjeY;
 
     private static Random RNG = new Random();
 
@@ -20,7 +20,7 @@ public class Grilla {
     public Grilla(){
         this.asignarCantidadesDeEsquinas();
         this.asignarTamaniosEjes();
-        this.grilla = new Accionable[this.tamanioEjeX][this.tamanioEjeY];
+        this.grilla = crearGrilla(tamanioEjeX, tamanioEjeY);
     }
 
     public int obtenerTamanioEjeX(){
@@ -35,16 +35,13 @@ public class Grilla {
         return this.tamanioEjeX * this.tamanioEjeY;
     }
 
-    private int obtenerCantTotalDeManzanas(){
-        return (this.cantEsquinasEjeX + 1) * (this.cantEsquinasEjeY + 1);
-    }
 
     private int obtenerCantTotalPosicionesDeManzanas(){
-        return this.obtenerCantTotalDeManzanas() * 4;
+        return  0;//this.obtenerCantTotalDeManzanas() * 4;
     }
 
     private int obtenerCantTotalDeEsquinas(){
-        return this.cantEsquinasEjeX * this.cantEsquinasEjeY;
+        return  0; //this.cantEsquinasEjeX * this.cantEsquinasEjeY;
     }
 
     public int obtenerCantTotalDePosValidas(){
@@ -52,11 +49,12 @@ public class Grilla {
     }
 
     public Accionable obtenerAccionableEnPosicion(Posicion pos){
-        return grilla[pos.obtenerPosX() - 1][pos.obtenerPosY() - 1];
+        return grilla.get(pos.obtenerPosY() - 1).get(pos.obtenerPosX());
     }
 
     public void insertarAccionableEnPosicion(Posicion pos, Accionable objeto){
-        grilla[pos.obtenerPosX() - 1][pos.obtenerPosY() - 1] = objeto;
+        ArrayList<Accionable> calle = grilla.get(pos.obtenerPosY() - 1);
+        calle.add(pos.obtenerPosX() - 1, objeto);
     }
 
     private void asignarCantidadesDeEsquinas(){
@@ -75,9 +73,21 @@ public class Grilla {
     }
 
     public void moverVehiculo(Vehiculo vehiculo) {
-        ArrayList<Integer> pos = vehiculo.obtenerPos();
-        grilla[pos.get(0)][pos.get(1)].accionar(vehiculo);
+        ArrayList<Integer> pos = vehiculo.obtenerPos(); // esta mal
+        Accionable accionable = grilla.get(pos.get(0)).get(pos.get(1));
+        accionable.accionar(vehiculo);
     }
 
 
+    public ArrayList<ArrayList<Accionable>> crearGrilla(int tamanioEjeX, int tamanioEjeY){
+        ArrayList<ArrayList<Accionable>> grilla = new ArrayList<>();
+        for (int i = 0 ; i < Grilla.this.tamanioEjeY; i++){
+            ArrayList<Accionable> calle = new ArrayList<>();
+            for(int j = 0; j < tamanioEjeX; j++){
+                calle.add(i, new Pozo());
+            }
+            grilla.add(calle);
+        }
+        return grilla;
+    }
 }

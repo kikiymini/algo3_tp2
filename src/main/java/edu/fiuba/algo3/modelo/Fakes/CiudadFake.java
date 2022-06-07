@@ -23,6 +23,5 @@ public class CiudadFake extends Ciudad {
     }
 
     public void crearGrillaConAccionables() {
-        grilla.crearGrillaConAccionables();
     }
 }
