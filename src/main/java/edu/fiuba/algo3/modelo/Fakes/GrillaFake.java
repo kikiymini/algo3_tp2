@@ -6,4 +6,5 @@ import edu.fiuba.algo3.modelo.Obstaculo.Pozo;
 
 public class GrillaFake extends Grilla {
 
+
 }

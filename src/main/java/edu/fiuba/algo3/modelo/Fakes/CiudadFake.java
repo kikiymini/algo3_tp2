@@ -7,7 +7,7 @@ import edu.fiuba.algo3.modelo.Posicion;
 import java.util.ArrayList;
 
 public class CiudadFake extends Ciudad {
-    GrillaFake grilla;
+
     public CiudadFake(){
         grilla = new GrillaFake();
     }
@@ -18,10 +18,9 @@ public class CiudadFake extends Ciudad {
 
     public void setearVehiculoOrigen() {
         Posicion pos = vehiculo.obtenerPosVehiculo();
-        pos.establecerPosX(1);
-        pos.establecerPosY(1);
+        pos.establecerPosX(0);
+        pos.establecerPosY(0);
     }
 
-    public void crearGrillaConAccionables() {
-    }
+
 }

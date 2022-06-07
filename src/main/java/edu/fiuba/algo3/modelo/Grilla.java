@@ -79,9 +79,9 @@ public class Grilla {
     }
 
 
-    public ArrayList<ArrayList<Accionable>> crearGrilla(int tamanioEjeX, int tamanioEjeY){
+    public static ArrayList<ArrayList<Accionable>> crearGrilla(int tamanioEjeX, int tamanioEjeY){
         ArrayList<ArrayList<Accionable>> grilla = new ArrayList<>();
-        for (int i = 0 ; i < Grilla.this.tamanioEjeY; i++){
+        for (int i = 0 ; i < tamanioEjeY; i++){
             ArrayList<Accionable> calle = new ArrayList<>();
             for(int j = 0; j < tamanioEjeX; j++){
                 calle.add(i, new Pozo());
