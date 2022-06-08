@@ -90,9 +90,9 @@ class ControlPolicial{
 }
 
 
-Moto ..|> Vehiculo
-Auto ..|> Vehiculo
-4x4 ..|> Vehiculo
+Moto --|> Vehiculo
+Auto --|> Vehiculo
+4x4 --|> Vehiculo
 Gps --> Jugador
 Gps --> Ciudad
 Vehiculo --> Posicion
