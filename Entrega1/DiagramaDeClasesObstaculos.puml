@@ -1,0 +1,46 @@
+@startuml
+    'https://plantuml.com/class-diagram
+
+    interface Accionable{
+        + accionar(Vehiculo) : void
+    }
+
+    interface Obstaculo{
+        + aplicarPenalizacion(Moto moto) : void
+        + aplicarPenalizacion(Auto auto) : void
+        + aplicarPenalizacion(TodoTerreno todoTerreno) : void
+        + aplicarPenalizacion(Vehiculo vehiculo) : void
+    }
+
+    class Pozo{
+        + aplicarPenalizacion(Moto moto) : void
+        + aplicarPenalizacion(Auto auto) : void
+        + aplicarPenalizacion(TodoTerreno todoTerreno) : void
+        + aplicarPenalizacion(Vehiculo vehiculo) : void
+        + accionar(Vehiculo vehiculo) : void
+    }
+
+    class Piquete{
+        + aplicarPenalizacion(Moto moto) : void
+        + aplicarPenalizacion(Auto auto) : void
+        + aplicarPenalizacion(TodoTerreno todoTerreno) : void
+        + aplicarPenalizacion(Vehiculo vehiculo) : void
+        + accionar(Vehiculo vehiculo) : void
+    }
+
+    class ControlPolicial{
+        + aplicarPenalizacion(Moto moto) : void
+        + aplicarPenalizacion(Auto auto) : void
+        + aplicarPenalizacion(TodoTerreno todoTerreno) : void
+        + aplicarPenalizacion(Vehiculo vehiculo) : void
+        + accionar(Vehiculo vehiculo) : void
+    }
+
+    Piquete ...|> Obstaculo
+    ControlPolicial ..|> Obstaculo
+    Pozo ..|> Obstaculo
+    Piquete ...|> Accionable
+    ControlPolicial ...|> Accionable
+    Pozo ...|> Accionable
+
+@enduml

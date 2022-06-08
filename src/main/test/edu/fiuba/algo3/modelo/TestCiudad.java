@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestCiudad {
-
     @Test
     public void moverVehiculoDerecha(){
         CiudadFake ciudad = new CiudadFake();
