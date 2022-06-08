@@ -22,8 +22,10 @@ public class TodoTerreno extends Vehiculo{
         posicion.establecerEnUltimaPos();
     }
 
-    public void comerPozo(){
+    public void penalizarPorPozo(){
         this.pozosComidos++;
+        movimientos++;
+        if (seComioDemasiadosPozos()) this.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorPozoParaTodoterreno);
     }
 
     public boolean seComioDemasiadosPozos(){

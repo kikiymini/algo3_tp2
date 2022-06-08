@@ -35,7 +35,7 @@ public class Entrega1Test {
         ciudad.setearVehiculo(new Moto(new Posicion(0,0)));
         ciudad.ponerAccionableEnPosicion(4, 0, new Pozo());
         for (int i = 0; i < 6 ; i++){
-            ciudad.vehiculo.movermeHacia(new Adelante());// no deberiamos meternos con los atributos de ciudad.
+            ciudad.vehiculo.movermeHacia(new Adelante());// no deberiamos meternos con los atributos de ciudad.(creo)
         }
         assertEquals(9,ciudad.vehiculo.cantidadDeMovimientos());
 

@@ -87,4 +87,5 @@ public abstract class Vehiculo {
         movimiento.movermeHacia(this.posicion);
         movimientos++;
     }
+
 }
