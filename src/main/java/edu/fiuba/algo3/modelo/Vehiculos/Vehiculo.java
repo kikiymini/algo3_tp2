@@ -52,6 +52,8 @@ public abstract class Vehiculo {
         movimientos += penalizacion;
     }
 
+
+    //mejorar
     public static Vehiculo obtenerVehiculoAlAzar(Posicion posInicial){ //ver
         if (RNG.nextDouble() < Constantes.probabilidadDeObtenerUnaMoto){
             return new Moto(posInicial);
