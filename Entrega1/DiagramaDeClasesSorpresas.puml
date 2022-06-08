@@ -1,0 +1,36 @@
+@startuml
+
+    'https://plantuml.com/class-diagram
+
+    interface Accionable{
+        + accionar(Vehiculo) : void
+    }
+
+    interface Sorpresa{
+        + sorprender(Vehiculo vehiculo) : void
+    }
+
+    class Favorable{
+        + sorprender(Vehiculo) : void
+        + accionar(Vehiculo) : void
+    }
+
+    class Desfavorable{
+        + sorprender(Vehiculo) : void
+        + accionar(Vehiculo) : void
+    }
+
+    class CambioVehiculo{
+        + sorprender(Vehiculo) : void
+        + accionar(Vehiculo) : void
+    }
+
+    Favorable ..|> Sorpresa
+    Desfavorable ...|> Sorpresa
+    CambioVehiculo ...|> Sorpresa
+
+    Favorable ...|> Accionable
+    Desfavorable ..|> Accionable
+    CambioVehiculo .|> Accionable
+
+@enduml
