@@ -56,4 +56,8 @@ public class CiudadFake extends Ciudad {
     public int obtenerCantidadDeMovVehiculo() {
         return vehiculo.obtenerCantidadDeMovimientos();
     }
+
+    public void setearVehiculo(Vehiculo vehiculo){
+        this.vehiculo = vehiculo;
+    }
 }

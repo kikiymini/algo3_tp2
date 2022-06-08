@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.Vehiculos;
 
 import edu.fiuba.algo3.modelo.Constantes;
+import edu.fiuba.algo3.modelo.Movimiento.Movimiento;
 import edu.fiuba.algo3.modelo.Obstaculo.Obstaculo;
 import edu.fiuba.algo3.modelo.Posicion;
 
@@ -11,7 +12,6 @@ public abstract class Vehiculo {
 
     protected Posicion posicion;
     protected int movimientos;
-
 
     protected static Random RNG = new Random();
 
@@ -79,4 +79,12 @@ public abstract class Vehiculo {
     }
     public int obtenerCantidadDeMovimientos(){return movimientos;}
 
+    public void movermeHacia(Movimiento movimiento) {
+        /* recibe una penalizacion? aplicarPenalizacion debe verificar si puedo moverme.
+            Si es así, me penalizo. Aumento los movimientos.
+            sino avanzo
+         */
+        movimiento.movermeHacia(this.posicion);
+        movimientos++;
+    }
 }

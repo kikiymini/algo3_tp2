@@ -30,6 +30,7 @@ public class Posicion {
     }
 
     public void decrementarX(){
+        //if(this.posX == 0) return;
         this.establecerPosX(posX - Constantes.valorDeIncrementoDePosicion);
     }
 
@@ -71,5 +72,15 @@ public class Posicion {
     }
     public int obtenerPosY() {
         return posY;
+    }
+
+    @Override
+    public boolean equals(Object posicion){
+        Posicion posicionTemp = (Posicion)posicion;
+        if((posicionTemp.posX == this.posX) && posicionTemp.posY == this.posY) {
+            return true;
+        }
+
+        return false;
     }
 }

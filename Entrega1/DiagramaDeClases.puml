@@ -9,13 +9,12 @@ class Jugador{
     - nombre
 
     + moverArriba()
-    + moverAbajo()
+    + moverAtras()
 }
 
 abstract Vehiculo{
     - movimientos
-    + moverArriba()
-    + moverAbajo()
+    + movermeHacia(unMovimiento:Movimiento)
     + cambiar()
 }
 
@@ -25,26 +24,24 @@ interface Accionable{
 
 class Moto{
     + moverArriba()
-    + moverAbajo()
+    + moveratras()
     + cambiar()
 }
 class Auto{
     + moverArriba()
-    + moverAbajo()
+    + moveratras()
     + cambiar()
 }
 
 class 4x4{
     + moverArriba()
-    + moverAbajo()
+    + moveratras()
     + cambiar()
 }
 
 class Ciudad{
     + generarMatriz()
     + colocarObjetos()
-    + moverVehiculoArriba()
-    + moverVehiculoAbajo()
 }
 
 class Posicion{
@@ -117,6 +114,30 @@ CambioVehiculo ..|> Sorpresa
 
 Sorpresa ..|> Accionable
 Obstaculo ..|> Accionable
+
+interface Movimiento{
++aplicarMovimiento()
+}
+
+class Arriba{
++aplicarMovimiento()
+}
+class atras{
++aplicarMovimiento()
+}
+class Derecha{
++aplicarMovimiento()
+}
+class Izquierda{
++aplicarMovimiento()
+}
+
+Arriba ..|>Movimiento
+atras ..|>Movimiento
+Derecha ..|>Movimiento
+Izquierda ..|>Movimiento
+
+Vehiculo --> Movimiento
 
 
 @enduml
