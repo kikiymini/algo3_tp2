@@ -18,5 +18,4 @@ public class Moto extends Vehiculo{
         return new Auto(this.posicion);
     }
 
-
 }

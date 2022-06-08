@@ -27,6 +27,6 @@ public final class Constantes {
     public static final double porcentajeDeAccionablesEnEjeX = 0.5;
     public static final int posIniEnXDeVehiculo = 1;
 
-    private Constantes() {
-    }
+    private Constantes() {}
+
 }
