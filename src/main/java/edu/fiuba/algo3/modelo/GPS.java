@@ -11,8 +11,6 @@ public class GPS {
     public GPS(){
         this.ciudad = new Ciudad();
         this.jugador = new Jugador(GPS.obtenerNombreJugador());
-        this.posMeta = ciudad.conseguirPosValidaDeMeta();
-        ciudad.insertarAccionablesSegunPosVehiculoYPosMeta(this.posMeta);
     }
 
     private static String obtenerNombreJugador() {

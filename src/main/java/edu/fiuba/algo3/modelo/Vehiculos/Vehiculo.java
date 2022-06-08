@@ -25,11 +25,11 @@ public abstract class Vehiculo {
     }
 
     public void moverArriba(){
-        this.posicion.incrementarY();
+        this.posicion.decrementarY();
     }
 
     public void moverAbajo(){
-        this.posicion.decrementarY();
+        this.posicion.incrementarY();
     }
 
     public void moverDerecha(){
@@ -71,11 +71,14 @@ public abstract class Vehiculo {
     public boolean estasEnEsquiana(){
         return posicion.estasEnEsquina();
     }
+
+
     //Metodos para probar (Hay que crear fake objects despues)
     public int cantidadDeMovimientos(){return movimientos;}
     public void setearCantidadDeMovimientos(int cant){movimientos = cant;}
     public Posicion obtenerPosVehiculo(){
         return this.posicion;
     }
+    public int obtenerCantidadDeMovimientos(){return movimientos;}
 
 }

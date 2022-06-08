@@ -1,18 +1,17 @@
 package edu.fiuba.algo3.modelo.Fakes;
 
 import edu.fiuba.algo3.modelo.Accionable;
-import edu.fiuba.algo3.modelo.Grilla;
-import edu.fiuba.algo3.modelo.Obstaculo.Pozo;
+import edu.fiuba.algo3.modelo.Calle;
+import edu.fiuba.algo3.modelo.Grilla.Grilla;
+import java.util.ArrayList;
 
 public class GrillaFake extends Grilla {
 
-    public GrillaFake(){
-        grilla = new Accionable[10][10];
-    }
-    public void crearGrillaConAccionables() {
-        for(int i = 0; i < 10; i++){
-            for (int j = 0; j < 10; j++){
-                grilla[i][j] = new Pozo();
+    public void colocarCallesEnGrilla(){
+        for(int i = 0; i < tamanioEjeY; i++){
+            ArrayList<Accionable> calle = grilla.get(i);
+            for(int j = 0; j < tamanioEjeX; j++){
+                calle.add(j, new Calle());
             }
         }
     }

@@ -52,7 +52,7 @@ public class Posicion {
     }
 
     public ArrayList<Integer> obtenerPos(){
-        ArrayList <Integer> pos = new ArrayList<Integer>();
+        ArrayList <Integer> pos = new ArrayList<>();
         pos.add(posX);
         pos.add(posY);
         return pos;
