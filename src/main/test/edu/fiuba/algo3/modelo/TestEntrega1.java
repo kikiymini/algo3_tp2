@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Fakes.CiudadFake;
+import edu.fiuba.algo3.modelo.Obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.Obstaculo.Pozo;
 import edu.fiuba.algo3.modelo.Vehiculos.Auto;
 import edu.fiuba.algo3.modelo.Vehiculos.Moto;
@@ -67,4 +68,26 @@ public class TestEntrega1 {
         assertEquals(16, ciudad.obtenerCantidadDeMovVehiculo());
     }
 
+    @Test
+    public void motoRealiza5MovimientosYSeCruzaConUnPiquetePenalizaDosMovimientos(){
+        CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
+        ciudad.ponerAccionableEnPosicion(1, 0, new Piquete());
+        for (int i = 0; i < 5; i++){
+            ciudad.moverVehiculoDerecha();
+        }
+        ArrayList<Integer> pos = ciudad.obtenerPosVehiculo();
+        assertEquals(16, ciudad.obtenerCantidadDeMovVehiculo());
+    }
+
+    @Test
+    public void autoRealiza5MovimientosYSeCruzaConUnPiqueteNoPuedePasar(){
+        CiudadFake ciudad = new CiudadFake(new Auto(new Posicion(0, 0)));
+        ciudad.ponerAccionableEnPosicion(1, 3, new Piquete());
+
+        for (int i = 0; i < 5; i++){
+            ciudad.moverVehiculoDerecha();
+        }
+
+        assertEquals(12, ciudad.obtenerCantidadDeMovVehiculo());
+    }
 }
