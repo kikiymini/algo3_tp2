@@ -7,7 +7,33 @@ import edu.fiuba.algo3.modelo.Vehiculos.Moto;
 import edu.fiuba.algo3.modelo.Vehiculos.TodoTerreno;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 
+import java.util.HashMap;
+
 public final class Pozo implements Obstaculo {
+    // Auto y TodoTerreno no pasan un piquete
+    protected abstract void aplicarPenalizacion(Vehiculo vehiculo);
+    public Pozo() {
+        this.aplicarPenalizacion(Vehiculo vehiculo);
+    }
+
+    protected HashMap<Class, Obstaculo> situacionDeChoque;
+
+
+    @Override
+    protected void aplicarPenalizacion() {
+        situacionDeChoque = new HashMap<>();
+        situacionDeChoque.put(Piquete.class, (x) -> collideWithAsteriod(x));
+        situacionDeChoque.put(Pozo.class, (x) -> collideWithStation(x));
+    }
+
+    private void collideWithStation(SpaceObject x) {
+        this.speed = 0;
+    }
+
+    private void collideWithAsteriod(SpaceObject x) {
+        this.life = 0;
+    }
+
 
     public void aplicarPenalizacion(Moto moto){
         moto.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorPozoParaMotoYAuto);
