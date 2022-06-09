@@ -25,6 +25,16 @@ public class TestEntrega1 {
     }
 
     @Test
+    public void motoAtraviesaGrillaSinObstaculos(){
+        CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
+        int largoGrilla = ciudad.grilla.obtenerTamanioEjeY()/3;
+        for(int i = 0; i < largoGrilla; i++){
+            ciudad.moverVehiculoDerecha();
+        }
+        assertEquals(largoGrilla*3, ciudad.obtenerCantidadDeMovVehiculo());
+    }
+
+    @Test
     public void autoRealiza5MovimientosALaDerechaYSeEncuentraConUnPozo(){
         CiudadFake ciudad = new CiudadFake(new Auto(new Posicion(0, 0)));
         ciudad.ponerAccionableEnPosicion(1, 0, new Pozo());
