@@ -1,0 +1,49 @@
+@startuml
+    'https://plantuml.com/class-diagram
+
+
+    abstract Vehiculo{
+        # posicion : Posicion
+        # movimientos : int
+
+        + {static} Vehiculo (Posicion pos) : Vehiculo
+        + posicionarVehiculo(int posicionX, int posicionY) : void
+        + moverArriba() : void
+        + moverAbajo() : void
+        + moverDerecha() : void
+        + moverIzquierda() : void
+        + {abstract} incrementarMovimientosSegunObstaculo(Obstaculo obstaculo) : void
+        + {abstract} cambiarVehiculo() : Vehiculo
+        + incrementarMovimientosSegunObstaculo(int penalizacion) : void
+        + movermeHacia(Movimiento movimiento) : void
+    }
+
+
+    class Moto{
+        + {static} Moto(Posicion posInicial) : Moto
+        + incrementarMovimientosSegunObstaculo(Obstaculo obstaculo) : void
+        + cambiarVehiculo() : Vehiculo
+    }
+
+    class Auto{
+        + {static} Auto(Posicion posInicial) : Auto
+        + incrementarMovimientosSegunObstaculo(Obstaculo obstaculo) : void
+        + darVuelta() : void
+        + cambiarVehiculo() : Vehiculo
+    }
+
+    class TodoTerreno{
+        - pozosComidos : int
+        + {static} TodoTerreno(Posicion posInicial)
+        + incrementarMovimientosSegunObstaculo(Obstaculo obstaculo) : void
+        + darVuelta() : void
+        + comerPozo() : void
+        + seComioDemasiadosPozos() : boolean
+        + cambiarVehiculo() : Vehiculo
+    }
+
+    Moto --|> Vehiculo
+    Auto --|> Vehiculo
+    TodoTerreno --|> Vehiculo
+
+@enduml
