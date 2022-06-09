@@ -33,7 +33,7 @@
     Vehiculo --> Posicion
 
     interface Movimiento{
-    +movermeHacia( Posicion posicion ) : void
+        +movermeHacia( Posicion posicion ) : void
     }
 
     Vehiculo --> Movimiento

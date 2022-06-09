@@ -1,0 +1,26 @@
+@startuml
+    'https://plantuml.com/class-diagram
+
+    interface Movimiento{
+        +movermeHacia( Posicion posicion ) : void
+    }
+
+    class Adelante{
+        +movermeHacia( Posicion posicion ) : void
+    }
+    class Atras{
+        +movermeHacia( Posicion posicion ) : void
+    }
+    class Derecha{
+        +movermeHacia( Posicion posicion ) : void
+    }
+    class Izquierda{
+        +movermeHacia( Posicion posicion ) : void
+    }
+
+    Adelante ..|> Movimiento
+    Atras ..|> Movimiento
+    Derecha ..|> Movimiento
+    Izquierda ..|> Movimiento
+
+@enduml
