@@ -1,10 +1,22 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
+participant "g :Grilla" as grilla
+participant "pozo :Accionable" as pozo
+participant "moto : Moto" as moto
+
 autonumber
 
-"g:Grilla" -> "pozo : Accionable" : accionar(moto)
-"pozo : Accionable" -> "moto : Moto" : incrementarMovimientosPorObstaculos(3)
-"moto : Moto" -> "moto : Moto" : incrementarMovimientos(3)
+activate grilla
+grilla ->  pozo : accionar(moto)
+deactivate grilla
+activate pozo
+pozo -> moto : incrementarMovimientosPorObstaculos(3)
+deactivate pozo
+activate moto
+moto -> moto : incrementarMovimientos(3)
+activate moto
+deactivate moto
+deactivate moto
 
 @enduml

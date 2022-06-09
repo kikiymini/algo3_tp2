@@ -4,20 +4,33 @@
 autonumber
 
 actor actor
-create "c : Ciudad "
-actor -> "c : Ciudad ": <<create>>
-"c : Ciudad "--> actor : c
+create "c :Ciudad" as ciudad
+participant "moto :Moto" as moto
+participant "g :Grilla" as grilla
+participant "Accionable" as accionable
+
+activate actor
+actor -> ciudad: <<create>>
+ciudad --> actor : c
+activate ciudad
 
 loop porUnaCantidadDeMovimientos
 
-actor  -> "c : Ciudad " : moverVehiculoDerecha()
+actor  -> ciudad : moverVehiculoDerecha()
 loop 3
-"c : Ciudad " -> "moto : Moto": moverVehiculoDerecha()
-"c : Ciudad " -> "g:Grilla" : moverVehiculo(moto)
-"g:Grilla" -> "moto : Moto" : obtenerPosicion()
-"moto : Moto" --> "g:Grilla" : posicion
-"g:Grilla" -> "Accionable" : accioanar(moto)
-"Accionable" -> "moto : Moto" :aplicarPenalizacion()
+ciudad -> moto: moverVehiculoDerecha()
+activate moto
+ciudad -> grilla : moverVehiculo(moto)
+deactivate ciudad
+activate grilla
+grilla -> moto : obtenerPosicion()
+moto --> grilla : posicion
+grilla -> accionable : accioanar(moto)
+deactivate grilla
+activate accionable
+accionable -> moto :aplicarPenalizacion()
+deactivate accionable
+deactivate moto
 end loop
 
 

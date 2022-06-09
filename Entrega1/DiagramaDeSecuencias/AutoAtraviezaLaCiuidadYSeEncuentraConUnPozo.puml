@@ -1,0 +1,39 @@
+@startuml
+'https://plantuml.com/sequence-diagram'
+actor actor
+activate actor
+
+participant "c :Ciudad" as ciudad
+participant "auto :Auto" as auto
+participant "g:Grilla" as grilla
+participant "Accionable" as accionable
+
+create ciudad
+actor -> ciudad: <<create>>
+ciudad--> actor : c
+activate ciudad
+
+loop porUnaCantidadDeMovimientos
+
+actor  -> ciudad : moverVehiculoArriba()
+loop 3
+ciudad -> auto: moverVehiculoArriba()
+activate auto
+ciudad -> grilla : moverVehiculo(auto)
+deactivate ciudad
+activate grilla
+grilla -> auto : obtenerPosicion()
+auto --> grilla : posicion
+grilla -> accionable : accioanar(auto)
+activate accionable
+accionable -> auto :aplicarPenalizacion()
+deactivate grilla
+deactivate auto
+deactivate accionable
+
+end loop
+end
+
+
+
+@enduml

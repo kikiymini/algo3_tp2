@@ -4,23 +4,34 @@
 autonumber
 
 actor actor
-create "c : Ciudad "
-actor -> "c : Ciudad ": <<create>>
-"c : Ciudad "--> actor : c
+activate actor
+create "c:Ciudad" as ciudad
+participant "4x4:TodoTerreno" as todoTerreno
+participant "g:Grilla" as grilla
+participant "Accionable" as accionable
+
+actor -> ciudad: <<create>>
+ciudad--> actor : c
+activate ciudad
 
 loop porUnaCantidadDeMovimientos
 
-actor  -> "c : Ciudad " : moverVehiculoDerecha()
+actor  -> ciudad : moverVehiculoDerecha()
 loop 3
-"c : Ciudad " -> "4x4 : TodoTerreno": moverVehiculoDerecha()
-"c : Ciudad " -> "g:Grilla" : moverVehiculo(moto)
-"g:Grilla" -> "4x4 : TodoTerreno" : obtenerPosicion()
-"4x4 : TodoTerreno" --> "g:Grilla" : posicion
-"g:Grilla" -> "Accionable" : accioanar(4x4)
-"Accionable" -> "4x4 : TodoTerreno" :aplicarPenalizacion()
+ciudad -> todoTerreno: moverVehiculoDerecha()
+activate todoTerreno
+ciudad -> grilla : moverVehiculo(4x4)
+deactivate ciudad
+activate grilla
+grilla -> todoTerreno : obtenerPosicion()
+todoTerreno --> grilla : posicion
+grilla -> accionable : accioanar(4x4)
+activate accionable
+accionable -> todoTerreno :aplicarPenalizacion()
+deactivate grilla
+deactivate todoTerreno
+deactivate accionable
 
 end loop
-
-
 end
 @enduml

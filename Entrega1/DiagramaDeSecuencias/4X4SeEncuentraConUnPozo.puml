@@ -1,13 +1,26 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
+
+participant "g :Grilla" as grilla
+participant "pozo :Accionable" as accionable
+participant "4x4 :TodoTerreno" as todoTerreno
+
 autonumber
+activate grilla
+grilla -> accionable : accionar(4x4)
+deactivate grilla
+activate accionable
+accionable -> todoTerreno : penalizarPorPozo()
+deactivate accionable
+activate todoTerreno
 
-"g:Grilla" -> "pozo : Accionable" : accionar(4x4)
-"pozo : Accionable" -> "4x4 : TodoTerreno" : penalizarPorPozo()
-"4x4 : TodoTerreno" -> "4x4 : TodoTerreno" : seComioDemasiadosPozos()
-"4x4 : TodoTerreno" --> "4x4 : TodoTerreno" : False
-
-
+todoTerreno -> todoTerreno : seComioDemasiadosPozos()
+activate todoTerreno
+todoTerreno --> todoTerreno : False
+activate todoTerreno
+deactivate todoTerreno
+deactivate todoTerreno
+deactivate todoTerreno
 
 @enduml
