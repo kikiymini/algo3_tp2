@@ -18,12 +18,7 @@ public final class Pozo implements Obstaculo {
     }
 
     public void aplicarPenalizacion(TodoTerreno todoTerreno) {
-        todoTerreno.comerPozo();
-        if (todoTerreno.seComioDemasiadosPozos()){
-             todoTerreno.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorPozoParaTodoterreno);
-        } else {
-             todoTerreno.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorPozoEsquivadoParaTodoterreno);
-        }
+        todoTerreno.penalizarPorPozo();
     }
 
     public void aplicarPenalizacion(Vehiculo vehiculo) {

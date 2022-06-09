@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.Grilla;
 
 import edu.fiuba.algo3.modelo.Accionable;
+import edu.fiuba.algo3.modelo.Calle;
 import edu.fiuba.algo3.modelo.Constantes;
 import edu.fiuba.algo3.modelo.Obstaculo.Pozo;
 import edu.fiuba.algo3.modelo.Posicion;
@@ -26,6 +27,7 @@ public class Grilla {
         this.grilla = crearGrilla(tamanioEjeX, tamanioEjeY);
     }
 
+
     public int obtenerTamanioEjeX(){
         return this.tamanioEjeX;
     }
@@ -40,11 +42,11 @@ public class Grilla {
 
 
     private int obtenerCantTotalPosicionesDeManzanas(){
-        return  0;//this.obtenerCantTotalDeManzanas() * 4;
+        return (this.cantEsquinasEjeX + 1) * (this.cantEsquinasEjeY + 1);
     }
 
     private int obtenerCantTotalDeEsquinas(){
-        return  0; //this.cantEsquinasEjeX * this.cantEsquinasEjeY;
+        return this.cantEsquinasEjeX * this.cantEsquinasEjeY;
     }
 
     public int obtenerCantTotalDePosValidas(){
@@ -58,7 +60,7 @@ public class Grilla {
 
     public void insertarAccionableEnPosicion(Posicion pos, Accionable objeto){
         ArrayList<Accionable> calle = grilla.get(pos.obtenerPosY());
-        calle.add(pos.obtenerPosX(), objeto);
+        calle.set(pos.obtenerPosX(), objeto);
     }
 
     private void asignarCantidadesDeEsquinas(){
@@ -77,18 +79,19 @@ public class Grilla {
     }
 
     public void moverVehiculo(Vehiculo vehiculo) {
-        ArrayList<Integer> pos = vehiculo.obtenerPos(); // esta mal
-        Accionable accionable = grilla.get(pos.get(0)).get(pos.get(1));
+        Posicion pos = vehiculo.obtenerPosVehiculo(); // esta mal
+        ArrayList<Accionable> calle = grilla.get(pos.obtenerPosY());
+        Accionable accionable = calle.get(pos.obtenerPosX());
         accionable.accionar(vehiculo);
     }
 
-
+    // cambiar donde esta el pozo
     public static ArrayList<ArrayList<Accionable>> crearGrilla(int tamanioEjeX, int tamanioEjeY){
         ArrayList<ArrayList<Accionable>> grilla = new ArrayList<>();
         for (int i = 0 ; i < tamanioEjeY; i++){
             ArrayList<Accionable> calle = new ArrayList<>();
             for(int j = 0; j < tamanioEjeX; j++){
-                calle.add(j, new Pozo());
+                calle.add(new Calle());
             }
             grilla.add(calle);
         }

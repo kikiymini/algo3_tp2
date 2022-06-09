@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor actor
+create "c : Ciudad "
+actor -> "c : Ciudad ": <<create>>
+"c : Ciudad "--> actor : c
+
+loop porUnaCantidadDeMovimientos
+
+actor  -> "c : Ciudad " : moverVehiculoDerecha()
+loop 3
+"c : Ciudad " -> "4x4 : TodoTerreno": moverVehiculoDerecha()
+"c : Ciudad " -> "g:Grilla" : moverVehiculo(moto)
+"g:Grilla" -> "4x4 : TodoTerreno" : obtenerPosicion()
+"4x4 : TodoTerreno" --> "g:Grilla" : posicion
+"g:Grilla" -> "Accionable" : accioanar(4x4)
+"Accionable" -> "4x4 : TodoTerreno" :aplicarPenalizacion()
+
+end loop
+
+
+end
+@enduml

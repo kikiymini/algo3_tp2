@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Ciudad;
 import edu.fiuba.algo3.modelo.Fakes.CiudadFake;
+import edu.fiuba.algo3.modelo.Movimiento.Derecha;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -9,12 +10,12 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestCiudad {
-
     @Test
     public void moverVehiculoDerecha(){
         CiudadFake ciudad = new CiudadFake();
         ciudad.setearVehiculoOrigen();
         ciudad.moverVehiculoDerecha();
+        Derecha derecha = new Derecha();
         int posX = ciudad.obtenerPosVehiculoEnX();
         assertEquals(3, posX);
     }
@@ -44,6 +45,5 @@ public class TestCiudad {
         int posY = ciudad.obtenerPosVehiculoEnY();
         assertEquals(0, posY);
     }
-
 
 }

@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.Vehiculos;
 
 import edu.fiuba.algo3.modelo.Constantes;
+import edu.fiuba.algo3.modelo.Movimiento.Movimiento;
 import edu.fiuba.algo3.modelo.Obstaculo.Obstaculo;
 import edu.fiuba.algo3.modelo.Posicion;
 
@@ -11,7 +12,6 @@ public abstract class Vehiculo {
 
     protected Posicion posicion;
     protected int movimientos;
-
 
     protected static Random RNG = new Random();
 
@@ -25,18 +25,22 @@ public abstract class Vehiculo {
     }
 
     public void moverArriba(){
+        movimientos++;
         this.posicion.decrementarY();
     }
 
     public void moverAbajo(){
+        movimientos++;
         this.posicion.incrementarY();
     }
 
     public void moverDerecha(){
+        movimientos++;
         this.posicion.incrementarX();
     }
 
     public void moverIzquierda(){
+        movimientos++;
         this.posicion.decrementarX();
     }
 
@@ -52,6 +56,7 @@ public abstract class Vehiculo {
         movimientos += penalizacion;
     }
 
+<<<<<<< HEAD
 
     //mejorar
     public static Vehiculo obtenerVehiculoAlAzar(Posicion posInicial){ //ver
@@ -62,6 +67,20 @@ public abstract class Vehiculo {
         } else {
             return new TodoTerreno(posInicial);
         }
+=======
+    private static ArrayList <Vehiculo> generarListaDeVehiculos(Posicion posInicial){
+        ArrayList <Vehiculo> vehiculos = new ArrayList <>();
+        vehiculos.add(new Auto(posInicial));
+        vehiculos.add(new Moto(posInicial));
+        vehiculos.add(new TodoTerreno(posInicial));
+        return vehiculos;
+    }
+
+    public static Vehiculo obtenerVehiculoAlAzar(Posicion posInicial){
+        ArrayList <Vehiculo> vehiculos = generarListaDeVehiculos(posInicial);
+        int random = new Random().nextInt(3);
+        return (vehiculos.get(random));
+>>>>>>> 0d9bda11ee442cd1debf8d4aa98fc884b76330bf
     }
 
     public ArrayList<Integer> obtenerPos(){
@@ -80,5 +99,15 @@ public abstract class Vehiculo {
         return this.posicion;
     }
     public int obtenerCantidadDeMovimientos(){return movimientos;}
+
+    //esta ultima funcion no se utiliza. es para un posible cambio de comportamiento. a futuro
+    public void movermeHacia(Movimiento movimiento) {
+        /* recibe una penalizacion? aplicarPenalizacion debe verificar si puedo moverme.
+            Si es así, me penalizo. Aumento los movimientos.
+            sino avanzo
+         */
+        movimiento.movermeHacia(this.posicion);
+        movimientos++;
+    }
 
 }

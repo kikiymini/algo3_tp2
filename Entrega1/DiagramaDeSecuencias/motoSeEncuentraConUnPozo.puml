@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+"g:Grilla" -> "pozo : Accionable" : accionar(moto)
+"pozo : Accionable" -> "moto : Moto" : incrementarMovimientosPorObstaculos(3)
+"moto : Moto" -> "moto : Moto" : incrementarMovimientos(3)
+
+@enduml
