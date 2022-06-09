@@ -56,14 +56,18 @@ public abstract class Vehiculo {
         movimientos += penalizacion;
     }
 
-    public static Vehiculo obtenerVehiculoAlAzar(Posicion posInicial){ //ver
-        if (RNG.nextDouble() < Constantes.probabilidadDeObtenerUnaMoto){
-            return new Moto(posInicial);
-        } else if (RNG.nextDouble() < Constantes.probabilidadDeObtenerUnAuto){
-            return new Auto(posInicial);
-        } else {
-            return new TodoTerreno(posInicial);
-        }
+    private static ArrayList <Vehiculo> generarListaDeVehiculos(Posicion posInicial){
+        ArrayList <Vehiculo> vehiculos = new ArrayList <>();
+        vehiculos.add(new Auto(posInicial));
+        vehiculos.add(new Moto(posInicial));
+        vehiculos.add(new TodoTerreno(posInicial));
+        return vehiculos;
+    }
+
+    public static Vehiculo obtenerVehiculoAlAzar(Posicion posInicial){
+        ArrayList <Vehiculo> vehiculos = generarListaDeVehiculos(posInicial);
+        int random = new Random().nextInt(3);
+        return (vehiculos.get(random));
     }
 
     public ArrayList<Integer> obtenerPos(){
@@ -83,6 +87,7 @@ public abstract class Vehiculo {
     }
     public int obtenerCantidadDeMovimientos(){return movimientos;}
 
+    //esta ultima funcion no se utiliza. es para un posible cambio de comportamiento. a futuro
     public void movermeHacia(Movimiento movimiento) {
         /* recibe una penalizacion? aplicarPenalizacion debe verificar si puedo moverme.
             Si es así, me penalizo. Aumento los movimientos.
