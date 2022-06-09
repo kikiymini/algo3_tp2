@@ -30,12 +30,11 @@
         + equals(Object posicion) : boolean
     }
 
-    Vehiculo --> Posicion
-
     interface Movimiento{
         +movermeHacia( Posicion posicion ) : void
     }
 
+    Vehiculo --> Posicion
     Vehiculo --> Movimiento
 
 @enduml
