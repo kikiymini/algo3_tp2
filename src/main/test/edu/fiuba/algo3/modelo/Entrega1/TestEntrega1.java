@@ -29,7 +29,7 @@ public class TestEntrega1 {
     @Test
     public void motoAtraviesaGrillaALoAnchoSinObstaculos(){
         CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
-        int anchoGrilla = ciudad.grilla.obtenerTamanioEjeX()/3;
+        int anchoGrilla = ciudad.obtenerAnchoCiudad()/3;
         for(int i = 0; i < anchoGrilla; i++){
             ciudad.moverVehiculoDerecha();
         }
@@ -39,7 +39,7 @@ public class TestEntrega1 {
     @Test
     public void motoAtraviesaGrillaALoLargoSinObstaculos(){
         CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
-        int largoGrilla = ciudad.grilla.obtenerTamanioEjeY()/3;
+        int largoGrilla = ciudad.obtenerLargoCiudad()/3;
         for(int i = 0; i < largoGrilla; i++){
             ciudad.moverVehiculoAbajo();
         }

@@ -63,4 +63,7 @@ public class CiudadFake extends Ciudad {
         this.vehiculo = vehiculo;
     }
 
+    public int obtenerAnchoCiudad(){return grilla.obtenerTamanioEjeX();}
+
+    public int obtenerLargoCiudad(){return grilla.obtenerTamanioEjeY();}
 }
