@@ -9,7 +9,7 @@ import edu.fiuba.algo3.modelo.Vehiculos.Moto;
 import edu.fiuba.algo3.modelo.Vehiculos.TodoTerreno;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -22,7 +22,6 @@ public class TestEntrega1 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
-        ArrayList<Integer> pos = ciudad.obtenerPosVehiculo();
         assertEquals(18, ciudad.obtenerCantidadDeMovVehiculo());
     }
 
@@ -52,7 +51,6 @@ public class TestEntrega1 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
-        ArrayList<Integer> pos = ciudad.obtenerPosVehiculo();
         assertEquals(18, ciudad.obtenerCantidadDeMovVehiculo());
     }
     @Test
@@ -62,7 +60,6 @@ public class TestEntrega1 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
-        ArrayList<Integer> pos = ciudad.obtenerPosVehiculo();
         assertEquals(15, ciudad.obtenerCantidadDeMovVehiculo());
     }
     @Test
@@ -74,7 +71,6 @@ public class TestEntrega1 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
-        ArrayList<Integer> pos = ciudad.obtenerPosVehiculo();
         assertEquals(17, ciudad.obtenerCantidadDeMovVehiculo());
     }
 
@@ -85,7 +81,6 @@ public class TestEntrega1 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
-        ArrayList<Integer> pos = ciudad.obtenerPosVehiculo();
         assertEquals(17, ciudad.obtenerCantidadDeMovVehiculo());
     }
 
