@@ -16,7 +16,6 @@ public final class Piquete implements Obstaculo {
     public void aplicarPenalizacion(Auto auto) {
         auto.darVuelta();
         auto.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorPiqueteParaAutoYTodoterreno);
-
     }
     public void aplicarPenalizacion(TodoTerreno todoTerreno) {
         todoTerreno.darVuelta();

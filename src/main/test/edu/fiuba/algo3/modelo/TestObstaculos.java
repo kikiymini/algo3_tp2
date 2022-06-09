@@ -48,7 +48,6 @@ public class TestObstaculos {
         Vehiculo auto = new Auto(new Posicion(1, 1));
         Accionable pozo = new Pozo();
         pozo.accionar(auto);
-        pozo.accionar(auto);
         assertEquals(6, auto.cantidadDeMovimientos());
     }
     @Test
