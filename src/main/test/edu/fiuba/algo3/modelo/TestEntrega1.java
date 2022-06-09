@@ -47,7 +47,6 @@ public class TestEntrega1 {
     @Test
     public void todoTerrenoRealiza5MovimientosALaDerechaYSeEncuentraConTresPozosYEsPenalizado(){
         CiudadFake ciudad = new CiudadFake(new TodoTerreno(new Posicion(0, 0)));
-        ciudad.ponerAccionableEnPosicion(1, 0, new Pozo());
         for(int i = 0; i< 3; i++){
             ciudad.ponerAccionableEnPosicion(i + 1, 0, new Pozo());
         }
