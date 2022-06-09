@@ -1,8 +1,9 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Entrega1;
 
 import edu.fiuba.algo3.modelo.Fakes.CiudadFake;
 import edu.fiuba.algo3.modelo.Obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.Obstaculo.Pozo;
+import edu.fiuba.algo3.modelo.Posicion;
 import edu.fiuba.algo3.modelo.Vehiculos.Auto;
 import edu.fiuba.algo3.modelo.Vehiculos.Moto;
 import edu.fiuba.algo3.modelo.Vehiculos.TodoTerreno;
