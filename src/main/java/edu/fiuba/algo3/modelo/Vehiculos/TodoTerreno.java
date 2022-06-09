@@ -24,7 +24,6 @@ public class TodoTerreno extends Vehiculo{
 
     public void penalizarPorPozo(){
         this.pozosComidos++;
-        movimientos++;
         if (seComioDemasiadosPozos()) this.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorPozoParaTodoterreno);
     }
 

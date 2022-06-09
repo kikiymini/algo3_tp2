@@ -2,8 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 public final class Constantes {
     public static final short penalizacionDeMovimientosPorPozoParaMotoYAuto = 3;
-    public static final int penalizacionDeMovimientosPorPozoParaTodoterreno = 1;
-    public static final int penalizacionDeMovimientosPorPozoEsquivadoParaTodoterreno = 0;
+    public static final int penalizacionDeMovimientosPorPozoParaTodoterreno = 2;
     public static final int cantidadDePozosParaAplicarPenalizacionTodoterreno = 3;
     public static final int penalizacionDeMovimientosPorPiqueteParaMoto = 2;
     public static final int penalizacionDeMovimientosPorPiqueteParaAutoYTodoterreno = 0;

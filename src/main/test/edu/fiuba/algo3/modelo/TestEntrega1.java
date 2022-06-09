@@ -22,19 +22,28 @@ public class TestEntrega1 {
             ciudad.moverVehiculoDerecha();
         }
         ArrayList<Integer> pos = ciudad.obtenerPosVehiculo();
-        assertEquals(17, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(18, ciudad.obtenerCantidadDeMovVehiculo());
     }
 
     @Test
-    public void motoAtraviesaGrillaSinObstaculos(){
+    public void motoAtraviesaGrillaALoAnchoSinObstaculos(){
+        CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
+        int anchoGrilla = ciudad.grilla.obtenerTamanioEjeX()/3;
+        for(int i = 0; i < anchoGrilla; i++){
+            ciudad.moverVehiculoDerecha();
+        }
+        assertEquals(anchoGrilla*3, ciudad.obtenerCantidadDeMovVehiculo());
+    }
+
+    @Test
+    public void motoAtraviesaGrillaALoLargoSinObstaculos(){
         CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
         int largoGrilla = ciudad.grilla.obtenerTamanioEjeY()/3;
         for(int i = 0; i < largoGrilla; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculoAbajo();
         }
         assertEquals(largoGrilla*3, ciudad.obtenerCantidadDeMovVehiculo());
     }
-
     @Test
     public void autoRealiza5MovimientosALaDerechaYSeEncuentraConUnPozo(){
         CiudadFake ciudad = new CiudadFake(new Auto(new Posicion(0, 0)));
@@ -43,7 +52,7 @@ public class TestEntrega1 {
             ciudad.moverVehiculoDerecha();
         }
         ArrayList<Integer> pos = ciudad.obtenerPosVehiculo();
-        assertEquals(17, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(18, ciudad.obtenerCantidadDeMovVehiculo());
     }
     @Test
     public void todoTerrenoRealiza5MovimientosALaDerechaYSeEncuentraConUnPozoYnoEsPenalizado(){
@@ -65,7 +74,7 @@ public class TestEntrega1 {
             ciudad.moverVehiculoDerecha();
         }
         ArrayList<Integer> pos = ciudad.obtenerPosVehiculo();
-        assertEquals(16, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(17, ciudad.obtenerCantidadDeMovVehiculo());
     }
 
     @Test
@@ -76,18 +85,20 @@ public class TestEntrega1 {
             ciudad.moverVehiculoDerecha();
         }
         ArrayList<Integer> pos = ciudad.obtenerPosVehiculo();
-        assertEquals(16, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(17, ciudad.obtenerCantidadDeMovVehiculo());
     }
 
     @Test
     public void autoRealiza5MovimientosYSeCruzaConUnPiqueteNoPuedePasar(){
         CiudadFake ciudad = new CiudadFake(new Auto(new Posicion(0, 0)));
-        ciudad.ponerAccionableEnPosicion(1, 3, new Piquete());
+        ciudad.ponerAccionableEnPosicion(14, 0, new Piquete());
 
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
 
-        assertEquals(12, ciudad.obtenerCantidadDeMovVehiculo());
+        //assertEquals(12, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(12, ciudad.obtenerPosVehiculoEnX());
+        assertEquals(14, ciudad.obtenerCantidadDeMovVehiculo());
     }
 }

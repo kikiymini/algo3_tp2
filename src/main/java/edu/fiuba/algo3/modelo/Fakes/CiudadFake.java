@@ -38,21 +38,11 @@ public class CiudadFake extends Ciudad {
         return obtenerPosVehiculo().get(1);
     }
 
-    public void moverVehiculoDerecha(int cantidad){
-        for(int i = 0; i < cantidad; i++){
-            vehiculo.moverDerecha();
-        }
-    }
     public void setearVehiculoEn(int x , int y){
         Posicion pos = vehiculo.obtenerPosVehiculo();
         pos.establecerPosX(x);
         pos.establecerPosY(y);
     }
-
-    public void colocarCallesEnGrilla(){
-        //grilla.colocarCallesEnGrilla();
-    }
-
     public void llenarGrillaDe(Accionable accionable){
         for(int i = 0; i < grilla.obtenerTamanioEjeY(); i++){
             for(int j = 0; j < grilla.obtenerTamanioEjeX(); j++){
@@ -73,7 +63,4 @@ public class CiudadFake extends Ciudad {
         this.vehiculo = vehiculo;
     }
 
-    public Object obtenerAccionableEnPos(Posicion posicion) {
-        return grilla.obtenerAccionableEnPosicion(posicion);
-    }
 }
