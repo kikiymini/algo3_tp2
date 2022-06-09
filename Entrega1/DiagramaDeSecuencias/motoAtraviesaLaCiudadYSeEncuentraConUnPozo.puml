@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor actor
+create "c : Ciudad "
+actor -> "c : Ciudad ": <<create>>
+"c : Ciudad "--> actor : c
+
+loop porUnaCantidadDeMovimientos
+
+actor  -> "c : Ciudad " : moverVehiculoDerecha()
+loop 3
+"c : Ciudad " -> "moto : Moto": moverVehiculoDerecha()
+"c : Ciudad " -> "g:Grilla" : moverVehiculo(moto)
+"g:Grilla" -> "moto : Moto" : obtenerPosicion()
+"moto : Moto" --> "g:Grilla" : posicion
+"g:Grilla" -> "Accionable" : accioanar(moto)
+"Accionable" -> "moto : Moto" :aplicarPenalizacion()
+end loop
+
+
+end
+@enduml
