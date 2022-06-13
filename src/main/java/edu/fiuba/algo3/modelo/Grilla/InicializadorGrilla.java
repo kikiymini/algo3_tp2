@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.Grilla;
 
 import edu.fiuba.algo3.modelo.Accionable;
 import edu.fiuba.algo3.modelo.Constantes;
+import edu.fiuba.algo3.modelo.Esquina;
 import edu.fiuba.algo3.modelo.Obstaculo.ControlPolicial;
 import edu.fiuba.algo3.modelo.Obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.Obstaculo.Pozo;
@@ -48,6 +49,7 @@ public class InicializadorGrilla {
         this.insertarControlesPolicialesEnGrilla();
         this.insertarPozosEnGrilla();
         this.insertarPiquetesEnGrilla();
+        this.colocarEsquinasEnGrilla();
     }
 
     private void insertarSorpresasEnGrilla(){
@@ -169,4 +171,20 @@ public class InicializadorGrilla {
     public Posicion obtenerPosIniVehiculo(){
         return posIniVehiculo;
     }
+
+    private void colocarEsquinasEnGrilla(){
+        Posicion posicion;
+        Esquina esquina = new Esquina();
+        for(int i = 0; i < this.grilla.obtenerTamanioEjeX(); i++){
+            for(int j = 0; j < this.grilla.obtenerTamanioEjeY(); j++) {
+                    posicion = new Posicion(i, j);
+                    if(posicion.estasEnEsquina()){
+                        this.grilla.insertarAccionableEnPosicion(posicion, esquina);
+                }
+            }
+        }
+    }
+
+
 }
+
