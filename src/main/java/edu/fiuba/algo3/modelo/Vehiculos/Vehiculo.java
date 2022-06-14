@@ -27,7 +27,7 @@ public abstract class Vehiculo {
     }
 
     public void movermeHacia(Movimiento movimiento){
-        movimiento.movermeHacia(posicion);
+        movimiento.mover(posicion);
     }
 
     public void modificarMovimientosSegunFactor(double factor) {
