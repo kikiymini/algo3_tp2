@@ -85,7 +85,6 @@ public class Grilla {
         accionable.accionar(vehiculo);
     }
 
-    // cambiar donde esta el pozo
     public static ArrayList<ArrayList<Accionable>> crearGrilla(int tamanioEjeX, int tamanioEjeY){
         ArrayList<ArrayList<Accionable>> grilla = new ArrayList<>();
         for (int i = 0 ; i < tamanioEjeY; i++){

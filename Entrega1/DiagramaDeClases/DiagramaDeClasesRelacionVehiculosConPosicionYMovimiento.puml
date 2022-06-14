@@ -35,6 +35,6 @@
     }
 
     Vehiculo --> Posicion
-    Vehiculo --> Movimiento
+    Vehiculo ..> Movimiento
 
 @enduml
