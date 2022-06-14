@@ -63,7 +63,7 @@ public class Grilla {
     }
 
     private void asignarTamaniosEjes(){
-        this.tamanioEjeX = (this.cantEsquinasEjeX * 3) + 2;
+        this.tamanioEjeX = (this.cantEsquinasEjeX * 3);
         this.tamanioEjeY = this.tamanioEjeX;
     }
 
