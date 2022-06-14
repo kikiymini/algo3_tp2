@@ -64,6 +64,7 @@ public class Ciudad {
         while(i < 3 && !estaEnEsquina){
             vehiculo.moverDerecha();
             grilla.moverVehiculo(vehiculo);
+            vehiculo = vehiculo.cambiasteVehiculo();
             estaEnEsquina = vehiculo.estasEnEsquiana();
             i++;
         }

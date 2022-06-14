@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.Posicion;
 public class TodoTerreno extends Vehiculo{
 
     private int pozosComidos;
+    private Vehiculo proxVehiculo = this;
 
 
     public TodoTerreno(Posicion posInicial){
@@ -32,7 +33,14 @@ public class TodoTerreno extends Vehiculo{
     }
 
     public Vehiculo cambiarVehiculo(){
-        return new Moto(this.posicion);
+        proxVehiculo = new Moto(this.posicion);
+        proxVehiculo.incrementarMovimientosSegunObstaculo(movimientos);
+        return new Moto(this.posicion); // no hace falta para este nuevo modelo
+    }
+
+    @Override
+    public Vehiculo cambiasteVehiculo() {
+        return proxVehiculo;
     }
 
 }

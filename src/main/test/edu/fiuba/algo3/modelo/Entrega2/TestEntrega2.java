@@ -10,6 +10,7 @@ import edu.fiuba.algo3.modelo.TestPosicion;
 import edu.fiuba.algo3.modelo.Vehiculos.Auto;
 import edu.fiuba.algo3.modelo.Vehiculos.Moto;
 import edu.fiuba.algo3.modelo.Vehiculos.TodoTerreno;
+import javafx.geometry.Pos;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -84,27 +85,27 @@ public class TestEntrega2 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
-        assertEquals(4, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(new TodoTerreno(new Posicion(0, 0)).getClass(), ciudad.obtenerVehiculo().getClass());
     }
 
     @Test
-    public void motoAtraviesaLaCiudadYSeEncuentraUnaCambioDeVehiculoYSeTransformaEnTodoTerreno(){
+    public void motoAtraviesaLaCiudadYSeEncuentraUnaCambioDeVehiculoYSeTransformaEnAuto(){
         CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
-        ciudad.ponerAccionableEnPosicion(14, 0, new Favorable());
+        ciudad.ponerAccionableEnPosicion(14, 0, new CambioDeVehiculo());
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
-        assertEquals(4, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(new Auto(new Posicion(0, 0)).getClass(), ciudad.obtenerVehiculo().getClass());
     }
 
     @Test
-    public void todoTerrenoAtraviesaLaCiudadYSeEncuentraUnaCambioDeVehiculoYSeTransformaEn(){
+    public void todoTerrenoAtraviesaLaCiudadYSeEncuentraUnaCambioDeVehiculoYSeTransformaEnMoto(){
         CiudadFake ciudad = new CiudadFake(new TodoTerreno(new Posicion(0, 0)));
-        ciudad.ponerAccionableEnPosicion(14, 0, new Favorable());
+        ciudad.ponerAccionableEnPosicion(14, 0, new CambioDeVehiculo());
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
-        assertEquals(4, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(new Moto(new Posicion(0, 0)).getClass(), ciudad.obtenerVehiculo().getClass());
     }
 
 

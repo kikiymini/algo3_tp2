@@ -12,7 +12,6 @@ public abstract class Vehiculo {
 
     protected Posicion posicion;
     protected int movimientos;
-
     protected static Random RNG = new Random(); //0-1 penalizacion
 
     //ver!!
@@ -100,5 +99,7 @@ public abstract class Vehiculo {
         movimiento.movermeHacia(this.posicion);
         movimientos++;
     }
+
+    public abstract Vehiculo cambiasteVehiculo();
 
 }
