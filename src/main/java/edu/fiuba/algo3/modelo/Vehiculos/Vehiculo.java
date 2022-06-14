@@ -13,7 +13,7 @@ public abstract class Vehiculo {
     protected Posicion posicion;
     protected int movimientos;
 
-    protected static Random RNG = new Random();
+    protected static Random RNG = new Random(); //0-1 penalizacion
 
 
     public Vehiculo (Posicion pos){

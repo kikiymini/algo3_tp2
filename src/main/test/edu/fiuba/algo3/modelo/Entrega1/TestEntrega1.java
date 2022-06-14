@@ -22,7 +22,7 @@ public class TestEntrega1 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
-        assertEquals(18, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(18, ciudad.obtenerCantidadDeMovVehiculo()); //8
     }
 
     @Test
@@ -51,7 +51,7 @@ public class TestEntrega1 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
-        assertEquals(18, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(18, ciudad.obtenerCantidadDeMovVehiculo()); //8
     }
     @Test
     public void todoTerrenoRealiza5MovimientosALaDerechaYSeEncuentraConUnPozoYnoEsPenalizado(){
@@ -60,7 +60,7 @@ public class TestEntrega1 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
-        assertEquals(15, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(15, ciudad.obtenerCantidadDeMovVehiculo()); //5
     }
     @Test
     public void todoTerrenoRealiza5MovimientosALaDerechaYSeEncuentraConTresPozosYEsPenalizado(){
@@ -71,7 +71,7 @@ public class TestEntrega1 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
-        assertEquals(17, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(17, ciudad.obtenerCantidadDeMovVehiculo()); //7
     }
 
     @Test
@@ -81,20 +81,19 @@ public class TestEntrega1 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
-        assertEquals(17, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(17, ciudad.obtenerCantidadDeMovVehiculo()); //
     }
 
     @Test
     public void autoRealiza5MovimientosYSeCruzaConUnPiqueteNoPuedePasar(){
         CiudadFake ciudad = new CiudadFake(new Auto(new Posicion(0, 0)));
-        ciudad.ponerAccionableEnPosicion(14, 0, new Piquete());
+        ciudad.ponerAccionableEnPosicion(14, 0, new Piquete()); //ver pos con cambio de esquina
 
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
 
-        //assertEquals(12, ciudad.obtenerCantidadDeMovVehiculo());
         assertEquals(12, ciudad.obtenerPosVehiculoEnX());
-        assertEquals(14, ciudad.obtenerCantidadDeMovVehiculo());
+
     }
 }
