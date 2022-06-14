@@ -26,7 +26,7 @@ public class Ciudad {
     }
 
     public void moverVehiculoArriba(){
-        Boolean estaEnEsquina = false;
+        boolean estaEnEsquina = false;
         int i = 0;
         while(i < 3 && !estaEnEsquina){
             vehiculo.moverArriba();
@@ -37,7 +37,7 @@ public class Ciudad {
     }
 
     public void moverVehiculoAbajo(){
-        Boolean estaEnEsquina = false;
+        boolean estaEnEsquina = false;
         int i = 0;
         while(i < 3 && !estaEnEsquina){
             vehiculo.moverAbajo();
@@ -48,7 +48,7 @@ public class Ciudad {
     }
 
     public void moverVehiculoIzquierda(){
-        Boolean estaEnEsquina = false;
+        boolean estaEnEsquina = false;
         int i = 0;
         while(i < 3 && !estaEnEsquina){
             vehiculo.moverIzquierda();
@@ -59,7 +59,7 @@ public class Ciudad {
     }
 
     public void moverVehiculoDerecha(){
-        Boolean estaEnEsquina = false;
+        boolean estaEnEsquina = false;
         int i = 0;
         while(i < 3 && !estaEnEsquina){
             vehiculo.moverDerecha();
