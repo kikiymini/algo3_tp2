@@ -32,10 +32,10 @@ public class TodoTerreno extends Vehiculo{
         return (pozosComidos % Constantes.cantidadDePozosParaAplicarPenalizacionTodoterreno) == 0;
     }
 
-    public Vehiculo cambiarVehiculo(){
+    public void cambiarVehiculo(){
         proxVehiculo = new Moto(this.posicion);
         proxVehiculo.incrementarMovimientosSegunObstaculo(movimientos);
-        return new Moto(this.posicion); // no hace falta para este nuevo modelo
+
     }
 
     @Override

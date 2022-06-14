@@ -53,7 +53,7 @@ public abstract class Vehiculo {
 
     public abstract void incrementarMovimientosSegunObstaculo(Obstaculo obstaculo);
 
-    public abstract Vehiculo cambiarVehiculo();
+    public abstract void cambiarVehiculo();
 
     public void incrementarMovimientosSegunObstaculo(int penalizacion){
         movimientos += penalizacion;

@@ -77,7 +77,6 @@ public class TestEntrega2 {
         assertEquals(6, ciudad.obtenerCantidadDeMovVehiculo());
     }
 
-    // a partir de aca falta implementar
     @Test
     public void autoAtraviesaLaCiudadYSeEncuentraUnaCambioDeVehiculoYSeTransformaEnTodoTerreno(){
         CiudadFake ciudad = new CiudadFake(new Auto(new Posicion(0, 0)));

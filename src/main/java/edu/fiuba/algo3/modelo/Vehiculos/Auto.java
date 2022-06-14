@@ -19,10 +19,9 @@ public class Auto extends Vehiculo{
         posicion.establecerEnUltimaPos();
     }
 
-    public Vehiculo cambiarVehiculo(){
+    public void cambiarVehiculo(){
         proxVehiculo = new TodoTerreno(this.posicion);
         proxVehiculo.incrementarMovimientosSegunObstaculo(movimientos);
-        return new TodoTerreno(this.posicion);// sacarlo despues
     }
 
     @Override

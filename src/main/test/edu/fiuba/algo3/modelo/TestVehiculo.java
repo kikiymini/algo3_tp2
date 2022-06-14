@@ -18,24 +18,24 @@ public class TestVehiculo {
     public void autoCambiaDeVehiculoYDevuelveTodoTerreno(){
         Posicion pos = new Posicion(0,0);
         Vehiculo vehiculo = new Auto(pos);
-        vehiculo = vehiculo.cambiarVehiculo();
-        assertEquals(vehiculo.getClass(), new TodoTerreno(pos).getClass());
+        vehiculo.cambiarVehiculo();
+        assertEquals(vehiculo.cambiasteVehiculo().getClass(), new TodoTerreno(pos).getClass());
     }
 
     @Test
     public void motoCambiaDeVehiculoYDevuelveAuto(){
         Posicion pos = new Posicion(0,0);
         Vehiculo vehiculo = new Moto(pos);
-        vehiculo = vehiculo.cambiarVehiculo();
-        assertEquals(vehiculo.getClass(), new Auto(pos).getClass());
+        vehiculo.cambiarVehiculo();
+        assertEquals(vehiculo.cambiasteVehiculo().getClass(), new Auto(pos).getClass());
     }
 
     @Test
     public void todoTerrenoCambiaDeVehiculoYDevuelveMoto(){
         Posicion pos = new Posicion(0,0);
         Vehiculo vehiculo = new TodoTerreno(pos);
-        vehiculo = vehiculo.cambiarVehiculo();
-        assertEquals(vehiculo.getClass(), new Moto(pos).getClass());
+        vehiculo.cambiarVehiculo();
+        assertEquals(vehiculo.cambiasteVehiculo().getClass(), new Moto(pos).getClass());
     }
 
     @Test

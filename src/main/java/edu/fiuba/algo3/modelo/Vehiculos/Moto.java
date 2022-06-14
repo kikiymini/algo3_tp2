@@ -15,11 +15,9 @@ public class Moto extends Vehiculo{
         obstaculo.aplicarPenalizacion(this);
     }
 
-    public Vehiculo cambiarVehiculo(){
+    public void cambiarVehiculo(){
         proxVehiculo = new Auto(this.posicion);
-        proxVehiculo.incrementarMovimientosSegunObstaculo(movimientos);
-        return new Auto(this.posicion); // hay que borrar no es necesario devolcer un vehivulo con este planteo
-    }
+        proxVehiculo.incrementarMovimientosSegunObstaculo(movimientos);}
 
     @Override
     public Vehiculo cambiasteVehiculo() {
