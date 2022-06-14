@@ -26,34 +26,46 @@ public class Ciudad {
     }
 
     public void moverVehiculoArriba(){
-        for(int i = 0; i < 3; i++){
+        Boolean estaEnEsquina = false;
+        int i = 0;
+        while(i < 3 && !estaEnEsquina){
             vehiculo.moverArriba();
             grilla.moverVehiculo(vehiculo);
-            if (vehiculo.estasEnEsquiana()) break; // esto rompe pilares poo. No se como manejar caso de piquete
+            estaEnEsquina = vehiculo.estasEnEsquiana();
+            i++;
         }
     }
 
     public void moverVehiculoAbajo(){
-        for(int i = 0; i < 3; i++){
+        Boolean estaEnEsquina = false;
+        int i = 0;
+        while(i < 3 && !estaEnEsquina){
             vehiculo.moverAbajo();
             grilla.moverVehiculo(vehiculo);
-            if (vehiculo.estasEnEsquiana()) break; // esto rompe pilares poo. No se como manejar caso de piquete
+            estaEnEsquina = vehiculo.estasEnEsquiana();
+            i++;
         }
     }
 
     public void moverVehiculoIzquierda(){
-        for(int i = 0; i < 3; i++){
+        Boolean estaEnEsquina = false;
+        int i = 0;
+        while(i < 3 && !estaEnEsquina){
             vehiculo.moverIzquierda();
             grilla.moverVehiculo(vehiculo);
-            if (vehiculo.estasEnEsquiana()) break; // esto rompe pilares poo. No se como manejar caso de piquete
+            estaEnEsquina = vehiculo.estasEnEsquiana();
+            i++;
         }
     }
 
     public void moverVehiculoDerecha(){
-        for(int i = 0; i < 3; i++){
+        Boolean estaEnEsquina = false;
+        int i = 0;
+        while(i < 3 && !estaEnEsquina){
             vehiculo.moverDerecha();
             grilla.moverVehiculo(vehiculo);
-            if (vehiculo.estasEnEsquiana()) break; // esto rompe pilares poo. No se como manejar caso de piquete
+            estaEnEsquina = vehiculo.estasEnEsquiana();
+            i++;
         }
     }
 }
