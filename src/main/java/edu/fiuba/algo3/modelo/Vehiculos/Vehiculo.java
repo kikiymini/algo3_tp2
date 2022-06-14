@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.Vehiculos;
 
 import edu.fiuba.algo3.modelo.Constantes;
-import edu.fiuba.algo3.modelo.Movimiento.Movimiento;
+import edu.fiuba.algo3.modelo.Movimiento.*;
 import edu.fiuba.algo3.modelo.Obstaculo.Obstaculo;
 import edu.fiuba.algo3.modelo.Posicion;
 
@@ -15,7 +15,10 @@ public abstract class Vehiculo {
 
     protected static Random RNG = new Random(); //0-1 penalizacion
 
-
+    //ver!!
+    public Vehiculo (int maxGrillaX) {
+        this.posicion = new Posicion(RNG.nextInt(maxGrillaX),0);
+    }
     public Vehiculo (Posicion pos){
         this.posicion = pos;
     }
@@ -25,19 +28,24 @@ public abstract class Vehiculo {
     }
 
     public void moverArriba(){
-        this.posicion.decrementarY();
+        Movimiento arriba = new Arriba();
+        arriba.movermeHacia(posicion);
     }
 
     public void moverAbajo(){
-        this.posicion.incrementarY();
+        Movimiento abajo = new Abajo();
+        abajo.movermeHacia(posicion);
+
     }
 
-    public void moverDerecha(){
-        this.posicion.incrementarX();
+    public void moverDerecha() {
+        Movimiento derecha = new Derecha();
+        derecha.movermeHacia(posicion);
     }
 
     public void moverIzquierda(){;
-        this.posicion.decrementarX();
+        Movimiento izquierda = new Izquierda();
+        izquierda.movermeHacia(posicion);
     }
 
     public void modificarMovimientosSegunFactor(double factor) {

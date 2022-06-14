@@ -1,16 +1,14 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Movimiento.Adelante;
-import edu.fiuba.algo3.modelo.Movimiento.Atras;
+import edu.fiuba.algo3.modelo.Movimiento.Arriba;
 import edu.fiuba.algo3.modelo.Movimiento.Derecha;
+import edu.fiuba.algo3.modelo.Movimiento.Abajo;
 import edu.fiuba.algo3.modelo.Movimiento.Izquierda;
 import edu.fiuba.algo3.modelo.Vehiculos.Auto;
 import edu.fiuba.algo3.modelo.Vehiculos.Moto;
 import edu.fiuba.algo3.modelo.Vehiculos.TodoTerreno;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -53,7 +51,7 @@ public class TestVehiculo {
         Posicion pos = new Posicion(1,1);
         Vehiculo vehiculo = new Auto(pos);
         vehiculo.movermeHacia(new Derecha());
-        Posicion posicionEsperada = new Posicion(1,0);
+        Posicion posicionEsperada = new Posicion(2,1);
         assertEquals(posicionEsperada,vehiculo.obtenerPosVehiculo());
     }
 
@@ -62,33 +60,35 @@ public class TestVehiculo {
         Posicion pos = new Posicion(1,2);
         Vehiculo vehiculo = new Auto(pos);
         vehiculo.movermeHacia(new Izquierda());
-        Posicion posicionEsperada = new Posicion(1,3);
+        Posicion posicionEsperada = new Posicion(0,2);
         assertEquals(posicionEsperada,vehiculo.obtenerPosVehiculo());
     }
 
     @Test
-    public void moverHaciaAtrasDesdeElOrigenNoSePuede(){
+    public void moverHaciaArribaDesdeElOrigenNoSePuede(){
         Posicion pos = new Posicion(0,0);
         Vehiculo vehiculo = new Auto(pos);
-        vehiculo.movermeHacia(new Atras());
+        vehiculo.movermeHacia(new Arriba());
         assertEquals(pos,vehiculo.obtenerPosVehiculo());
     }
 
     @Test // ver caso borde en esquinas random con x=0
-    public void moverHaciaAtrasDesdeOtroPuntoSePuedeMover(){
+    public void moverHaciaArribaDesdeOtroPuntoSePuedeMover(){
         Posicion pos = new Posicion(1,1);
         Vehiculo vehiculo = new Auto(pos);
-        vehiculo.movermeHacia(new Atras());
-        Posicion posicionEsperada = new Posicion(0,1);
+        vehiculo.movermeHacia(new Arriba());
+        Posicion posicionEsperada = new Posicion(1,0);
         assertEquals(posicionEsperada,vehiculo.obtenerPosVehiculo());
     }
 
     @Test // ver caso borde en esquinas random
-    public void moverHaciaAdelanteDesdeElOrigenSeMueve(){
+    public void moverHaciaAbajoDesdeElOrigenSeMueve(){
         Posicion pos = new Posicion(0,0);
         Vehiculo vehiculo = new Auto(pos);
-        vehiculo.movermeHacia(new Adelante());
-        Posicion posicionEsperada = new Posicion(1,0);
+        vehiculo.movermeHacia(new Abajo());
+        Posicion posicionEsperada = new Posicion(0,1);
         assertEquals(posicionEsperada,vehiculo.obtenerPosVehiculo());
     }
+
+
 }

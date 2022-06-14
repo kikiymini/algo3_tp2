@@ -22,11 +22,8 @@ public class TestEntrega1 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
-<<<<<<< HEAD
-        assertEquals(18, ciudad.obtenerCantidadDeMovVehiculo()); //8
-=======
         assertEquals(8, ciudad.obtenerCantidadDeMovVehiculo());
->>>>>>> 00d86f84375021b636276a092afd319b94b0f11c
+
     }
 
     @Test
@@ -55,11 +52,7 @@ public class TestEntrega1 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
-<<<<<<< HEAD
-        assertEquals(18, ciudad.obtenerCantidadDeMovVehiculo()); //8
-=======
         assertEquals(8, ciudad.obtenerCantidadDeMovVehiculo());
->>>>>>> 00d86f84375021b636276a092afd319b94b0f11c
     }
     @Test
     public void todoTerrenoRealiza5MovimientosALaDerechaYSeEncuentraConUnPozoYnoEsPenalizado(){
@@ -68,11 +61,8 @@ public class TestEntrega1 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
-<<<<<<< HEAD
-        assertEquals(15, ciudad.obtenerCantidadDeMovVehiculo()); //5
-=======
         assertEquals(5, ciudad.obtenerCantidadDeMovVehiculo());
->>>>>>> 00d86f84375021b636276a092afd319b94b0f11c
+
     }
     @Test
     public void todoTerrenoRealiza5MovimientosALaDerechaYSeEncuentraConTresPozosYEsPenalizado(){
@@ -85,11 +75,9 @@ public class TestEntrega1 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
-<<<<<<< HEAD
-        assertEquals(17, ciudad.obtenerCantidadDeMovVehiculo()); //7
-=======
+
         assertEquals(7, ciudad.obtenerCantidadDeMovVehiculo());
->>>>>>> 00d86f84375021b636276a092afd319b94b0f11c
+
     }
 
     @Test
@@ -99,11 +87,7 @@ public class TestEntrega1 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
-<<<<<<< HEAD
-        assertEquals(17, ciudad.obtenerCantidadDeMovVehiculo()); //
-=======
         assertEquals(7, ciudad.obtenerCantidadDeMovVehiculo());
->>>>>>> 00d86f84375021b636276a092afd319b94b0f11c
     }
 
     @Test
@@ -115,11 +99,7 @@ public class TestEntrega1 {
             ciudad.moverVehiculoDerecha();
         }
 
-        assertEquals(12, ciudad.obtenerPosVehiculoEnX());
-<<<<<<< HEAD
-
-=======
         assertEquals(4, ciudad.obtenerCantidadDeMovVehiculo());
->>>>>>> 00d86f84375021b636276a092afd319b94b0f11c
+
     }
 }
