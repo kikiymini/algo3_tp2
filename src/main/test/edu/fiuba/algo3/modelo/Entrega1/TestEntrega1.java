@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo.Entrega1;
 
 import edu.fiuba.algo3.modelo.Fakes.CiudadFake;
+import edu.fiuba.algo3.modelo.Movimiento.Abajo;
+import edu.fiuba.algo3.modelo.Movimiento.Derecha;
 import edu.fiuba.algo3.modelo.Obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.Obstaculo.Pozo;
 import edu.fiuba.algo3.modelo.Posicion;
@@ -20,7 +22,7 @@ public class TestEntrega1 {
         CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
         ciudad.ponerAccionableEnPosicion(1, 0, new Pozo());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
         assertEquals(8, ciudad.obtenerCantidadDeMovVehiculo());
 
@@ -31,7 +33,7 @@ public class TestEntrega1 {
         CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
         int anchoGrilla = (ciudad.obtenerAnchoCiudad()/3) - 1;
         for(int i = 0; i < (anchoGrilla); i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
         assertEquals(anchoGrilla, ciudad.obtenerCantidadDeMovVehiculo());
     }
@@ -41,7 +43,7 @@ public class TestEntrega1 {
         CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
         int largoGrilla = (ciudad.obtenerLargoCiudad()/3) - 1;
         for(int i = 0; i < largoGrilla; i++){
-            ciudad.moverVehiculoAbajo();
+            ciudad.moverVehiculo(new Abajo());
         }
         assertEquals(largoGrilla, ciudad.obtenerCantidadDeMovVehiculo());
     }
@@ -50,7 +52,7 @@ public class TestEntrega1 {
         CiudadFake ciudad = new CiudadFake(new Auto(new Posicion(0, 0)));
         ciudad.ponerAccionableEnPosicion(1, 0, new Pozo());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
         assertEquals(8, ciudad.obtenerCantidadDeMovVehiculo());
     }
@@ -59,7 +61,7 @@ public class TestEntrega1 {
         CiudadFake ciudad = new CiudadFake(new TodoTerreno(new Posicion(0, 0)));
         ciudad.ponerAccionableEnPosicion(1, 0, new Pozo());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
         assertEquals(5, ciudad.obtenerCantidadDeMovVehiculo());
 
@@ -73,7 +75,7 @@ public class TestEntrega1 {
             }
         }
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
 
         assertEquals(7, ciudad.obtenerCantidadDeMovVehiculo());
@@ -85,7 +87,7 @@ public class TestEntrega1 {
         CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
         ciudad.ponerAccionableEnPosicion(1, 0, new Piquete());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
         assertEquals(7, ciudad.obtenerCantidadDeMovVehiculo());
     }
@@ -96,7 +98,7 @@ public class TestEntrega1 {
         ciudad.ponerAccionableEnPosicion(14, 0, new Piquete()); //ver pos con cambio de esquina
 
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
 
         assertEquals(4, ciudad.obtenerCantidadDeMovVehiculo());

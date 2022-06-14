@@ -26,25 +26,8 @@ public abstract class Vehiculo {
         this.posicion = new Posicion(posicionX, posicionY);
     }
 
-    public void moverArriba(){
-        Movimiento arriba = new Arriba();
-        arriba.movermeHacia(posicion);
-    }
-
-    public void moverAbajo(){
-        Movimiento abajo = new Abajo();
-        abajo.movermeHacia(posicion);
-
-    }
-
-    public void moverDerecha() {
-        Movimiento derecha = new Derecha();
-        derecha.movermeHacia(posicion);
-    }
-
-    public void moverIzquierda(){;
-        Movimiento izquierda = new Izquierda();
-        izquierda.movermeHacia(posicion);
+    public void movermeHacia(Movimiento movimiento){
+        movimiento.movermeHacia(posicion);
     }
 
     public void modificarMovimientosSegunFactor(double factor) {
@@ -90,15 +73,6 @@ public abstract class Vehiculo {
     }
     public int obtenerCantidadDeMovimientos(){return movimientos;}
 
-    //esta ultima funcion no se utiliza. es para un posible cambio de comportamiento. a futuro
-    public void movermeHacia(Movimiento movimiento) {
-        /* recibe una penalizacion? aplicarPenalizacion debe verificar si puedo moverme.
-            Si es así, me penalizo. Aumento los movimientos.
-            sino avanzo
-         */
-        movimiento.movermeHacia(this.posicion);
-        movimientos++;
-    }
 
     public abstract Vehiculo cambiasteVehiculo();
 

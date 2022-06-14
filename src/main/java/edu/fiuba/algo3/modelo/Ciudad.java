@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Grilla.Grilla;
 import edu.fiuba.algo3.modelo.Grilla.InicializadorGrilla;
+import edu.fiuba.algo3.modelo.Movimiento.Movimiento;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 
 import java.util.Random;
@@ -25,44 +26,11 @@ public class Ciudad {
 
     }
 
-    public void moverVehiculoArriba(){
+    public void moverVehiculo(Movimiento movimiento){
         boolean estaEnEsquina = false;
         int i = 0;
         while(i < 3 && !estaEnEsquina){
-            vehiculo.moverArriba();
-            grilla.moverVehiculo(vehiculo);
-            estaEnEsquina = vehiculo.estasEnEsquiana();
-            i++;
-        }
-    }
-
-    public void moverVehiculoAbajo(){
-        boolean estaEnEsquina = false;
-        int i = 0;
-        while(i < 3 && !estaEnEsquina){
-            vehiculo.moverAbajo();
-            grilla.moverVehiculo(vehiculo);
-            estaEnEsquina = vehiculo.estasEnEsquiana();
-            i++;
-        }
-    }
-
-    public void moverVehiculoIzquierda(){
-        boolean estaEnEsquina = false;
-        int i = 0;
-        while(i < 3 && !estaEnEsquina){
-            vehiculo.moverIzquierda();
-            grilla.moverVehiculo(vehiculo);
-            estaEnEsquina = vehiculo.estasEnEsquiana();
-            i++;
-        }
-    }
-
-    public void moverVehiculoDerecha(){
-        boolean estaEnEsquina = false;
-        int i = 0;
-        while(i < 3 && !estaEnEsquina){
-            vehiculo.moverDerecha();
+            vehiculo.movermeHacia(movimiento);
             grilla.moverVehiculo(vehiculo);
             vehiculo = vehiculo.cambiasteVehiculo();
             estaEnEsquina = vehiculo.estasEnEsquiana();

@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.Entrega2;
 
 import edu.fiuba.algo3.modelo.Fakes.CiudadFake;
+import edu.fiuba.algo3.modelo.Movimiento.Derecha;
 import edu.fiuba.algo3.modelo.Obstaculo.Pozo;
 import edu.fiuba.algo3.modelo.Posicion;
 import edu.fiuba.algo3.modelo.Sorpresa.CambioDeVehiculo;
@@ -22,7 +23,7 @@ public class TestEntrega2 {
         CiudadFake ciudad = new CiudadFake(new Auto(new Posicion(0, 0)));
         ciudad.ponerAccionableEnPosicion(14, 0, new Favorable());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
         assertEquals(4, ciudad.obtenerCantidadDeMovVehiculo());
     }
@@ -32,7 +33,7 @@ public class TestEntrega2 {
         CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
         ciudad.ponerAccionableEnPosicion(14, 0, new Favorable());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
         assertEquals(4, ciudad.obtenerCantidadDeMovVehiculo());
     }
@@ -42,7 +43,7 @@ public class TestEntrega2 {
         CiudadFake ciudad = new CiudadFake(new TodoTerreno(new Posicion(0, 0)));
         ciudad.ponerAccionableEnPosicion(14, 0, new Favorable());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
         assertEquals(4, ciudad.obtenerCantidadDeMovVehiculo());
     }
@@ -52,7 +53,7 @@ public class TestEntrega2 {
         CiudadFake ciudad = new CiudadFake(new Auto(new Posicion(0, 0)));
         ciudad.ponerAccionableEnPosicion(14, 0, new Desfavorable());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
         assertEquals(6, ciudad.obtenerCantidadDeMovVehiculo());
     }
@@ -62,7 +63,7 @@ public class TestEntrega2 {
         CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
         ciudad.ponerAccionableEnPosicion(14, 0, new Desfavorable());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
         assertEquals(6, ciudad.obtenerCantidadDeMovVehiculo());
     }
@@ -72,7 +73,7 @@ public class TestEntrega2 {
         CiudadFake ciudad = new CiudadFake(new TodoTerreno(new Posicion(0, 0)));
         ciudad.ponerAccionableEnPosicion(14, 0, new Desfavorable());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
         assertEquals(6, ciudad.obtenerCantidadDeMovVehiculo());
     }
@@ -82,7 +83,7 @@ public class TestEntrega2 {
         CiudadFake ciudad = new CiudadFake(new Auto(new Posicion(0, 0)));
         ciudad.ponerAccionableEnPosicion(14, 0, new CambioDeVehiculo());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
         assertEquals(new TodoTerreno(new Posicion(0, 0)).getClass(), ciudad.obtenerVehiculo().getClass());
     }
@@ -92,7 +93,7 @@ public class TestEntrega2 {
         CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
         ciudad.ponerAccionableEnPosicion(14, 0, new CambioDeVehiculo());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
         assertEquals(new Auto(new Posicion(0, 0)).getClass(), ciudad.obtenerVehiculo().getClass());
     }
@@ -102,7 +103,7 @@ public class TestEntrega2 {
         CiudadFake ciudad = new CiudadFake(new TodoTerreno(new Posicion(0, 0)));
         ciudad.ponerAccionableEnPosicion(14, 0, new CambioDeVehiculo());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
         assertEquals(new Moto(new Posicion(0, 0)).getClass(), ciudad.obtenerVehiculo().getClass());
     }

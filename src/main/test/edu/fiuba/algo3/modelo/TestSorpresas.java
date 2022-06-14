@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Accionable;
 import edu.fiuba.algo3.modelo.Fakes.CiudadFake;
+import edu.fiuba.algo3.modelo.Movimiento.Derecha;
 import edu.fiuba.algo3.modelo.Posicion;
 import edu.fiuba.algo3.modelo.Sorpresa.CambioDeVehiculo;
 import edu.fiuba.algo3.modelo.Sorpresa.Desfavorable;
@@ -122,7 +123,7 @@ public class TestSorpresas {
         CiudadFake ciudad = new CiudadFake(new Auto(new Posicion(0, 0)));
         ciudad.ponerAccionableEnPosicion(14, 0, new CambioDeVehiculo());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
         assertEquals(5, ciudad.obtenerCantidadDeMovVehiculo());
     }
@@ -132,7 +133,7 @@ public class TestSorpresas {
         CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
         ciudad.ponerAccionableEnPosicion(14, 0, new CambioDeVehiculo());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
         assertEquals(5, ciudad.obtenerCantidadDeMovVehiculo());
     }
@@ -142,7 +143,7 @@ public class TestSorpresas {
         CiudadFake ciudad = new CiudadFake(new TodoTerreno(new Posicion(0, 0)));
         ciudad.ponerAccionableEnPosicion(14, 0, new CambioDeVehiculo());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
         assertEquals(5, ciudad.obtenerCantidadDeMovVehiculo());
     }
