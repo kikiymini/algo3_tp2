@@ -25,22 +25,18 @@ public abstract class Vehiculo {
     }
 
     public void moverArriba(){
-        movimientos++;
         this.posicion.decrementarY();
     }
 
     public void moverAbajo(){
-        movimientos++;
         this.posicion.incrementarY();
     }
 
     public void moverDerecha(){
-        movimientos++;
         this.posicion.incrementarX();
     }
 
-    public void moverIzquierda(){
-        movimientos++;
+    public void moverIzquierda(){;
         this.posicion.decrementarX();
     }
 

@@ -22,7 +22,11 @@ public class TestEntrega1 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
+<<<<<<< HEAD
         assertEquals(18, ciudad.obtenerCantidadDeMovVehiculo()); //8
+=======
+        assertEquals(8, ciudad.obtenerCantidadDeMovVehiculo());
+>>>>>>> 00d86f84375021b636276a092afd319b94b0f11c
     }
 
     @Test
@@ -32,7 +36,7 @@ public class TestEntrega1 {
         for(int i = 0; i < anchoGrilla; i++){
             ciudad.moverVehiculoDerecha();
         }
-        assertEquals(anchoGrilla*3, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(anchoGrilla, ciudad.obtenerCantidadDeMovVehiculo());
     }
 
     @Test
@@ -42,7 +46,7 @@ public class TestEntrega1 {
         for(int i = 0; i < largoGrilla; i++){
             ciudad.moverVehiculoAbajo();
         }
-        assertEquals(largoGrilla*3, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(largoGrilla, ciudad.obtenerCantidadDeMovVehiculo());
     }
     @Test
     public void autoRealiza5MovimientosALaDerechaYSeEncuentraConUnPozo(){
@@ -51,7 +55,11 @@ public class TestEntrega1 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
+<<<<<<< HEAD
         assertEquals(18, ciudad.obtenerCantidadDeMovVehiculo()); //8
+=======
+        assertEquals(8, ciudad.obtenerCantidadDeMovVehiculo());
+>>>>>>> 00d86f84375021b636276a092afd319b94b0f11c
     }
     @Test
     public void todoTerrenoRealiza5MovimientosALaDerechaYSeEncuentraConUnPozoYnoEsPenalizado(){
@@ -60,18 +68,28 @@ public class TestEntrega1 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
+<<<<<<< HEAD
         assertEquals(15, ciudad.obtenerCantidadDeMovVehiculo()); //5
+=======
+        assertEquals(5, ciudad.obtenerCantidadDeMovVehiculo());
+>>>>>>> 00d86f84375021b636276a092afd319b94b0f11c
     }
     @Test
     public void todoTerrenoRealiza5MovimientosALaDerechaYSeEncuentraConTresPozosYEsPenalizado(){
         CiudadFake ciudad = new CiudadFake(new TodoTerreno(new Posicion(0, 0)));
-        for(int i = 0; i< 3; i++){
-            ciudad.ponerAccionableEnPosicion(i + 1, 0, new Pozo());
+        for(int i = 1; i< 5; i++){
+            if (i % 3 != 0) {
+                ciudad.ponerAccionableEnPosicion(i, 0, new Pozo());
+            }
         }
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
+<<<<<<< HEAD
         assertEquals(17, ciudad.obtenerCantidadDeMovVehiculo()); //7
+=======
+        assertEquals(7, ciudad.obtenerCantidadDeMovVehiculo());
+>>>>>>> 00d86f84375021b636276a092afd319b94b0f11c
     }
 
     @Test
@@ -81,7 +99,11 @@ public class TestEntrega1 {
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculoDerecha();
         }
+<<<<<<< HEAD
         assertEquals(17, ciudad.obtenerCantidadDeMovVehiculo()); //
+=======
+        assertEquals(7, ciudad.obtenerCantidadDeMovVehiculo());
+>>>>>>> 00d86f84375021b636276a092afd319b94b0f11c
     }
 
     @Test
@@ -94,6 +116,10 @@ public class TestEntrega1 {
         }
 
         assertEquals(12, ciudad.obtenerPosVehiculoEnX());
+<<<<<<< HEAD
 
+=======
+        assertEquals(4, ciudad.obtenerCantidadDeMovVehiculo());
+>>>>>>> 00d86f84375021b636276a092afd319b94b0f11c
     }
 }
