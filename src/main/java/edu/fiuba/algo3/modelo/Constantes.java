@@ -14,7 +14,6 @@ public final class Constantes {
     public static final double factorDeModificacionDeMovimientosPorSorpresaFavorable = 0.8;
     public static final double factorDeModificacionDeMovimientosPorSorpresaDesfavorable = 1.25;
     public static final int valorDeIncrementoDePosicion = 1;
-    public static final int cantidadDeMovimientosParaLlegarALaProximaEsquina = 3;
     public static final double probabilidadDeObtenerUnaMoto = 0.33;
     public static final double probabilidadDeObtenerUnAuto = probabilidadDeObtenerUnaMoto + 0.33;
     public static final int cantidadMinimaDeEsquinasPorEje = 5;
@@ -24,7 +23,7 @@ public final class Constantes {
     public static final double cantidadDePozosPorPosicionValida = 0.0311;
     public static final double cantidadDePiquetesPorPosicionValida = 0.0249;
     public static final double porcentajeDeAccionablesEnEjeX = 0.5;
-    public static final int posIniEnXDeVehiculo = 1;
+    public static final int posIniEnXDeVehiculo = 0;
 
     private Constantes() {}
 
