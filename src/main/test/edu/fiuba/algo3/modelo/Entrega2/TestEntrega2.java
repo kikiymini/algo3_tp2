@@ -109,5 +109,50 @@ public class TestEntrega2 {
     }
 
 
+    // propios
+    @Test
+    public void autoAtraviesaLaCiudadYSeEncuentraDosCambioDeVehiculoYSeTransformaEnMoto(){
+        CiudadFake ciudad = new CiudadFake(new Auto(new Posicion(0, 0)));
+        ciudad.ponerAccionableEnPosicion(14, 0, new CambioDeVehiculo());
+        ciudad.ponerAccionableEnPosicion(13, 0, new CambioDeVehiculo());
+        for (int i = 0; i < 5; i++){
+            ciudad.moverVehiculo(new Derecha());
+        }
+        assertEquals(new Moto(new Posicion(0, 0)).getClass(), ciudad.obtenerVehiculo().getClass());
+    }
+
+    @Test
+    public void motoAtraviesaLaCiudadYSeEncuentraDosCambioDeVehiculoYSeTransformaEnTodoTerreno(){
+        CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
+        ciudad.ponerAccionableEnPosicion(14, 0, new CambioDeVehiculo());
+        ciudad.ponerAccionableEnPosicion(13, 0, new CambioDeVehiculo());
+        for (int i = 0; i < 5; i++){
+            ciudad.moverVehiculo(new Derecha());
+        }
+        assertEquals(new TodoTerreno(new Posicion(0, 0)).getClass(), ciudad.obtenerVehiculo().getClass());
+    }
+
+    @Test
+    public void todoTerrenoAtraviesaLaCiudadYSeEncuentraDosCambioDeVehiculoYSeTransformaEnAuto(){
+        CiudadFake ciudad = new CiudadFake(new TodoTerreno(new Posicion(0, 0)));
+        ciudad.ponerAccionableEnPosicion(14, 0, new CambioDeVehiculo());
+        ciudad.ponerAccionableEnPosicion(13, 0, new CambioDeVehiculo());
+        for (int i = 0; i < 5; i++){
+            ciudad.moverVehiculo(new Derecha());
+        }
+        assertEquals(new Auto(new Posicion(0, 0)).getClass(), ciudad.obtenerVehiculo().getClass());
+    }
+
+    @Test
+    public void autoAtraviesaLaCiudadYSeEncuentraUnaSorpresaFavorableYOtraDesfavorable(){
+        CiudadFake ciudad = new CiudadFake(new Auto(new Posicion(0, 0)));
+        ciudad.ponerAccionableEnPosicion(14, 0, new Favorable());
+        ciudad.ponerAccionableEnPosicion(13, 0, new Desfavorable());
+        for (int i = 0; i < 5; i++){
+            ciudad.moverVehiculo(new Derecha());
+        }
+        assertEquals(5, ciudad.obtenerCantidadDeMovVehiculo());
+    }
+
 
 }
