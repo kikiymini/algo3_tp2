@@ -13,6 +13,7 @@
         + crearGrilla(int tamanioEjeX, int tamanioEjeY) : ArrayList< ArrayList<Accionable> >
         + moverVehiculo( Vehiculo vehiculo ) : void
         + obtenerCantTotalDePosValidas() : int
+        + insertarAccionableEnPosicion ( Posicion pos, Accionable objeto ) : void
         + obtenerAccionableEnPosicion ( Posicion pos ) : Accionable
         + obtenerTamanioEjeX() : int
         + obtenerTamanioEjeY() : int
@@ -34,28 +35,29 @@
     }
 
     abstract Vehiculo{
+
         # posicion : Posicion
         # movimientos : int
         # {static} RNG : Random
 
         + {static} Vehiculo (Posicion pos) : Vehiculo
+        + {static} Vehiculo (int maxGrillaX) : Vehiculo
         + posicionarVehiculo(int posicionX, int posicionY) : void
-        + moverArriba() : void
-        + moverAbajo() : void
-        + moverDerecha() : void
-        + moverIzquierda() : void
-        + {abstract} incrementarMovimientosSegunObstaculo(Obstaculo obstaculo) : void
-        + {abstract} cambiarVehiculo() : Vehiculo
-        + incrementarMovimientosSegunObstaculo(int penalizacion) : void
         + movermeHacia(Movimiento movimiento) : void
+        + modificarMovimientosSegunFactor(double factor) : void
+        + {abstract} incrementarMovimientosSegunObstaculo(Obstaculo obstaculo) : void
+        + {abstract} cambiarVehiculo() : void
+        + incrementarMovimientosSegunObstaculo(int penalizacion) : void
+        + estasEnEsquiana() : boolean
+        + {abstract} cambiasteVehiculo() : Vehiculo
     }
 
     interface Accionable{
-        + Accionar(Vehiculo) : void
+        + Accionar(Vehiculo vehiculo) : void
     }
 
     class Calle{
-        + Accionar(Vehiculo) : void
+        + Accionar(Vehiculo vehiculo) : void
     }
 
     class Ciudad{
@@ -63,16 +65,12 @@
         # posIniVehiculo : Posicion
         # vehiculo : Vehiculo
         # inicializador : InicializadorGrilla
-
         + {static} Ciudad() : Ciudad
-        + moverVehiculoArriba() : void
-        + moverVehiculoAbajo() : void
-        + moverVehiculoIzquierda() : void
-        + moverVehiculoDerecha() : void
+        + moverVehiculo( Movimiento movimiento ) : void
     }
 
     class Posicion{
-        - int posX : int
+        - posX : int
         - posY : int
         - ultimaPosEnEsquinaX : int
         - ultimaPosEnEsquinaY : int
@@ -80,6 +78,8 @@
         + {static} Posicion(int posX, int posY)
         + establecerPosX(int posX) : void
         + establecerPosY(int posY) : void
+        + establecerEnUltimaPos() : void
+        + estasEnEsquina() : boolean
         + incrementarX() : void
         + incrementarY() : void
         + decrementarX() : void
@@ -115,7 +115,7 @@
     Calle ..|> Accionable
 
     interface Movimiento{
-        +movermeHacia( Posicion posicion ) : void
+        +mover( Posicion posicion ) : void
     }
 
 
