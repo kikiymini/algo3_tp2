@@ -2,14 +2,6 @@
 
     'https://plantuml.com/class-diagram
 
-    interface Accionable{
-        + accionar(Vehiculo) : void
-    }
-
-    interface Sorpresa{
-        + sorprender(Vehiculo vehiculo) : void
-    }
-
     class Favorable{
         + sorprender(Vehiculo) : void
         + accionar(Vehiculo) : void
@@ -23,6 +15,14 @@
     class CambioVehiculo{
         + sorprender(Vehiculo) : void
         + accionar(Vehiculo) : void
+    }
+
+    interface Accionable{
+        + accionar(Vehiculo) : void
+    }
+
+    interface Sorpresa{
+        + sorprender(Vehiculo vehiculo) : void
     }
 
     Favorable ..|> Sorpresa
