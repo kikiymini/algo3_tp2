@@ -46,8 +46,8 @@
         + cambiasteVehiculo() : Vehiculo
     }
 
-    Moto --|> Vehiculo
+    Moto ---|> Vehiculo
     Auto --|> Vehiculo
-    TodoTerreno --|> Vehiculo
+    TodoTerreno -|> Vehiculo
 
 @enduml
