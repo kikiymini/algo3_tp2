@@ -1,5 +1,5 @@
 package edu.fiuba.algo3.modelo;
-
+import edu.fiuba.algo3.modelo.Excepciones.PosicionInvalidaError;
 import java.util.ArrayList;
 
 public class Posicion {
@@ -8,10 +8,16 @@ public class Posicion {
     private int ultimaPosEnEsquinaX;
     private int ultimaPosEnEsquinaY;
 
+    private boolean esPosValida(int posX, int posY){
+        return( posX >= 0 && posY >= 0);
+    }
+
     public Posicion(int posX, int posY) {
-        // Crear excepcion para que ningun valor de la posicion pueda ser < 0.
+        if( !esPosValida(posX, posY) ) throw new PosicionInvalidaError();
+
         this.posX = posX;
         this.posY = posY;
+
     }
 
 
