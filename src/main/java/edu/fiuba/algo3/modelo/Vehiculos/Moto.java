@@ -15,9 +15,11 @@ public class Moto extends Vehiculo{
         obstaculo.aplicarPenalizacion(this);
     }
 
+    // Hacer Patron State ( ejemplo ajedrez cuando cambia de estado (instancia) )
     public void cambiarVehiculo(){
         proxVehiculo = new Auto(this.posicion);
-        proxVehiculo.incrementarMovimientosSegunObstaculo(movimientos);}
+        proxVehiculo.incrementarMovimientosSegunObstaculo(movimientos);
+    }
 
     @Override
     public Vehiculo cambiasteVehiculo() {

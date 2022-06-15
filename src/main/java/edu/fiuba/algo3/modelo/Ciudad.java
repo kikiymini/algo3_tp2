@@ -26,6 +26,8 @@ public class Ciudad {
 
     }
 
+    // patron state, strategy, double
+
     public void moverVehiculo(Movimiento movimiento){
         boolean estaEnEsquina = false;
         int i = 0;

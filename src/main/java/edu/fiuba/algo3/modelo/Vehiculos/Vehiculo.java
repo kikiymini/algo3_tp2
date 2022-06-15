@@ -73,7 +73,7 @@ public abstract class Vehiculo {
     }
     public int obtenerCantidadDeMovimientos(){return movimientos;}
 
-
+    // Cambiar Por Un Patron state
     public abstract Vehiculo cambiasteVehiculo();
 
 }
