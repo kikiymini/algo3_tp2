@@ -7,6 +7,10 @@ import edu.fiuba.algo3.modelo.Obstaculo.ControlPolicial;
 import edu.fiuba.algo3.modelo.Obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.Obstaculo.Pozo;
 import edu.fiuba.algo3.modelo.Posicion;
+import edu.fiuba.algo3.modelo.Sorpresa.CambioDeVehiculo;
+import edu.fiuba.algo3.modelo.Sorpresa.Desfavorable;
+import edu.fiuba.algo3.modelo.Sorpresa.Favorable;
+import edu.fiuba.algo3.modelo.Sorpresa.Sorpresa;
 
 import java.util.Random;
 
@@ -44,17 +48,62 @@ public class InicializadorGrilla {
         this.cantPiquetes = (int) (cantPosVal * Constantes.cantidadDePiquetesPorPosicionValida);
     }
 
-    private void insertarAccionablesEnGrilla(){
-        this.insertarSorpresasEnGrilla();
+    private void insertarAccionablesEnGrilla(){ // se puede ahorrar codigo en las metidas de accionables en grilla. mejorar despues
+        this.insertarSorpresasFavEnGrilla();
+        this.insertarSorpresasDesfavEnGrilla();
         this.insertarControlesPolicialesEnGrilla();
+        this.insertarSorpresaCambioDeVehiculoEnGrilla();
         this.insertarPozosEnGrilla();
         this.insertarPiquetesEnGrilla();
         this.colocarEsquinasEnGrilla();
     }
 
-    private void insertarSorpresasEnGrilla(){
-        // No lo hice por temas que deberiamos acordar en discord.
+    private void insertarSorpresasFavEnGrilla(){
+        Sorpresa sorpresaFav;
+        int cantSorpresasFavEjeX = (int) (this.cantControlesPoliciales * Constantes.porcentajeDeAccionablesEnEjeX) / Constantes.cantTiposDeSorpresas;
+        int cantSorpresasFavEjeY = this.cantControlesPoliciales - cantSorpresasFavEjeX / Constantes.cantTiposDeSorpresas;
+
+        for (int i = 0; i < cantSorpresasFavEjeX; i++){
+            sorpresaFav = new Favorable();
+            this.insertarAccionableEnEjeXDeGrilla(sorpresaFav);
+        }
+        for (int j = 0; j < cantSorpresasFavEjeY; j++){
+            sorpresaFav = new Favorable();
+            this.insertarAccionableEnEjeYDeGrilla(sorpresaFav);
+        }
     }
+
+    private void insertarSorpresasDesfavEnGrilla(){
+        Sorpresa sorpresaDesfav;
+        int cantSorpresasDesfavEjeX = (int) (this.cantControlesPoliciales * Constantes.porcentajeDeAccionablesEnEjeX) / Constantes.cantTiposDeSorpresas;
+        int cantSorpresasDesfavEjeY = this.cantControlesPoliciales - cantSorpresasDesfavEjeX / Constantes.cantTiposDeSorpresas;
+
+        for (int i = 0; i < cantSorpresasDesfavEjeX; i++){
+            sorpresaDesfav = new Desfavorable();
+            this.insertarAccionableEnEjeXDeGrilla(sorpresaDesfav);
+        }
+        for (int j = 0; j < cantSorpresasDesfavEjeY; j++){
+            sorpresaDesfav = new Desfavorable();
+            this.insertarAccionableEnEjeYDeGrilla(sorpresaDesfav);
+        }
+    }
+
+    private void insertarSorpresaCambioDeVehiculoEnGrilla(){
+        Sorpresa cambioDeVehiculo;
+        int cantSorpresasCambioDeVehiucloEjeX = (int) (this.cantControlesPoliciales * Constantes.porcentajeDeAccionablesEnEjeX) / Constantes.cantTiposDeSorpresas;
+        int cantSorpresasCambioDeVehiculoEjeY = this.cantControlesPoliciales - cantSorpresasCambioDeVehiucloEjeX / Constantes.cantTiposDeSorpresas;
+
+        for (int i = 0; i < cantSorpresasCambioDeVehiucloEjeX; i++){
+            cambioDeVehiculo = new CambioDeVehiculo();
+            this.insertarAccionableEnEjeXDeGrilla(cambioDeVehiculo);
+        }
+        for (int j = 0; j < cantSorpresasCambioDeVehiculoEjeY; j++){
+            cambioDeVehiculo = new CambioDeVehiculo();
+            this.insertarAccionableEnEjeYDeGrilla(cambioDeVehiculo);
+        }
+    }
+
+
 
     private void insertarControlesPolicialesEnGrilla(){
         ControlPolicial controlPolicial;

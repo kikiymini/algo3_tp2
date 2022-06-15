@@ -24,7 +24,7 @@ public final class Constantes {
     public static final double cantidadDePiquetesPorPosicionValida = 0.0249;
     public static final double porcentajeDeAccionablesEnEjeX = 0.5;
     public static final int posIniEnXDeVehiculo = 0;
-
+    public static final int cantTiposDeSorpresas = 3;
     private Constantes() {}
 
 }
