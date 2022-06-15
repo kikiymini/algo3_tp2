@@ -5,41 +5,45 @@
     abstract Vehiculo{
         # posicion : Posicion
         # movimientos : int
+        # {static} RNG : Random
 
         + {static} Vehiculo (Posicion pos) : Vehiculo
+        + {static} Vehiculo (int maxGrillaX) : Vehiculo
         + posicionarVehiculo(int posicionX, int posicionY) : void
-        + moverArriba() : void
-        + moverAbajo() : void
-        + moverDerecha() : void
-        + moverIzquierda() : void
-        + {abstract} incrementarMovimientosSegunObstaculo(Obstaculo obstaculo) : void
-        + {abstract} cambiarVehiculo() : Vehiculo
-        + incrementarMovimientosSegunObstaculo(int penalizacion) : void
         + movermeHacia(Movimiento movimiento) : void
+        + modificarMovimientosSegunFactor(double factor) : void
+        + {abstract} incrementarMovimientosSegunObstaculo(Obstaculo obstaculo) : void
+        + {abstract} cambiarVehiculo() : void
+        + incrementarMovimientosSegunObstaculo(int penalizacion) : void
+        + estasEnEsquiana() : boolean
+        + {abstract} cambiasteVehiculo() : Vehiculo
     }
 
 
     class Moto{
+        - proxVehiculos : Vehiculo
         + {static} Moto(Posicion posInicial) : Moto
         + incrementarMovimientosSegunObstaculo(Obstaculo obstaculo) : void
-        + cambiarVehiculo() : Vehiculo
+        + cambiarVehiculo() : void
+        + cambiasteVehiculo() : Vehiculo
     }
 
     class Auto{
         + {static} Auto(Posicion posInicial) : Auto
         + incrementarMovimientosSegunObstaculo(Obstaculo obstaculo) : void
-        + darVuelta() : void
-        + cambiarVehiculo() : Vehiculo
+        + cambiarVehiculo() : void
+        + cambiasteVehiculo() : Vehiculo
     }
 
     class TodoTerreno{
         - pozosComidos : int
+        - proxVehiculo : Vehiculo
         + {static} TodoTerreno(Posicion posInicial)
         + incrementarMovimientosSegunObstaculo(Obstaculo obstaculo) : void
-        + darVuelta() : void
-        + comerPozo() : void
+        + penalizarPorPozo() : void
         + seComioDemasiadosPozos() : boolean
-        + cambiarVehiculo() : Vehiculo
+        + cambiarVehiculo() : void
+        + cambiasteVehiculo() : Vehiculo
     }
 
     Moto --|> Vehiculo
