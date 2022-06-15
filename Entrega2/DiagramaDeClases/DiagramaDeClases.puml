@@ -6,17 +6,11 @@
         # tamanioEjeY: int
         # cantEsquinasEjeX: int
         # cantEsquinasEjeY: int
-        - {static} RNG : Random
 
         + {static} Grilla() : Grilla
-        + crearGrilla(int tamanioEjeX, int tamanioEjeY) : ArrayList< ArrayList<Accionable> >
         + moverVehiculo( Vehiculo vehiculo ) : void
-        + obtenerCantTotalDePosValidas() : int
         + insertarAccionableEnPosicion ( Posicion pos, Accionable objeto ) : void
         + obtenerAccionableEnPosicion ( Posicion pos ) : Accionable
-        + obtenerTamanioEjeX() : int
-        + obtenerTamanioEjeY() : int
-
     }
 
     class GPS {
@@ -30,7 +24,6 @@
         - nombre : string
         - cantMovimientos : int
         + {static} Jugador(String nombre) : Jugador
-        + obtenerNombre() : string
     }
 
     abstract Vehiculo{
@@ -40,10 +33,8 @@
         # {static} RNG : Random
 
         + {static} Vehiculo (Posicion pos) : Vehiculo
-        + {static} Vehiculo (int maxGrillaX) : Vehiculo
         + posicionarVehiculo(int posicionX, int posicionY) : void
         + movermeHacia(Movimiento movimiento) : void
-        + modificarMovimientosSegunFactor(double factor) : void
         + {abstract} incrementarMovimientosSegunObstaculo(Obstaculo obstaculo) : void
         + {abstract} cambiarVehiculo() : void
         + incrementarMovimientosSegunObstaculo(int penalizacion) : void
@@ -75,14 +66,8 @@
         - ultimaPosEnEsquinaY : int
 
         + {static} Posicion(int posX, int posY)
-        + establecerPosX(int posX) : void
-        + establecerPosY(int posY) : void
         + establecerEnUltimaPos() : void
         + estasEnEsquina() : boolean
-        + incrementarX() : void
-        + incrementarY() : void
-        + decrementarX() : void
-        + decrementarY() : void
         + boolean equals(Object posicion) : boolean
     }
 
@@ -109,7 +94,7 @@
 
 
     Sorpresa ..|> Accionable
-    Obstaculo ..|> Accionable
+    Obstaculo .|> Accionable
 
     Calle ..|> Accionable
 
