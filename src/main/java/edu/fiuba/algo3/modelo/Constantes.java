@@ -1,6 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
 public final class Constantes {
+    /*
+        INTENTE HACER EL ENUMERADO, PERO NO SE PUDO POR EL TEMA DE LOS DISTINTOS TIPOS
+        DE DATOS (TIPADO ESTATICO), AVISARLE AL PROFE EN LA 3ERA ENTREGA QUE SE INTENTO.....
+    */
     public static final short penalizacionDeMovimientosPorPozoParaMotoYAuto = 3;
     public static final int penalizacionDeMovimientosPorPozoParaTodoterreno = 2;
     public static final int cantidadDePozosParaAplicarPenalizacionTodoterreno = 3;
@@ -25,6 +29,7 @@ public final class Constantes {
     public static final double porcentajeDeAccionablesEnEjeX = 0.5;
     public static final int posIniEnXDeVehiculo = 0;
     public static final int cantTiposDeSorpresas = 3;
+
     private Constantes() {}
 
 }
