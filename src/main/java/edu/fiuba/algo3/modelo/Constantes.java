@@ -1,35 +1,44 @@
 package edu.fiuba.algo3.modelo;
 
-public final class Constantes {
-    /*
-        INTENTE HACER EL ENUMERADO, PERO NO SE PUDO POR EL TEMA DE LOS DISTINTOS TIPOS
-        DE DATOS (TIPADO ESTATICO), AVISARLE AL PROFE EN LA 3ERA ENTREGA QUE SE INTENTO.....
-    */
-    public static final short penalizacionDeMovimientosPorPozoParaMotoYAuto = 3;
-    public static final int penalizacionDeMovimientosPorPozoParaTodoterreno = 2;
-    public static final int cantidadDePozosParaAplicarPenalizacionTodoterreno = 3;
-    public static final int penalizacionDeMovimientosPorPiqueteParaMoto = 2;
-    public static final int penalizacionDeMovimientosPorPiqueteParaAutoYTodoterreno = 0;
-    public static final int penalizacionDeMovimientosPorControlPolicial = 3;
-    public static final int penalizacionDeMovimientosPorControlPolicialEsquivado = 0;
-    public static final double probabilidadDePenalizarEnControlPolicialParaMoto = 0.8;
-    public static final double probabilidadDePenalizarEnControlPolicialParaAuto = 0.5;
-    public static final double probabilidadDePenalizarEnControlPolicialParaTodoterreno = 0.3;
-    public static final double factorDeModificacionDeMovimientosPorSorpresaFavorable = 0.8;
-    public static final double factorDeModificacionDeMovimientosPorSorpresaDesfavorable = 1.25;
-    public static final int valorDeIncrementoDePosicion = 1;
-    public static final double probabilidadDeObtenerUnaMoto = 0.33;
-    public static final double probabilidadDeObtenerUnAuto = probabilidadDeObtenerUnaMoto + 0.33;
-    public static final int cantidadMinimaDeEsquinasPorEje = 10;
-    public static final int cantidadMaximaDeEsquinasPorEje = 15;
-    public static final double cantidadDeSorpresasPorPosicionValida = 0.0415;
-    public static final double cantidadDePoliciasPorPosicionValida = 0.0415;
-    public static final double cantidadDePozosPorPosicionValida = 0.0311;
-    public static final double cantidadDePiquetesPorPosicionValida = 0.0249;
-    public static final double porcentajeDeAccionablesEnEjeX = 0.5;
-    public static final int posIniEnXDeVehiculo = 0;
-    public static final int cantTiposDeSorpresas = 3;
+public enum Constantes {
 
-    private Constantes() {}
+    PENALIZACIONDEMOVIMIENTOSPORPOZOPARAMOTOYAUTO(3,1),
+    PENALIZACIONDEMOVIMIENTOSPORPOZOPARATODOTERRENO(2,2),
+    CANTIDADEPOZOSPARAAPLICARPENALIZACIONTODOTERRENO(3,3),
+    PENALIZACIONDEMOVIMIENTOSPORPIQUETEPARAMOTO(2,4),
+    PENALIZACIONDEMOVIMIENTOSPORPIQUETEPARAAUTOYTODOTERRENO(0,5),
+    PENALIZACIONDEMOVIMIENTOSPORCONTROLPOLICIAL(3,6),
+    PENALIZACIONDEMOVIMIENTOSPORCONTROLPOLICIALESQUIVADO(0,7),
+    PROBABILIDADDEPENALIZACIONENCONTROLPOLICIALPARAMOTO(0.8,8),
+    PROBABILIDADDEPENALIZACIONENCONTROLPOLICIALPARAAUTO(0.5,9),
+    PROBABILIDADDEPENALIZACIONENCONTROLPOLICIALPARATODOTERRENO(0.3,10),
+    FACTORDEMODIFICACIONDEMOVIMIENTOSPORSORPRESAFAVORABLE(0.8,11),
+    FACTORDEMODIFICACIONDEMOVIMIENTOSPORSORPRESADESFAVORABLE(1.25, 12),
+    VALORDEINCREMENTODEPOSICION(1,13),
+    PROBABILIDADDEOBTENERUNAMOTO(0.33,14),
+    PROBABILIDADDEOBTENERUNAUTO(0.66,15),
+    CANTIDADMINIMADEESQUINASPOREJE(10,16),
+    CANTIDADMAXIMADEESQUINASPOREJE(15,17),
+    CANTIDADDESORPRESASPORPOSICIONVALIDA(0.0415,18),
+    CANTIDADDEPOLICIASPORPOSICIONVALIDA(0.0415,19),
+    CANTIDADDEPOZOSPORPOSICIONVALIDA(0.0311,20),
+    CANTIDADDEPIQUETESPORPOSICIONVALIDA(0.0249,21),
+    PORCENTAJEDEACCIONABLESENEJEX(0.5,22),
+    POSINIENXDEVEHICULO(0,23),
+    CANTIPOSDESORPRESAS(3,24);
 
+    private double valor;
+
+    private Constantes(double valor, int id) {
+        this.valor = valor;
+    }
+
+    private Constantes(int valor, int id) {
+        this.valor = valor;
+    }
+
+    public double obtenerValorConstante(int id) {
+        Constantes[] constantes = Constantes.values();
+        return constantes[id].valor;
+    }
 }
