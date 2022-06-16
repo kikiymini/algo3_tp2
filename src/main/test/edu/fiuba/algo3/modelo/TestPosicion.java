@@ -31,14 +31,12 @@ public class TestPosicion {
         assertEquals(8,  posicion.obtenerPosY());
     }
 
-
     @Test
     public void Test04DecrementoElValorDeLaPosicionEnY(){
         Posicion posicion = new Posicion(4, 7);
         posicion.decrementarY();
         assertEquals(6,  posicion.obtenerPosY());
     }
-
 
     @Test
     public void Test05LaPosicionEstablecidaEnXEsCorrecta(){

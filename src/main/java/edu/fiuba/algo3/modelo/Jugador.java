@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Vehiculos.Auto;
+import edu.fiuba.algo3.modelo.Excepciones.NombreVacioError;
 import edu.fiuba.algo3.modelo.Vehiculos.Moto;
 import edu.fiuba.algo3.modelo.Vehiculos.TodoTerreno;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
@@ -13,6 +14,9 @@ public class Jugador{
     private int cantMovimientos;
 
     public Jugador(String nombre){
+        if( nombre.isEmpty() ){
+            throw new NombreVacioError();
+        }
         this.nombre = nombre;
     }
 

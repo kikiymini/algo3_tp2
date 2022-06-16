@@ -26,7 +26,6 @@ public class InicializadorGrilla {
 
     private static Random RNG = new Random();
 
-
     public InicializadorGrilla(Grilla grilla){
         this.grilla = grilla;
         this.posIniVehiculo = new Posicion(Constantes.posIniEnXDeVehiculo,

@@ -17,7 +17,6 @@ public class Posicion {
 
         this.posX = posX;
         this.posY = posY;
-
     }
 
 

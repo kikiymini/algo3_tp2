@@ -19,13 +19,11 @@ public class Grilla {
 
     private static Random RNG = new Random();
 
-
     public Grilla(){
         this.asignarCantidadesDeEsquinas();
         this.asignarTamaniosEjes();
         this.grilla = crearGrilla(tamanioEjeX, tamanioEjeY);
     }
-
 
     public int obtenerTamanioEjeX(){
         return this.tamanioEjeX;
