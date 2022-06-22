@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.Grilla;
 
 import edu.fiuba.algo3.modelo.Accionable;
 import edu.fiuba.algo3.modelo.Constantes;
-import edu.fiuba.algo3.modelo.Esquina;
+import edu.fiuba.algo3.modelo.Obstaculo.Esquina;
 import edu.fiuba.algo3.modelo.Obstaculo.ControlPolicial;
 import edu.fiuba.algo3.modelo.Obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.Obstaculo.Pozo;

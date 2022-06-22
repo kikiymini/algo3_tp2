@@ -1,10 +1,7 @@
 package edu.fiuba.algo3.modelo.Obstaculo;
 
 import edu.fiuba.algo3.modelo.Constantes;
-import edu.fiuba.algo3.modelo.Vehiculos.Auto;
-import edu.fiuba.algo3.modelo.Vehiculos.Moto;
-import edu.fiuba.algo3.modelo.Vehiculos.TodoTerreno;
-import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
+import edu.fiuba.algo3.modelo.Vehiculos.*;
 
 import java.util.Random;
 
@@ -12,7 +9,12 @@ import java.util.Random;
 public final class ControlPolicial implements Obstaculo {
 
     public void aplicarPenalizacion(Vehiculo vehiculo) {
-        vehiculo.encontrarseControlPolicial();
+        vehiculo.accionar(this);
+    }
+
+    @Override
+    public int accioname(EstadoVehiculo estado) {
+        return estado.accionar(this);
     }
 
     public void accionar(Vehiculo vehiculo) {

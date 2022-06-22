@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.Grilla;
 
         import edu.fiuba.algo3.modelo.Accionable;
-        import edu.fiuba.algo3.modelo.Calle;
+        import edu.fiuba.algo3.modelo.Obstaculo.Calle;
         import edu.fiuba.algo3.modelo.Constantes;
         import edu.fiuba.algo3.modelo.Posicion;
         import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;

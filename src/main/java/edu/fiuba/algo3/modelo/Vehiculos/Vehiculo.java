@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.Vehiculos;
 
+import edu.fiuba.algo3.modelo.Accionable;
 import edu.fiuba.algo3.modelo.Constantes;
 import edu.fiuba.algo3.modelo.Movimiento.*;
 import edu.fiuba.algo3.modelo.Obstaculo.Obstaculo;
@@ -33,31 +34,19 @@ public class Vehiculo {
         this.movimientos *= factor;
     }
 
-    public void incrementarMovimientosSegunObstaculo(int penalizacion){
-        movimientos += penalizacion;
-    }
-
     public static EstadoVehiculo obtenerVehiculoAlAzar(Posicion posInicial){
         ArrayList <EstadoVehiculo> vehiculos = generarListaDeVehiculos(posInicial);
         int random = new Random().nextInt(3);
         return (vehiculos.get(random));
     }
 
+    public void accionar(Obstaculo obstaculo){
+        movimientos += estado.accionar(obstaculo);
+    }
+
     public boolean estasEnEsquiana(){
         return posicion.estasEnEsquina();
     }
-
-   public void pisarPozo(){
-        movimientos += estado.pisarPozo();
-   }
-
-   public void encontrarsePiquete(){
-        movimientos += estado.encontrarsePiquete();
-   }
-
-   public void encontrarseControlPolicial(){
-        movimientos += estado.encontrarseControlPolicial();
-   }
 
     public void cambiarVehiculo(){
         estado = estado.cambiarVehiculo();

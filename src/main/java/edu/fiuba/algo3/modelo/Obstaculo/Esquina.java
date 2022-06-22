@@ -1,10 +1,12 @@
 package edu.fiuba.algo3.modelo.Obstaculo;
 
-import edu.fiuba.algo3.modelo.Accionable;
-import edu.fiuba.algo3.modelo.Constantes;
-import edu.fiuba.algo3.modelo.Vehiculos.*;
+import edu.fiuba.algo3.modelo.Obstaculo.Obstaculo;
+import edu.fiuba.algo3.modelo.Vehiculos.EstadoVehiculo;
+import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 
-public final class Piquete implements Obstaculo {
+public class Esquina implements Obstaculo {
+
+    @Override
     public void aplicarPenalizacion(Vehiculo vehiculo) {
         vehiculo.accionar(this);
     }
@@ -14,7 +16,8 @@ public final class Piquete implements Obstaculo {
         return estado.accionar(this);
     }
 
+    @Override
     public void accionar(Vehiculo vehiculo) {
-        this.aplicarPenalizacion(vehiculo);
+        aplicarPenalizacion(vehiculo);
     }
 }
