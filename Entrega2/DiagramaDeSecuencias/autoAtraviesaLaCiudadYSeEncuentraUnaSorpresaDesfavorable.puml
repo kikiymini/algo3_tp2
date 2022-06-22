@@ -1,0 +1,45 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+title autoAtraviesaLaCiudadYSeEncuentraUnaSorpresaDesfavorable
+actor Actor
+
+Actor++
+
+create ":Ciudad"
+Actor --> ":Ciudad"++:<<create>>\nCiudad(Auto(Posicion(0,0))
+Actor <-- ":Ciudad"--: unaCiudad
+
+Actor -> ":Ciudad"++:ponerAccionableEnPosicion(14,0,Desfavorable())
+Actor <-- ":Ciudad"--
+
+
+loop hasta 5 movimientos
+Actor -> ":Ciudad"++:moverVehiculo(derecha)
+
+loop hasta que este en una esquina e i < 3
+":Ciudad"->":Vehiculo"++:movermeHacia(derecha)
+":Vehiculo" -> "Movimiento"++:mover(posicion)
+"Movimiento" -> ":Posicion"++:incrementarX()
+"Movimiento" <-- ":Posicion"--
+":Vehiculo" <-- "Movimiento"--
+":Ciudad"<-- ":Vehiculo"--
+":Ciudad" -> ":Grilla"++:moverVehiculo(unVehiculo)
+":Grilla" -> ":Accionable"++:accionar(unVehiculo)
+":Accionable" -> ":Accionable":sorprender(unVehiculo)
+":Accionable" -> ":Vehiculo"++:modificarMovimientosSegunFactor(unaConstante)
+":Accionable" <-- ":Vehiculo"--
+":Grilla" <-- ":Accionable"--
+":Ciudad" <-- ":Grilla"--
+":Ciudad" -> ":Vehiculo"++:unVehiculo = cambiasteVehiculo()
+":Ciudad" <-- ":Vehiculo"--:proxVehiculo
+":Ciudad" -> ":Vehiculo"++:estasEnEsquina()
+":Ciudad" <-- ":Vehiculo"--: false
+end loop
+
+Actor <-- ":Ciudad"--
+end loop
+Actor -> ":Ciudad"++:obtenerCantidaDeMovVehiculo
+Actor <-- ":Ciudad"--:cantidad = 6
+@enduml

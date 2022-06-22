@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.modelo.Entrega1;
 
 import edu.fiuba.algo3.modelo.Fakes.CiudadFake;
+import edu.fiuba.algo3.modelo.Fakes.VehiculoFake;
+import edu.fiuba.algo3.modelo.Movimiento.Abajo;
+import edu.fiuba.algo3.modelo.Movimiento.Derecha;
 import edu.fiuba.algo3.modelo.Obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.Obstaculo.Pozo;
 import edu.fiuba.algo3.modelo.Posicion;
@@ -17,84 +20,97 @@ public class TestEntrega1 {
 
     @Test
     public void motoRealiza5MovimientosALaDerechaYSeEncuentraConUnPozo(){
-        CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
+        Posicion pos = new Posicion(0, 0);
+        CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new Moto(pos)));
         ciudad.ponerAccionableEnPosicion(1, 0, new Pozo());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
-        assertEquals(18, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(8, ciudad.obtenerCantidadDeMovVehiculo());
+
     }
 
     @Test
     public void motoAtraviesaGrillaALoAnchoSinObstaculos(){
-        CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
-        int anchoGrilla = ciudad.obtenerAnchoCiudad()/3;
-        for(int i = 0; i < anchoGrilla; i++){
-            ciudad.moverVehiculoDerecha();
+        Posicion pos = new Posicion(0, 0);
+        CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new Moto(pos)));
+        int anchoGrilla = (ciudad.obtenerAnchoCiudad()/3) - 1;
+        for(int i = 0; i < (anchoGrilla); i++){
+            ciudad.moverVehiculo(new Derecha());
         }
-        assertEquals(anchoGrilla*3, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(anchoGrilla, ciudad.obtenerCantidadDeMovVehiculo());
     }
 
     @Test
     public void motoAtraviesaGrillaALoLargoSinObstaculos(){
-        CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
-        int largoGrilla = ciudad.obtenerLargoCiudad()/3;
+        Posicion pos = new Posicion(0, 0);
+        CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new Moto(pos)));
+        int largoGrilla = (ciudad.obtenerLargoCiudad()/3) - 1;
         for(int i = 0; i < largoGrilla; i++){
-            ciudad.moverVehiculoAbajo();
+            ciudad.moverVehiculo(new Abajo());
         }
-        assertEquals(largoGrilla*3, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(largoGrilla, ciudad.obtenerCantidadDeMovVehiculo());
     }
     @Test
     public void autoRealiza5MovimientosALaDerechaYSeEncuentraConUnPozo(){
-        CiudadFake ciudad = new CiudadFake(new Auto(new Posicion(0, 0)));
+        Posicion pos = new Posicion(0, 0);
+        CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new Moto(pos)));
         ciudad.ponerAccionableEnPosicion(1, 0, new Pozo());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
-        assertEquals(18, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(8, ciudad.obtenerCantidadDeMovVehiculo());
     }
     @Test
     public void todoTerrenoRealiza5MovimientosALaDerechaYSeEncuentraConUnPozoYnoEsPenalizado(){
-        CiudadFake ciudad = new CiudadFake(new TodoTerreno(new Posicion(0, 0)));
+        Posicion pos = new Posicion(0, 0);
+        CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new TodoTerreno(pos)));
         ciudad.ponerAccionableEnPosicion(1, 0, new Pozo());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
-        assertEquals(15, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(5, ciudad.obtenerCantidadDeMovVehiculo());
+
     }
     @Test
     public void todoTerrenoRealiza5MovimientosALaDerechaYSeEncuentraConTresPozosYEsPenalizado(){
-        CiudadFake ciudad = new CiudadFake(new TodoTerreno(new Posicion(0, 0)));
-        for(int i = 0; i< 3; i++){
-            ciudad.ponerAccionableEnPosicion(i + 1, 0, new Pozo());
+        Posicion pos = new Posicion(0, 0);
+        CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new TodoTerreno(pos)));
+        for(int i = 1; i< 5; i++){
+            if (i % 3 != 0) {
+                ciudad.ponerAccionableEnPosicion(i, 0, new Pozo());
+            }
         }
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
-        assertEquals(17, ciudad.obtenerCantidadDeMovVehiculo());
+
+        assertEquals(7, ciudad.obtenerCantidadDeMovVehiculo());
+
     }
 
     @Test
     public void motoRealiza5MovimientosYSeCruzaConUnPiquetePenalizaDosMovimientos(){
-        CiudadFake ciudad = new CiudadFake(new Moto(new Posicion(0, 0)));
+        Posicion pos = new Posicion(0, 0);
+        CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new Moto(pos)));
         ciudad.ponerAccionableEnPosicion(1, 0, new Piquete());
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
-        assertEquals(17, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(7, ciudad.obtenerCantidadDeMovVehiculo());
     }
 
     @Test
     public void autoRealiza5MovimientosYSeCruzaConUnPiqueteNoPuedePasar(){
-        CiudadFake ciudad = new CiudadFake(new Auto(new Posicion(0, 0)));
-        ciudad.ponerAccionableEnPosicion(14, 0, new Piquete());
+        Posicion pos = new Posicion(0, 0);
+        CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new Auto(pos)));
+        ciudad.ponerAccionableEnPosicion(14, 0, new Piquete()); //ver pos con cambio de esquina
 
         for (int i = 0; i < 5; i++){
-            ciudad.moverVehiculoDerecha();
+            ciudad.moverVehiculo(new Derecha());
         }
 
-        //assertEquals(12, ciudad.obtenerCantidadDeMovVehiculo());
-        assertEquals(12, ciudad.obtenerPosVehiculoEnX());
-        assertEquals(14, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(4, ciudad.obtenerCantidadDeMovVehiculo());
+
     }
 }

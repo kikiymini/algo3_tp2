@@ -1,0 +1,45 @@
+@startuml
+    'https://plantuml.com/class-diagram
+
+    abstract Vehiculo{
+        # posicion : Posicion
+        # movimientos : int
+        # {static} RNG : Random
+
+        + {static} Vehiculo (Posicion pos) : Vehiculo
+        + {static} Vehiculo (int maxGrillaX) : Vehiculo
+        + posicionarVehiculo(int posicionX, int posicionY) : void
+        + movermeHacia(Movimiento movimiento) : void
+        + modificarMovimientosSegunFactor(double factor) : void
+        + {abstract} incrementarMovimientosSegunObstaculo(Obstaculo obstaculo) : void
+        + {abstract} cambiarVehiculo() : void
+        + incrementarMovimientosSegunObstaculo(int penalizacion) : void
+        + estasEnEsquiana() : boolean
+        + {abstract} cambiasteVehiculo() : Vehiculo
+    }
+
+    class Posicion{
+        - posX : int
+        - posY : int
+        - ultimaPosEnEsquinaX : int
+        - ultimaPosEnEsquinaY : int
+        + {static} Posicion(int posX, int posY)
+        + establecerPosX(int posX) : void
+        + establecerPosY(int posY) : void
+        + establecerEnUltimaPos() : void
+        + estasEnEsquina() : boolean
+        + incrementarX() : void
+        + incrementarY() : void
+        + decrementarX() : void
+        + decrementarY() : void
+        + boolean equals(Object posicion) : boolean
+    }
+
+    interface Movimiento{
+        +mover( Posicion posicion ) : void
+    }
+
+    Vehiculo --> Posicion
+    Vehiculo ..> Movimiento
+
+@enduml

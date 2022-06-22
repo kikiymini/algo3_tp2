@@ -1,0 +1,108 @@
+@startuml
+    'https://plantuml.com/class-diagram
+
+    class Grilla{
+        # tamanioEjeX: int
+        # tamanioEjeY: int
+        # cantEsquinasEjeX: int
+        # cantEsquinasEjeY: int
+
+        + {static} Grilla() : Grilla
+        + moverVehiculo( Vehiculo vehiculo ) : void
+        + insertarAccionableEnPosicion ( Posicion pos, Accionable objeto ) : void
+        + obtenerAccionableEnPosicion ( Posicion pos ) : Accionable
+    }
+
+    class GPS {
+        - jugador : Jugador
+        - ciudad : Ciudad
+        - posMeta : Posicion
+        + {static} GPS() : GPS
+    }
+
+    class Jugador{
+        - nombre : string
+        - cantMovimientos : int
+        + {static} Jugador(String nombre) : Jugador
+    }
+
+    abstract Vehiculo{
+
+        # posicion : Posicion
+        # movimientos : int
+        # {static} RNG : Random
+
+        + {static} Vehiculo (Posicion pos) : Vehiculo
+        + posicionarVehiculo(int posicionX, int posicionY) : void
+        + movermeHacia(Movimiento movimiento) : void
+        + {abstract} incrementarMovimientosSegunObstaculo(Obstaculo obstaculo) : void
+        + {abstract} cambiarVehiculo() : void
+        + incrementarMovimientosSegunObstaculo(int penalizacion) : void
+        + estasEnEsquiana() : boolean
+        + {abstract} cambiasteVehiculo() : Vehiculo
+    }
+
+    interface Accionable{
+        + Accionar(Vehiculo vehiculo) : void
+    }
+
+    class Calle{
+        + Accionar(Vehiculo vehiculo) : void
+    }
+
+    class Ciudad{
+        # grilla : Grilla
+        # posIniVehiculo : Posicion
+        # vehiculo : Vehiculo
+        # inicializador : InicializadorGrilla
+        + {static} Ciudad() : Ciudad
+        + moverVehiculo( Movimiento movimiento ) : void
+    }
+
+    class Posicion{
+        - posX : int
+        - posY : int
+        - ultimaPosEnEsquinaX : int
+        - ultimaPosEnEsquinaY : int
+
+        + {static} Posicion(int posX, int posY)
+        + establecerEnUltimaPos() : void
+        + estasEnEsquina() : boolean
+        + boolean equals(Object posicion) : boolean
+    }
+
+    interface Sorpresa{
+        + sorprender(Vehiculo vehiculo) : void
+    }
+
+
+    interface Obstaculo{
+        + aplicarPenalizacion(Moto moto) : void
+        + aplicarPenalizacion(Auto auto) : void
+        + aplicarPenalizacion(TodoTerreno todoTerreno) : void
+        + aplicarPenalizacion(Vehiculo vehiculo) : void
+    }
+
+
+    GPS --> Jugador
+    GPS --> Ciudad
+    Vehiculo --> Posicion
+
+    Grilla "1" --> "*" Accionable
+    Ciudad --> Vehiculo
+    Ciudad --> Grilla
+
+
+    Sorpresa ..|> Accionable
+    Obstaculo .|> Accionable
+
+    Calle ..|> Accionable
+
+    interface Movimiento{
+        +mover( Posicion posicion ) : void
+    }
+
+
+    Vehiculo --> Movimiento
+
+@enduml

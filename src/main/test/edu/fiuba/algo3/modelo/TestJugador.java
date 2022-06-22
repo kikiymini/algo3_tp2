@@ -1,11 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Excepciones.NombreVacioError;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Posicion;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 import edu.fiuba.algo3.modelo.Vehiculos.Moto;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestJugador {
 
@@ -14,6 +16,12 @@ public class TestJugador {
                 Posicion posicion = new Posicion(5, 5);
                 Jugador j1 = new Jugador("Felipe");
                 assertEquals("Felipe", j1.obtenerNombre());
+        }
+
+        @Test
+        public void Test02SeCreaUnJugadorYSeArrojaUnaExcepcionPorSerUnNombreVacio() {
+                Posicion posicion = new Posicion(5, 5);
+                assertThrows(NombreVacioError.class, () -> { new Jugador("" ); });
         }
 }
 

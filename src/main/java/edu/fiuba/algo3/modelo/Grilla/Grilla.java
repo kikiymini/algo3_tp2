@@ -1,14 +1,13 @@
 package edu.fiuba.algo3.modelo.Grilla;
 
-import edu.fiuba.algo3.modelo.Accionable;
-import edu.fiuba.algo3.modelo.Calle;
-import edu.fiuba.algo3.modelo.Constantes;
-import edu.fiuba.algo3.modelo.Obstaculo.Pozo;
-import edu.fiuba.algo3.modelo.Posicion;
-import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
+        import edu.fiuba.algo3.modelo.Accionable;
+        import edu.fiuba.algo3.modelo.Obstaculo.Calle;
+        import edu.fiuba.algo3.modelo.Constantes;
+        import edu.fiuba.algo3.modelo.Posicion;
+        import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 
-import java.util.ArrayList;
-import java.util.Random;
+        import java.util.ArrayList;
+        import java.util.Random;
 
 public class Grilla {
 
@@ -20,13 +19,11 @@ public class Grilla {
 
     private static Random RNG = new Random();
 
-
     public Grilla(){
         this.asignarCantidadesDeEsquinas();
         this.asignarTamaniosEjes();
         this.grilla = crearGrilla(tamanioEjeX, tamanioEjeY);
     }
-
 
     public int obtenerTamanioEjeX(){
         return this.tamanioEjeX;
@@ -40,17 +37,12 @@ public class Grilla {
         return this.tamanioEjeX * this.tamanioEjeY;
     }
 
-
-    private int obtenerCantTotalPosicionesDeManzanas(){
-        return (this.cantEsquinasEjeX + 1) * (this.cantEsquinasEjeY + 1);
-    }
-
     private int obtenerCantTotalDeEsquinas(){
         return this.cantEsquinasEjeX * this.cantEsquinasEjeY;
     }
 
     public int obtenerCantTotalDePosValidas(){
-        return this.obtenerCantTotalDePosiciones() - this.obtenerCantTotalPosicionesDeManzanas() - this.obtenerCantTotalDeEsquinas();
+        return this.obtenerCantTotalDePosiciones() - this.obtenerCantTotalDeEsquinas();
     }
 
     public Accionable obtenerAccionableEnPosicion(Posicion pos){
@@ -64,13 +56,13 @@ public class Grilla {
     }
 
     private void asignarCantidadesDeEsquinas(){
-        this.cantEsquinasEjeX = Grilla.conseguirUnaCantEsquinasPorEje();
-        this.cantEsquinasEjeY = Grilla.conseguirUnaCantEsquinasPorEje();
+        this.cantEsquinasEjeX = this.conseguirUnaCantEsquinasPorEje();
+        this.cantEsquinasEjeY = this.cantEsquinasEjeX;
     }
 
     private void asignarTamaniosEjes(){
-        this.tamanioEjeX = (this.cantEsquinasEjeX * 3) + 2;
-        this.tamanioEjeY = (this.cantEsquinasEjeY * 3) + 2;
+        this.tamanioEjeX = (this.cantEsquinasEjeX * 3);
+        this.tamanioEjeY = this.tamanioEjeX;
     }
 
 
@@ -85,7 +77,6 @@ public class Grilla {
         accionable.accionar(vehiculo);
     }
 
-    // cambiar donde esta el pozo
     public static ArrayList<ArrayList<Accionable>> crearGrilla(int tamanioEjeX, int tamanioEjeY){
         ArrayList<ArrayList<Accionable>> grilla = new ArrayList<>();
         for (int i = 0 ; i < tamanioEjeY; i++){
@@ -98,3 +89,11 @@ public class Grilla {
         return grilla;
     }
 }
+
+
+
+
+
+
+
+
