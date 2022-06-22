@@ -1,31 +1,39 @@
 package edu.fiuba.algo3.modelo.Vehiculos;
 
+import edu.fiuba.algo3.modelo.Constantes;
 import edu.fiuba.algo3.modelo.Obstaculo.Obstaculo;
 import edu.fiuba.algo3.modelo.Posicion;
 
-public class Auto extends Vehiculo{
-    private Vehiculo proxVehiculo = this;
-    public Auto(Posicion posInicial){
-        super(posInicial);
+import java.util.Random;
+
+public class Auto implements EstadoVehiculo{
+    private final Random RNG = new Random();
+    private Posicion posicion;
+
+    public Auto(Posicion pos){
+        posicion = pos;
     }
 
-    @Override
-    public void incrementarMovimientosSegunObstaculo(Obstaculo obstaculo){
-        obstaculo.aplicarPenalizacion(this);
-
+    public int pisarPozo(){
+        return Constantes.penalizacionDeMovimientosPorPozoParaMotoYAuto;
     }
 
-    public void darVuelta(){
+    public int encontrarsePiquete() {
         posicion.establecerEnUltimaPos();
+        return Constantes.penalizacionDeMovimientosPorPiqueteParaAutoYTodoterreno;
+
     }
 
-    public void cambiarVehiculo(){
-        proxVehiculo = new TodoTerreno(this.posicion);
-        proxVehiculo.incrementarMovimientosSegunObstaculo(movimientos);
+    public int encontrarseControlPolicial() {
+        if (RNG.nextDouble() < Constantes.probabilidadDePenalizarEnControlPolicialParaAuto) {
+            return Constantes.penalizacionDeMovimientosPorControlPolicial;
+        }
+        return Constantes.penalizacionDeMovimientosPorControlPolicialEsquivado;
     }
 
-    @Override
-    public Vehiculo cambiasteVehiculo() {
-        return proxVehiculo;
+    public EstadoVehiculo cambiarVehiculo(){
+        return new TodoTerreno(posicion);
     }
+
+
 }

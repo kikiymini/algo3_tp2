@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Fakes.CiudadFake;
+import edu.fiuba.algo3.modelo.Fakes.VehiculoFake;
 import edu.fiuba.algo3.modelo.Obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.Obstaculo.Pozo;
 import edu.fiuba.algo3.modelo.Sorpresa.CambioDeVehiculo;
@@ -15,51 +16,57 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestObstaculos {
     @Test
     public void Test01MotoPisaUnPozoSeIncrementan3Movimientos(){
-        Vehiculo moto = new Moto(new Posicion(1, 1));
+        Posicion pos = new Posicion(0, 0);
+        VehiculoFake vehiculo = new VehiculoFake(pos, new Moto(pos));
         Pozo pozo = new Pozo();
-        pozo.accionar(moto);
-        assertEquals(3,moto.cantidadDeMovimientos());
+        pozo.accionar(vehiculo);
+        assertEquals(3,vehiculo.cantidadDeMovimientos());
     }
 
     @Test
     public void Tes03MotoPisaUnAccionablePozoYLeSuma3Movimientos(){
-        Vehiculo moto = new Moto(new Posicion(1, 1));
+        Posicion pos = new Posicion(0, 0);
+        VehiculoFake vehiculo = new VehiculoFake(pos, new Moto(pos));
         Accionable pozo = new Pozo();
-        pozo.accionar(moto);
-        assertEquals(3, moto.cantidadDeMovimientos());
+        pozo.accionar(vehiculo);
+        assertEquals(3, vehiculo.cantidadDeMovimientos());
     }
 
     @Test
     public void Test04MotoPisaUnAccionablePozo2VecesYLeSuma6Movimientos(){
-        Vehiculo moto = new Moto(new Posicion(1, 1));
+        Posicion pos = new Posicion(0, 0);
+        VehiculoFake vehiculo = new VehiculoFake(pos, new Moto(pos));
         Accionable pozo = new Pozo();
-        pozo.accionar(moto);
-        pozo.accionar(moto);
-        assertEquals(6, moto.cantidadDeMovimientos());
+        pozo.accionar(vehiculo);
+        pozo.accionar(vehiculo);
+        assertEquals(6, vehiculo.cantidadDeMovimientos());
     }
 
     @Test
     public void Test05AutoPisaUnPozoYLeSuma3Movimientos(){
-        Vehiculo auto = new Auto(new Posicion(1, 1));
+        Posicion pos = new Posicion(0, 0);
+        VehiculoFake vehiculo = new VehiculoFake(pos, new Auto(pos));
         Accionable pozo = new Pozo();
-        pozo.accionar(auto);
-        assertEquals(3, auto.cantidadDeMovimientos());
+        pozo.accionar(vehiculo);
+        assertEquals(3, vehiculo.cantidadDeMovimientos());
     }
 
     @Test
     public void Test06AutoPisaUnPozoDosVecesYLeSuma6Movimientos(){
-        Vehiculo auto = new Auto(new Posicion(1, 1));
+        Posicion pos = new Posicion(0, 0);
+        VehiculoFake vehiculo = new VehiculoFake(pos, new Auto(pos));
         Accionable pozo = new Pozo();
-        pozo.accionar(auto);
-        pozo.accionar(auto);
-        assertEquals(6, auto.cantidadDeMovimientos());
+        pozo.accionar(vehiculo);
+        pozo.accionar(vehiculo);
+        assertEquals(6, vehiculo.cantidadDeMovimientos());
     }
     @Test
     public void Tes07MotoSeEncuentraUnPiqueteYLeSuma2Movimientos(){
-        Vehiculo moto = new Moto(new Posicion(1, 1));
+        Posicion pos = new Posicion(0, 0);
+        VehiculoFake vehiculo = new VehiculoFake(pos, new Moto(pos));
         Accionable piquete = new Piquete();
-        piquete.accionar(moto);
-        assertEquals(2, moto.cantidadDeMovimientos());
+        piquete.accionar(vehiculo);
+        assertEquals(2, vehiculo.cantidadDeMovimientos());
     }
 
 }

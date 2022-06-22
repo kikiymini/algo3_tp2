@@ -12,11 +12,10 @@ import java.util.ArrayList;
 
 public class CiudadFake extends Ciudad {
 
-
     public CiudadFake(){
 
     }
-    public CiudadFake(Vehiculo v){
+    public CiudadFake(VehiculoFake v){
         vehiculo = v;
     }
 
@@ -59,7 +58,7 @@ public class CiudadFake extends Ciudad {
         return vehiculo.obtenerCantidadDeMovimientos();
     }
 
-    public void setearVehiculo(Vehiculo vehiculo){
+    public void setearVehiculo(VehiculoFake vehiculo){
         this.vehiculo = vehiculo;
     }
 
@@ -70,4 +69,5 @@ public class CiudadFake extends Ciudad {
     public Vehiculo obtenerVehiculo(){
         return vehiculo;
     }
+
 }

@@ -10,10 +10,4 @@ public interface Obstaculo extends Accionable {
 
     void aplicarPenalizacion(Vehiculo vehiculo);
 
-    void aplicarPenalizacion(Moto moto);
-
-    void aplicarPenalizacion(Auto auto);
-
-    void aplicarPenalizacion(TodoTerreno todoTerreno);
-
 }

@@ -1,46 +1,46 @@
 package edu.fiuba.algo3.modelo.Vehiculos;
 
 import edu.fiuba.algo3.modelo.Constantes;
-import edu.fiuba.algo3.modelo.Obstaculo.Obstaculo;
 import edu.fiuba.algo3.modelo.Posicion;
 
-public class TodoTerreno extends Vehiculo{
+import java.util.Random;
+
+public class TodoTerreno implements EstadoVehiculo{
 
     private int pozosComidos;
-    private Vehiculo proxVehiculo = this;
+    private final Random RNG = new Random();
+    private Posicion posicion;
 
-
-    public TodoTerreno(Posicion posInicial){
-        super(posInicial);
+    public TodoTerreno(Posicion pos){
+        posicion = pos;
     }
 
-    @Override
-    public void incrementarMovimientosSegunObstaculo(Obstaculo obstaculo){
-        obstaculo.aplicarPenalizacion(this);
-    }
-
-    public void darVuelta(){
-        posicion.establecerEnUltimaPos();
-    }
-
-    public void penalizarPorPozo(){
+    public int pisarPozo(){
         this.pozosComidos++;
-        if (seComioDemasiadosPozos()) this.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorPozoParaTodoterreno);
+        if (seComioDemasiadosPozos())
+            return Constantes.penalizacionDeMovimientosPorPozoParaTodoterreno;
+        return 0;
+    }
+
+    public int encontrarsePiquete() {
+        posicion.establecerEnUltimaPos();
+        return Constantes.penalizacionDeMovimientosPorPiqueteParaAutoYTodoterreno;
+    }
+
+    public int encontrarseControlPolicial() {
+        if (RNG.nextDouble() < Constantes.probabilidadDePenalizarEnControlPolicialParaTodoterreno) {
+            return (Constantes.penalizacionDeMovimientosPorControlPolicial);
+        }
+        return (Constantes.penalizacionDeMovimientosPorControlPolicialEsquivado);
     }
 
     public boolean seComioDemasiadosPozos(){
         return (pozosComidos % Constantes.cantidadDePozosParaAplicarPenalizacionTodoterreno) == 0;
     }
 
-    public void cambiarVehiculo(){
-        proxVehiculo = new Moto(this.posicion);
-        proxVehiculo.incrementarMovimientosSegunObstaculo(movimientos);
-
+    public EstadoVehiculo cambiarVehiculo(){
+        return new Moto(posicion);
     }
 
-    @Override
-    public Vehiculo cambiasteVehiculo() {
-        return proxVehiculo;
-    }
 
 }

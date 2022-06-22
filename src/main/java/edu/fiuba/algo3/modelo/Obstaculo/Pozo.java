@@ -9,20 +9,8 @@ import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 
 public final class Pozo implements Obstaculo {
 
-    public void aplicarPenalizacion(Moto moto){
-        moto.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorPozoParaMotoYAuto);
-    }
-
-    public void aplicarPenalizacion(Auto auto) {
-        auto.incrementarMovimientosSegunObstaculo(Constantes.penalizacionDeMovimientosPorPozoParaMotoYAuto);
-    }
-
-    public void aplicarPenalizacion(TodoTerreno todoTerreno) {
-        todoTerreno.penalizarPorPozo();
-    }
-
     public void aplicarPenalizacion(Vehiculo vehiculo) {
-        vehiculo.incrementarMovimientosSegunObstaculo(this);
+        vehiculo.pisarPozo();
     }
 
     public void accionar(Vehiculo vehiculo) {

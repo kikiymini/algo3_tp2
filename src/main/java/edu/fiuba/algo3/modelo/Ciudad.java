@@ -20,13 +20,11 @@ public class Ciudad {
     public Ciudad(){
         this.grilla = new Grilla();
         this.inicializador = new InicializadorGrilla(grilla);
-        this.vehiculo = Vehiculo.obtenerVehiculoAlAzar(inicializador.conseguirPosIniValidaDeVehiculo());
+        this.vehiculo = new Vehiculo(inicializador.conseguirPosIniValidaDeVehiculo());
         this.posIniVehiculo = vehiculo.obtenerPosVehiculo();
         inicializador.insertarAccionables();
 
     }
-
-    // patron state, strategy, double
 
     public void moverVehiculo(Movimiento movimiento){
         boolean estaEnEsquina = false;
@@ -34,7 +32,6 @@ public class Ciudad {
         while(i < 3 && !estaEnEsquina){
             vehiculo.movermeHacia(movimiento);
             grilla.moverVehiculo(vehiculo);
-            vehiculo = vehiculo.cambiasteVehiculo();
             estaEnEsquina = vehiculo.estasEnEsquiana();
             i++;
         }

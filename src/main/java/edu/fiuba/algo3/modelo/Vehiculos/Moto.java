@@ -1,29 +1,36 @@
 package edu.fiuba.algo3.modelo.Vehiculos;
 
+import edu.fiuba.algo3.modelo.Constantes;
 import edu.fiuba.algo3.modelo.Obstaculo.Obstaculo;
 import edu.fiuba.algo3.modelo.Posicion;
 
-public class Moto extends Vehiculo{
-    private Vehiculo proxVehiculo = this;
+import java.util.Random;
 
-    public Moto(Posicion posInicial){
-        super(posInicial);
+public class Moto implements EstadoVehiculo{
+
+    private Posicion posicion;
+    private final Random RNG = new Random();
+
+    public Moto(Posicion pos){
+        posicion = pos;
     }
 
-    @Override
-    public void incrementarMovimientosSegunObstaculo(Obstaculo obstaculo){
-        obstaculo.aplicarPenalizacion(this);
+    public int pisarPozo(){
+        return Constantes.penalizacionDeMovimientosPorPozoParaMotoYAuto;
     }
 
-    // Hacer Patron State ( ejemplo ajedrez cuando cambia de estado (instancia) )
-    public void cambiarVehiculo(){
-        proxVehiculo = new Auto(this.posicion);
-        proxVehiculo.incrementarMovimientosSegunObstaculo(movimientos);
+    public int encontrarsePiquete() {
+        return Constantes.penalizacionDeMovimientosPorPiqueteParaMoto;
+    }
+    public int encontrarseControlPolicial() {
+        if (RNG.nextDouble() < Constantes.probabilidadDePenalizarEnControlPolicialParaMoto) {
+            return Constantes.penalizacionDeMovimientosPorControlPolicial;
+        }
+        return Constantes.penalizacionDeMovimientosPorControlPolicialEsquivado;
     }
 
-    @Override
-    public Vehiculo cambiasteVehiculo() {
-        return proxVehiculo;
+    public EstadoVehiculo cambiarVehiculo(){
+       return new Auto(posicion);
     }
 
 }
