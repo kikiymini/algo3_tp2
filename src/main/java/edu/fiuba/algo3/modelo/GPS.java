@@ -4,13 +4,16 @@ import java.util.Scanner;
 
 public class GPS {
 
-    private Jugador jugador;
+    protected Jugador jugador;
     private Ciudad ciudad;
     private Posicion posMeta;
+    protected RegistroJugadores registro;
 
     public GPS(){
         this.ciudad = new Ciudad();
-        this.jugador = new Jugador(GPS.obtenerNombreJugador());
+        this.jugador = new Jugador(obtenerJugadadorUnico());
+        this.registro = new RegistroJugadores();
+        this.registro.agregarJugadorAlRegistro(this.jugador);
     }
 
     private static String obtenerNombreJugador() {
@@ -19,5 +22,19 @@ public class GPS {
 
         return lectorComandos.nextLine();
     }
+
+    private String obtenerJugadadorUnico(){
+        String nombre = obtenerNombreJugador();
+        while (registro.existeJugador(nombre)){
+            System.out.println("Ya existe un jugador con ese nombre: ");
+            nombre = obtenerNombreJugador();
+        }
+        return nombre;
+    }
+
+// id unico
+//    public int obtenerPuntajeJugador(Jugador jugador){
+//        return jugador.puntajeObtenido();
+//    }
 
 }

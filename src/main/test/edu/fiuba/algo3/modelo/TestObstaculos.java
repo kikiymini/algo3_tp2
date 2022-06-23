@@ -56,14 +56,9 @@ public class TestObstaculos {
         Posicion pos = new Posicion(0, 0);
         VehiculoFake vehiculo = new VehiculoFake(pos, new Auto(pos));
         Accionable pozo = new Pozo();
-<<<<<<< HEAD
-        pozo.accionar(auto);
-        assertEquals(6, auto.cantidadDeMovimientos());
-=======
         pozo.accionar(vehiculo);
         pozo.accionar(vehiculo);
         assertEquals(6, vehiculo.cantidadDeMovimientos());
->>>>>>> 4f798889e50c50dc81b0bb7cd5f8bda6c5a3dc9f
     }
     @Test
     public void Tes07MotoSeEncuentraUnPiqueteYLeSuma2Movimientos(){
@@ -75,4 +70,3 @@ public class TestObstaculos {
     }
 
 }
-

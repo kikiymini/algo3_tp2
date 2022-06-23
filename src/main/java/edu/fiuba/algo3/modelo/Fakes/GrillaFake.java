@@ -1,8 +1,9 @@
 package edu.fiuba.algo3.modelo.Fakes;
 
 import edu.fiuba.algo3.modelo.Accionable;
-import edu.fiuba.algo3.modelo.Calle;
 import edu.fiuba.algo3.modelo.Grilla.Grilla;
+import edu.fiuba.algo3.modelo.Obstaculo.Calle;
+
 import java.util.ArrayList;
 
 public class GrillaFake extends Grilla {

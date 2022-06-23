@@ -13,17 +13,25 @@
         + obtenerAccionableEnPosicion ( Posicion pos ) : Accionable
     }
 
+    class RegistroJugadores{
+        - registrarJugador(Jugador): void
+        - obtenerPuntajeJugador(Jugador): int
+    }
+
     class GPS {
-        - jugador : Jugador
-        - ciudad : Ciudad
         - posMeta : Posicion
         + {static} GPS() : GPS
+        - obtenerNombreJugador(): String
+        + obtenerPuntajeJugador(Jugador): int
     }
 
     class Jugador{
         - nombre : string
         - cantMovimientos : int
+        - id: String
         + {static} Jugador(String nombre) : Jugador
+        + obtenerNombre(): String
+
     }
 
     abstract Vehiculo{
@@ -84,8 +92,10 @@
     }
 
 
-    GPS --> Jugador
+    GPS "1" --> "1" Jugador
     GPS --> Ciudad
+    GPS --> RegistroJugadores
+    RegistroJugadores "1" --> "0..*" Jugador
     Vehiculo --> Posicion
 
     Grilla "1" --> "*" Accionable
