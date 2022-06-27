@@ -1,10 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 public final class Constantes {
-    /*
-        INTENTE HACER EL ENUMERADO, PERO NO SE PUDO POR EL TEMA DE LOS DISTINTOS TIPOS
-        DE DATOS (TIPADO ESTATICO), AVISARLE AL PROFE EN LA 3ERA ENTREGA QUE SE INTENTO.....
-    */
+
     public static final short penalizacionDeMovimientosPorPozoParaMotoYAuto = 3;
     public static final int penalizacionDeMovimientosPorPozoParaTodoterreno = 2;
     public static final int cantidadDePozosParaAplicarPenalizacionTodoterreno = 3;
@@ -21,7 +18,7 @@ public final class Constantes {
     public static final double probabilidadDeObtenerUnaMoto = 0.33;
     public static final double probabilidadDeObtenerUnAuto = probabilidadDeObtenerUnaMoto + 0.33;
     public static final int cantidadMinimaDeEsquinasPorEje = 10;
-    public static final int cantidadMaximaDeEsquinasPorEje = 15;
+    public static final int cantidadMaximaDeEsquinasPorEje = 11;
     public static final double cantidadDeSorpresasPorPosicionValida = 0.0415;
     public static final double cantidadDePoliciasPorPosicionValida = 0.0415;
     public static final double cantidadDePozosPorPosicionValida = 0.0311;

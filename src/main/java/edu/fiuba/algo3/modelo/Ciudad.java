@@ -1,10 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.Grilla.Grilla;
 import edu.fiuba.algo3.modelo.Grilla.InicializadorGrilla;
 import edu.fiuba.algo3.modelo.Movimiento.Movimiento;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Ciudad {
@@ -35,5 +37,18 @@ public class Ciudad {
             estaEnEsquina = vehiculo.estasEnEsquiana();
             i++;
         }
+    }
+
+    public ArrayList<Integer> obtenerTamanioEjesMapa() {
+        int tamanioEjeX = grilla.obtenerTamanioEjeX();
+        int tamanioEjeY = grilla.obtenerTamanioEjeY();
+        ArrayList<Integer> tamanioEjes = new ArrayList<>();
+        tamanioEjes.add(tamanioEjeX);
+        tamanioEjes.add(tamanioEjeY);
+        return tamanioEjes;
+    }
+
+    public Accionable obtenerAccionableEnPosicion(int x, int y){
+        return grilla.obtenerAccionableEnPosicion(new Posicion(x, y));
     }
 }

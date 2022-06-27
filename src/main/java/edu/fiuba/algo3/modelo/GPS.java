@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GPS {
@@ -10,14 +11,21 @@ public class GPS {
 
     public GPS(){
         this.ciudad = new Ciudad();
-        this.jugador = new Jugador(GPS.obtenerNombreJugador());
+        //this.jugador = new Jugador(GPS.obtenerNombreJugador());
     }
-
+    /*
     private static String obtenerNombreJugador() {
         Scanner lectorComandos = new Scanner(System.in);
         System.out.println("Ingrese su nombre: ");
 
         return lectorComandos.nextLine();
     }
+    */
+    public ArrayList<Integer> obtenerTamanioEjesMapa(){
+       return ciudad.obtenerTamanioEjesMapa();
+    }
 
+    public Accionable obtenerAccionableEnPosicion(int x, int y){
+        return ciudad.obtenerAccionableEnPosicion(x, y);
+    }
 }
