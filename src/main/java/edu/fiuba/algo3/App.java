@@ -32,7 +32,7 @@ public class App extends Application {
         inicio = new InicioView(window);
         inicio.inicioJuego(window, this, gps);
         //stage.setScene(scene);
-        //stage.show();
+        stage.show();
     }
 
     public static void main(String[] args) {

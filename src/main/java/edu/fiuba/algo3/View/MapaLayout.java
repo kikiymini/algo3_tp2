@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.nio.InvalidMarkException;
 
-public class MapaLayout extends VBox {
+public class MapaLayout extends StackPane {
     int largoEjeX;
     int largoEjeY;
     double separacion = 33.0;
@@ -31,12 +31,9 @@ public class MapaLayout extends VBox {
         Canvas canvas = new Canvas(800, 800);
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.strokeRect(20, 20, canvas.getWidth(), canvas.getHeight());
-        gc.setStroke(Paint.valueOf("BLACK"));
         crearLineasMatriz(gps, gc, largoEjeX, largoEjeY);
         insertarAccionablesEnGrilla(gps, gc, largoEjeX, largoEjeY);
         getChildren().add(canvas);
-
-
     }
 
     public void crearLineasMatriz(GPS gps, GraphicsContext gc, int largoEjeX, int largoEjeY){
@@ -53,7 +50,10 @@ public class MapaLayout extends VBox {
 
     }
     public void insertarAccionablesEnGrilla(GPS gps, GraphicsContext gc, int largoEjeX, int largoEjeY){
-        Image imagenPolicia = new Image(getClass().getClassLoader().getResource("src/fotos/policia.png").toString(), true);// no lo encuentra
+        Image imagenPolicia = new Image("https://www.google.com/imgres?imgurl=https%3A%2F%2Fstatic.wikia.nocookie.net%2Flossimpson%2Fimages%2F1%2F17%2FLou.png%2Frevision%2Flatest%3Fcb%3D20150426042404%26path-prefix%3Des&imgrefurl=https%3A%2F%2Fsimpsons.fandom.com%2Fes%2Fwiki%2FLou&tbnid=Db3NN7tPWP4iOM&vet=12ahUKEwiNuLTM6834AhWCNLkGHc3UBvEQMygHegUIARDOAQ..i&docid=UoRNavfOWCyxDM&w=251&h=418&q=policia%20los%20simpson&ved=2ahUKEwiNuLTM6834AhWCNLkGHc3UBvEQMygHegUIARDOAQ",100, 0, false, false);
+        gc.drawImage(imagenPolicia, 555, 555);
+        // no se porque no dibuja
+
         for (int i = 0; i < largoEjeY; i++){
             for (int j = 0; j < largoEjeX; j++) {
                 Accionable accionable = gps.obtenerAccionableEnPosicion(i, j);
