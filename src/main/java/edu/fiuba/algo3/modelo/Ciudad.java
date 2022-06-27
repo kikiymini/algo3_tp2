@@ -4,6 +4,7 @@ import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.Grilla.Grilla;
 import edu.fiuba.algo3.modelo.Grilla.InicializadorGrilla;
 import edu.fiuba.algo3.modelo.Movimiento.Movimiento;
+import edu.fiuba.algo3.modelo.Vehiculos.EstadoVehiculo;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 
 import java.util.ArrayList;
@@ -50,5 +51,13 @@ public class Ciudad {
 
     public Accionable obtenerAccionableEnPosicion(int x, int y){
         return grilla.obtenerAccionableEnPosicion(new Posicion(x, y));
+    }
+
+    public Posicion obtenerPosiscionVehiculo() {
+        return vehiculo.obtenerPosVehiculo();
+    }
+
+    public EstadoVehiculo otenerEstadoVehiculo() {
+        return vehiculo.obtenerEstado();
     }
 }

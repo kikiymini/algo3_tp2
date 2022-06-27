@@ -50,6 +50,11 @@ public class Auto implements EstadoVehiculo{
         return 1;
     }
 
+    @Override
+    public boolean sosEstado(EstadoVehiculo estado) {
+        return this.getClass().equals(estado.getClass());
+    }
+
     public EstadoVehiculo cambiarVehiculo(){
         return new TodoTerreno(posicion);
     }

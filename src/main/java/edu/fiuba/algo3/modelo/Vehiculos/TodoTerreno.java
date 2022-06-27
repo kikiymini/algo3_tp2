@@ -54,6 +54,10 @@ public class TodoTerreno implements EstadoVehiculo{
         return 1;
     }
 
+    public boolean sosEstado(EstadoVehiculo estado) {
+        return this.getClass().equals(estado.getClass());
+    }
+
     public boolean seComioDemasiadosPozos(){
         return (pozosComidos % Constantes.cantidadDePozosParaAplicarPenalizacionTodoterreno) == 0;
     }
@@ -61,6 +65,7 @@ public class TodoTerreno implements EstadoVehiculo{
     public EstadoVehiculo cambiarVehiculo(){
         return new Moto(posicion);
     }
+
 
 
 }
