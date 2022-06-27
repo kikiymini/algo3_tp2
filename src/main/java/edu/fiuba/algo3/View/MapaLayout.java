@@ -23,48 +23,41 @@ import java.nio.InvalidMarkException;
 public class MapaLayout extends Pane {
     int largoEjeX;
     int largoEjeY;
-    double separacionEntreCuadras = 26.83;
-    double separacionEntreCuadrasInicio = 5;
+    double separacionEntreCuadras = 25;
+    double separacionEntreCuadrasInicio = 20;
 
     public MapaLayout(Stage window, App app, GPS gps){
         largoEjeX = gps.obtenerTamanioEjesMapa().get(0);
         largoEjeY = gps.obtenerTamanioEjesMapa().get(1);
-        Canvas canvas = new Canvas(805, 805);
+        Canvas canvas = new Canvas(900, 900);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.strokeRect(5, 5, canvas.getWidth(), canvas.getHeight());
         crearLineasMatriz(gps, gc, largoEjeX, largoEjeY);
         insertarAccionablesEnGrilla(gps, gc, largoEjeX, largoEjeY);
         getChildren().add(canvas);
     }
-
     public void crearLineasMatriz(GPS gps, GraphicsContext gc, int largoEjeX, int largoEjeY){
-
-        for (int i = 0; i <= largoEjeY; i++){
-
-            if(i % 3 == 0) {
-                gc.strokeLine(separacionEntreCuadrasInicio, separacionEntreCuadras * i, 805.0 , separacionEntreCuadras * i);
+        for(int i = 0; i <= largoEjeX; i++){
+            if(i % 3 == 0){
+                gc.strokeLine((separacionEntreCuadras * i) + separacionEntreCuadrasInicio, separacionEntreCuadrasInicio, (separacionEntreCuadras * i) + separacionEntreCuadrasInicio, (largoEjeY * separacionEntreCuadras) + separacionEntreCuadrasInicio);
             }
         }
-        for (int j = 0; j <= largoEjeX; j++){
-            if(j % 3 == 0) {
-                gc.strokeLine(separacionEntreCuadras * j , separacionEntreCuadrasInicio, separacionEntreCuadras * j, 805);
+        for(int j = 0; j <= largoEjeY; j++){
+            if(j % 3 == 0){
+                gc.strokeLine(separacionEntreCuadrasInicio, (separacionEntreCuadras * j) + separacionEntreCuadrasInicio, (largoEjeX * separacionEntreCuadras) + separacionEntreCuadrasInicio, (separacionEntreCuadras * j) + separacionEntreCuadrasInicio);
             }
         }
-
     }
-    public void insertarAccionablesEnGrilla(GPS gps, GraphicsContext gc, int largoEjeX, int largoEjeY){
 
-        System.out.println(largoEjeX);
-        System.out.println(largoEjeY);
-        for (int i = 0; i < largoEjeY; i++){
-            for (int j = 0; j < largoEjeX; j++) {
-                Accionable accionable = gps.obtenerAccionableEnPosicion(j, i);
+    public void insertarAccionablesEnGrilla(GPS gps, GraphicsContext gc, int largoEjeX, int largoEjeY){
+        for (int i = 0; i < largoEjeX; i++){
+            for (int j = 0; j < largoEjeY; j++) {
+                Accionable accionable = gps.obtenerAccionableEnPosicion(i, j);
                 if(accionable.sosAccionable(new ControlPolicial())){
                     Button boton = new Button();
                     boton.setGraphic(new ImagenBoton("src/fotos/policia.png", 30, 30));
                     boton.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
-                    boton.setLayoutX(j * separacionEntreCuadras + separacionEntreCuadrasInicio);
-                    boton.setLayoutY(i * separacionEntreCuadras + separacionEntreCuadrasInicio);
+                    boton.setLayoutX(separacionEntreCuadras * i);
+                    boton.setLayoutY(separacionEntreCuadras * j);
                     getChildren().add(boton);
                 }
             }

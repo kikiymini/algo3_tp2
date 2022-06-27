@@ -17,8 +17,8 @@ public final class Constantes {
     public static final int valorDeIncrementoDePosicion = 1;
     public static final double probabilidadDeObtenerUnaMoto = 0.33;
     public static final double probabilidadDeObtenerUnAuto = probabilidadDeObtenerUnaMoto + 0.33;
-    public static final int cantidadMinimaDeEsquinasPorEje = 10;
-    public static final int cantidadMaximaDeEsquinasPorEje = 11;
+    public static final int cantidadMinimaDeEsquinasPorEje = 9;
+    public static final int cantidadMaximaDeEsquinasPorEje = 12;
     public static final double cantidadDeSorpresasPorPosicionValida = 0.0415;
     public static final double cantidadDePoliciasPorPosicionValida = 0.0415;
     public static final double cantidadDePozosPorPosicionValida = 0.0311;
