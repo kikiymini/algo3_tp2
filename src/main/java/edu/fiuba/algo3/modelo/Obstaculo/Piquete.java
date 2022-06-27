@@ -17,4 +17,8 @@ public final class Piquete implements Obstaculo {
     public void accionar(Vehiculo vehiculo) {
         this.aplicarPenalizacion(vehiculo);
     }
+
+    public boolean sosAccionable(Accionable accionable) {
+        return this.getClass().equals(accionable.getClass());
+    }
 }

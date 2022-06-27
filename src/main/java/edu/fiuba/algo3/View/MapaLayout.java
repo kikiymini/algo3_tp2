@@ -20,47 +20,59 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.nio.InvalidMarkException;
 
-public class MapaLayout extends StackPane {
+public class MapaLayout extends Pane {
     int largoEjeX;
     int largoEjeY;
-    double separacion = 33.0;
+    double separacionEntreCuadras = 26.83;
+    double separacionEntreCuadrasInicio = 5;
 
     public MapaLayout(Stage window, App app, GPS gps){
         largoEjeX = gps.obtenerTamanioEjesMapa().get(0);
         largoEjeY = gps.obtenerTamanioEjesMapa().get(1);
-        Canvas canvas = new Canvas(800, 800);
+        Canvas canvas = new Canvas(805, 805);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.strokeRect(20, 20, canvas.getWidth(), canvas.getHeight());
+        gc.strokeRect(5, 5, canvas.getWidth(), canvas.getHeight());
         crearLineasMatriz(gps, gc, largoEjeX, largoEjeY);
         insertarAccionablesEnGrilla(gps, gc, largoEjeX, largoEjeY);
         getChildren().add(canvas);
     }
 
     public void crearLineasMatriz(GPS gps, GraphicsContext gc, int largoEjeX, int largoEjeY){
-        for (int i = 0; i < largoEjeY; i++){
+
+        for (int i = 0; i <= largoEjeY; i++){
+
             if(i % 3 == 0) {
-                gc.strokeLine(20.0, separacion * i, 800.0, separacion * i);
+                gc.strokeLine(separacionEntreCuadrasInicio, separacionEntreCuadras * i, 805.0 , separacionEntreCuadras * i);
             }
         }
-        for (int j = 0; j < largoEjeX; j++){
+        for (int j = 0; j <= largoEjeX; j++){
             if(j % 3 == 0) {
-                gc.strokeLine(separacion * j, 20, separacion * j, 800);
+                gc.strokeLine(separacionEntreCuadras * j , separacionEntreCuadrasInicio, separacionEntreCuadras * j, 805);
             }
         }
 
     }
     public void insertarAccionablesEnGrilla(GPS gps, GraphicsContext gc, int largoEjeX, int largoEjeY){
-        Image imagenPolicia = new Image("https://www.google.com/imgres?imgurl=https%3A%2F%2Fstatic.wikia.nocookie.net%2Flossimpson%2Fimages%2F1%2F17%2FLou.png%2Frevision%2Flatest%3Fcb%3D20150426042404%26path-prefix%3Des&imgrefurl=https%3A%2F%2Fsimpsons.fandom.com%2Fes%2Fwiki%2FLou&tbnid=Db3NN7tPWP4iOM&vet=12ahUKEwiNuLTM6834AhWCNLkGHc3UBvEQMygHegUIARDOAQ..i&docid=UoRNavfOWCyxDM&w=251&h=418&q=policia%20los%20simpson&ved=2ahUKEwiNuLTM6834AhWCNLkGHc3UBvEQMygHegUIARDOAQ",100, 0, false, false);
-        gc.drawImage(imagenPolicia, 555, 555);
-        // no se porque no dibuja
 
+        System.out.println(largoEjeX);
+        System.out.println(largoEjeY);
         for (int i = 0; i < largoEjeY; i++){
             for (int j = 0; j < largoEjeX; j++) {
-                Accionable accionable = gps.obtenerAccionableEnPosicion(i, j);
-                if(!accionable.getClass().equals(new ControlPolicial())){
+                Accionable accionable = gps.obtenerAccionableEnPosicion(j, i);
+                if(accionable.sosAccionable(new ControlPolicial())){
+                    Button boton = new Button();
+                    boton.setGraphic(new ImagenBoton("src/fotos/policia.png", 30, 30));
+                    boton.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
+                    boton.setLayoutX(j * separacionEntreCuadras + separacionEntreCuadrasInicio);
+                    boton.setLayoutY(i * separacionEntreCuadras + separacionEntreCuadrasInicio);
+                    getChildren().add(boton);
                 }
             }
         }
 
+    }
+
+    private boolean estaEnEsquina(int x, int y){
+        return (x % 3 == 0 && y % 3 == 0);
     }
 }
