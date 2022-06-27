@@ -20,7 +20,7 @@ public class InicioDeJuegoLayout extends VBox {
             MapaScene mapaScene = new MapaScene(window, mapaLayout, gps);
             window.setScene(mapaScene);
         });
-        buttonStart.setGraphic(new ImagenBoton("rsr/fotos/play.png", 100, 100));
+        buttonStart.setGraphic(new ImagenBoton("src/fotos/play.png", 100, 100));
         HBox barraInicio = new HBox(buttonStart);
         barraInicio.setAlignment(Pos.CENTER);
         barraInicio.setTranslateY(400);
