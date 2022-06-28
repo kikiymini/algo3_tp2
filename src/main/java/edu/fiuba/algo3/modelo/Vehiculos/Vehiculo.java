@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.modelo.Vehiculos;
 
-import edu.fiuba.algo3.modelo.Accionable;
-import edu.fiuba.algo3.modelo.Constantes;
-import edu.fiuba.algo3.modelo.Movimiento.*;
+import edu.fiuba.algo3.modelo.Movimiento.Movimiento;
 import edu.fiuba.algo3.modelo.Obstaculo.Obstaculo;
 import edu.fiuba.algo3.modelo.Posicion;
 
@@ -71,11 +69,7 @@ public class Vehiculo {
 
     public int obtenerCantidadDeMovimientos(){return movimientos;}
 
-<<<<<<< HEAD
-}
-=======
     public EstadoVehiculo obtenerEstado() {
         return estado;
     }
 }
->>>>>>> 92413ca457ae992cfb80b7c5bb44ce236c71729b

@@ -1,14 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
-<<<<<<< HEAD
 import edu.fiuba.algo3.modelo.Movimiento.Movimiento;
-
-import java.io.IOException;
-=======
 import edu.fiuba.algo3.modelo.Vehiculos.EstadoVehiculo;
 
+import java.io.IOException;
 import java.util.ArrayList;
->>>>>>> 92413ca457ae992cfb80b7c5bb44ce236c71729b
 import java.util.Scanner;
 
 public class GPS {
@@ -20,27 +16,22 @@ public class GPS {
 
     public GPS() throws IOException {
         this.ciudad = new Ciudad();
-<<<<<<< HEAD
         this.jugador = new Jugador(obtenerJugadadorUnico());
         this.registro = new RegistroJugadores("registroJugadores.json");
         this.registro.agregarJugadorAlRegistro(this.jugador);
-=======
-        //this.jugador = new Jugador(GPS.obtenerNombreJugador());
->>>>>>> 92413ca457ae992cfb80b7c5bb44ce236c71729b
     }
-    /*
+
     private static String obtenerNombreJugador() {
         Scanner lectorComandos = new Scanner(System.in);
         System.out.println("Ingrese su nombre: ");
 
         return lectorComandos.nextLine();
     }
-    */
+
     public ArrayList<Integer> obtenerTamanioEjesMapa(){
        return ciudad.obtenerTamanioEjesMapa();
     }
 
-<<<<<<< HEAD
     private String obtenerJugadadorUnico() throws IOException {
         String nombre = obtenerNombreJugador();
         while (registro.existeJugador(nombre)){
@@ -59,10 +50,11 @@ public class GPS {
         return registro.obtenerPuntajeJugador(nombre);
     }
 
-    public void movermeHacia(Movimiento movimiento){
+    public void movermeHacia(Movimiento movimiento) {
         ciudad.moverVehiculo(movimiento);
         jugador.sumarMovimineto();
-=======
+    }
+
     public Accionable obtenerAccionableEnPosicion(int x, int y){
         return ciudad.obtenerAccionableEnPosicion(x, y);
     }
@@ -73,6 +65,6 @@ public class GPS {
 
     public EstadoVehiculo otenerEstadoVehiculo() {
         return ciudad.otenerEstadoVehiculo();
->>>>>>> 92413ca457ae992cfb80b7c5bb44ce236c71729b
+
     }
 }
