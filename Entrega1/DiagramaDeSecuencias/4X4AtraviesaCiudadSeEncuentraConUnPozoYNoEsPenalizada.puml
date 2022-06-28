@@ -20,15 +20,24 @@ actor  -> ciudad : moverVehiculoDerecha()
 loop 3
 ciudad -> todoTerreno: moverVehiculoDerecha()
 activate todoTerreno
+<<<<<<< HEAD
+ciudad -> grilla : moverVehiculo(moto)
+=======
 ciudad -> grilla : moverVehiculo(4x4)
+>>>>>>> 4f798889e50c50dc81b0bb7cd5f8bda6c5a3dc9f
 deactivate ciudad
 activate grilla
 grilla -> todoTerreno : obtenerPosicion()
 todoTerreno --> grilla : posicion
 grilla -> accionable : accioanar(4x4)
 activate accionable
+<<<<<<< HEAD
+deactivate grilla
+accionable -> todoTerreno :aplicarPenalizacion()
+=======
 accionable -> todoTerreno :aplicarPenalizacion()
 deactivate grilla
+>>>>>>> 4f798889e50c50dc81b0bb7cd5f8bda6c5a3dc9f
 deactivate todoTerreno
 deactivate accionable
 

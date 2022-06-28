@@ -64,6 +64,7 @@ public class Posicion {
         return pos;
     }
 
+    //ver
     public boolean estasEnEsquina(){
        return esMultiploDe3(posX) && esMultiploDe3(posY); // ver si funciona correctamente
     }

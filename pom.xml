@@ -4,6 +4,7 @@
     <groupId>edu.fiuba.algo3</groupId>
     <artifactId>tp2</artifactId>
     <version>0.0.2</version>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
@@ -44,6 +45,13 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.30</version>
         </dependency>
+        <dependency>
+            <groupId>edu.fiuba.algo3</groupId>
+            <artifactId>tp2</artifactId>
+            <version>0.0.2</version>
+        </dependency>
+
+
     </dependencies>
     <profiles>
         <profile>
@@ -67,6 +75,8 @@
                     <version>${javafx-version}</version>
                     <classifier>win</classifier>
                 </dependency>
+
+
             </dependencies>
         </profile>
     </profiles>
@@ -138,4 +148,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

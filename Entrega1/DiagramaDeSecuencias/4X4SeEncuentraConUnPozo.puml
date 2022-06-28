@@ -21,6 +21,9 @@ todoTerreno --> todoTerreno : False
 activate todoTerreno
 deactivate todoTerreno
 deactivate todoTerreno
+<<<<<<< HEAD
+=======
 deactivate todoTerreno
+>>>>>>> 4f798889e50c50dc81b0bb7cd5f8bda6c5a3dc9f
 
 @enduml

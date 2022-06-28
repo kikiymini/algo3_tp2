@@ -46,8 +46,22 @@
         + cambiasteVehiculo() : Vehiculo
     }
 
+    interface EstadoVehiculo {
+        + accionar(Obstaculo obstaculo): int
+        + accionar(Pozo pozo): int
+        + accionar(Piquete piquete): int
+        + accionar(ControlPolicial control): int
+        + cambiarVehiculo(): EstadoVehiculo
+        + accionar(Calle calle): int
+        + accionar(Esquina esquina): int
+    }
+
+    Moto ..|> EstadoVehiculo
+    TodoTerreno ..|> EstadoVehiculo
+    Auto ..|> EstadoVehiculo
+    TodoTerreno -|> Vehiculo
     Moto ---|> Vehiculo
     Auto --|> Vehiculo
-    TodoTerreno -|> Vehiculo
+
 
 @enduml

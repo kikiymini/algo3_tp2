@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.modelo.Vehiculos;
 
-import edu.fiuba.algo3.modelo.Accionable;
-import edu.fiuba.algo3.modelo.Constantes;
-import edu.fiuba.algo3.modelo.Movimiento.*;
+import edu.fiuba.algo3.modelo.Movimiento.Movimiento;
 import edu.fiuba.algo3.modelo.Obstaculo.Obstaculo;
 import edu.fiuba.algo3.modelo.Posicion;
 

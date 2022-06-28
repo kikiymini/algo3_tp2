@@ -1,27 +1,32 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Vehiculos.Auto;
 import edu.fiuba.algo3.modelo.Excepciones.NombreVacioError;
-import edu.fiuba.algo3.modelo.Vehiculos.Moto;
-import edu.fiuba.algo3.modelo.Vehiculos.TodoTerreno;
-import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
-
-import java.util.Random;
 
 public class Jugador{
 
     private String nombre;
-    private int cantMovimientos;
+    protected int cantMovimientos;
+    protected Puntaje puntaje;
 
     public Jugador(String nombre){
         if( nombre.isEmpty() ){
             throw new NombreVacioError();
         }
         this.nombre = nombre;
+        this.cantMovimientos = 0;
+        this.puntaje = new Puntaje();
+
     }
 
     public String obtenerNombre(){
         return this.nombre;
     }
 
+    protected int puntajeObtenido(){
+        return puntaje.obtenerPuntaje();
+    }
+
+    public void sumarMovimineto() {
+        cantMovimientos++;
+    }
 }

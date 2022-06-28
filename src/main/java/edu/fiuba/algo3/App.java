@@ -7,7 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
+
+import java.io.IOException;
 
 /**
  * JavaFX App
@@ -20,7 +21,7 @@ public class App extends Application {
 
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws IOException {
         var javaVersion = SystemInfo.javaVersion();
         var javafxVersion = SystemInfo.javafxVersion();
 
