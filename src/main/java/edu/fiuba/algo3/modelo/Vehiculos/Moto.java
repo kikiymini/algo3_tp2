@@ -53,4 +53,10 @@ public class Moto implements EstadoVehiculo{
         return 1;
     }
 
+    @Override
+    public boolean sosEstado(EstadoVehiculo estado) {
+        return this.getClass().equals(estado.getClass());
+    }
+
+
 }

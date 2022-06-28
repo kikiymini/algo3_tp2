@@ -19,4 +19,8 @@ public final class Pozo implements Obstaculo {
          aplicarPenalizacion(vehiculo);
     }
 
+    public boolean sosAccionable(Accionable accionable) {
+        return this.getClass().equals(accionable.getClass());
+    }
+
 }

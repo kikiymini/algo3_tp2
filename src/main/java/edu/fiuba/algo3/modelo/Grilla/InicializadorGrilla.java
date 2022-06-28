@@ -2,10 +2,7 @@ package edu.fiuba.algo3.modelo.Grilla;
 
 import edu.fiuba.algo3.modelo.Accionable;
 import edu.fiuba.algo3.modelo.Constantes;
-import edu.fiuba.algo3.modelo.Obstaculo.Esquina;
-import edu.fiuba.algo3.modelo.Obstaculo.ControlPolicial;
-import edu.fiuba.algo3.modelo.Obstaculo.Piquete;
-import edu.fiuba.algo3.modelo.Obstaculo.Pozo;
+import edu.fiuba.algo3.modelo.Obstaculo.*;
 import edu.fiuba.algo3.modelo.Posicion;
 import edu.fiuba.algo3.modelo.Sorpresa.CambioDeVehiculo;
 import edu.fiuba.algo3.modelo.Sorpresa.Desfavorable;
@@ -47,14 +44,16 @@ public class InicializadorGrilla {
         this.cantPiquetes = (int) (cantPosVal * Constantes.cantidadDePiquetesPorPosicionValida);
     }
 
-    private void insertarAccionablesEnGrilla(){ // se puede ahorrar codigo en las metidas de accionables en grilla. mejorar despues
+    private void insertarAccionablesEnGrilla(){
+
+        this.colocarEsquinasEnGrilla();
         this.insertarSorpresasFavEnGrilla();
         this.insertarSorpresasDesfavEnGrilla();
         this.insertarControlesPolicialesEnGrilla();
         this.insertarSorpresaCambioDeVehiculoEnGrilla();
         this.insertarPozosEnGrilla();
         this.insertarPiquetesEnGrilla();
-        this.colocarEsquinasEnGrilla();
+
     }
 
     private void insertarSorpresasFavEnGrilla(){
@@ -154,7 +153,7 @@ public class InicializadorGrilla {
         Posicion posAInsertar;
         do {
             posAInsertar = this.conseguirAzarPosEnCalleHorizontal();
-        } while (this.esPosYaOcupada(posAInsertar));
+        } while (!esPosLibreParaAccionable(posAInsertar));
 
         this.grilla.insertarAccionableEnPosicion(posAInsertar, accionable);
     }
@@ -163,7 +162,7 @@ public class InicializadorGrilla {
         Posicion posAInsertar;
         do {
             posAInsertar = this.conseguirAzarPosEnCalleVertical();
-        } while (this.esPosYaOcupada(posAInsertar));
+        } while (!esPosLibreParaAccionable(posAInsertar));
 
         this.grilla.insertarAccionableEnPosicion(posAInsertar, accionable);
     }
@@ -180,10 +179,10 @@ public class InicializadorGrilla {
                 InicializadorGrilla.conseguirPosConMaxYNoMultiplo(this.grilla.obtenerTamanioEjeY(), 3));
     }
 
-    private boolean esPosYaOcupada(Posicion pos){
-        return (this.grilla.obtenerAccionableEnPosicion(pos) == null)
-                || Posicion.posicionesCoincidenEnCoords(this.posIniVehiculo, pos)
-                || Posicion.posicionesCoincidenEnCoords(this.posMeta, pos);
+    private boolean esPosLibreParaAccionable(Posicion pos){
+        return (this.grilla.obtenerAccionableEnPosicion(pos).sosAccionable(new Calle()))
+                && !Posicion.posicionesCoincidenEnCoords(this.posIniVehiculo, pos)
+                && !Posicion.posicionesCoincidenEnCoords(this.posMeta, pos);
     }
 
     public Posicion conseguirPosIniValidaDeVehiculo(){

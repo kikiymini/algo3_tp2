@@ -13,4 +13,8 @@ public final class Favorable implements Sorpresa {
     public void accionar(Vehiculo vehiculo) {
        sorprender(vehiculo);
     }
+
+    public boolean sosAccionable(Accionable accionable) {
+        return this.getClass().equals(accionable.getClass());
+    }
 }

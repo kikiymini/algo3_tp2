@@ -21,4 +21,8 @@ public interface EstadoVehiculo {
     int accionar(Calle calle);
 
     int accionar(Esquina esquina);
+    boolean sosEstado(EstadoVehiculo estado);
+    //boolean sosEstado(Auto auto);
+    //boolean sosEstado(Moto moto);
+    //boolean sosEstado(TodoTerreno todoTerreno);
 }

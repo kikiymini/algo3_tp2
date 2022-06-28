@@ -71,4 +71,11 @@ public class Vehiculo {
 
     public int obtenerCantidadDeMovimientos(){return movimientos;}
 
+<<<<<<< HEAD
 }
+=======
+    public EstadoVehiculo obtenerEstado() {
+        return estado;
+    }
+}
+>>>>>>> 92413ca457ae992cfb80b7c5bb44ce236c71729b

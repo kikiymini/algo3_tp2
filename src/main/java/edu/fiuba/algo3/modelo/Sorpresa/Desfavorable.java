@@ -14,5 +14,9 @@ public final class Desfavorable implements Sorpresa {
         sorprender(vehiculo);
     }
 
+    public boolean sosAccionable(Accionable accionable) {
+        return this.getClass().equals(accionable.getClass());
+    }
+
 
 }
