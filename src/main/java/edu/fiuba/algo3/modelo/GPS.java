@@ -43,7 +43,7 @@ public class GPS {
     private String obtenerJugadadorUnico() throws IOException {
         String nombre = obtenerNombreJugador();
         while (registro.existeJugador(nombre)){
-            System.out.println("Ya existe un jugador con ese nombre: ");
+            System.out.println("Ya existe un jugador con ese nombre");
             nombre = obtenerNombreJugador();
         }
         return nombre;
@@ -71,7 +71,7 @@ public class GPS {
         return ciudad.obtenerPosiscionVehiculo();
     }
 
-    public EstadoVehiculo otenerEstadoVehiculo() {
+    public EstadoVehiculo obtenerEstadoVehiculo() {
         return ciudad.otenerEstadoVehiculo();
 
     }

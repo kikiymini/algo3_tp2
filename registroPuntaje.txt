@@ -2,3 +2,6 @@ Caro;0;
 Azul;0;
 Penelope;0;
 lloojsojso;0;
+Susana;0;
+Alma;0;
+lloojsojso;0;
