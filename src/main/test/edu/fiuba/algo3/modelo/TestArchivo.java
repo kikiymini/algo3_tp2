@@ -11,40 +11,27 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestArchivo {
 
     @Test
-    public void testPuedoLeerUnArchivoDeJugadoresCorrectamente() throws IOException {
-        File myFile = new File("src/main/test/edu/fiuba/algo3/modelo/recursos/archivo1.json");
-        String path = myFile.getAbsolutePath();
-        Archivo a = new Archivo(path);
-        String resultado = a.leer();
-
-        assertEquals(true,resultado.contains("{    \"nombre\": \"Carolina\",    \"cantMovimientos\": 10,    \"puntaje\": 1000  }"));
-    }
-
-    @Test
-    public void testPuedoAgregarDosJugadoresAMiArchivoCorrectamente() throws IOException {
-        File myFile = new File("src/main/test/edu/fiuba/algo3/modelo/recursos/archivo2.json");
+    public void testPuedoAgregarJugadoresAMiArchivoCorrectamente() throws IOException {
+        File myFile = new File("src/main/test/edu/fiuba/algo3/modelo/recursos/archivo.txt");
         String path = myFile.getAbsolutePath();
         Archivo a = new Archivo(path);
 
-        File myfile = new File("archivo2.json").getAbsoluteFile();
-        String s = myfile.getAbsolutePath();
-        System.out.println(s);
-
-
-        a.agregarJugador(new Jugador("Penelope"));
         a.agregarJugador(new Jugador("Carolina"));
-        boolean res = a.existeJugador("Carolina") && a.existeJugador("Penelope");
+        a.agregarJugador(new Jugador("Penelope"));
+        String lectura = a.leer();
+        String res = "Carolina;0;Penelope;0;";
 
-        assertEquals(true,res);
-
+        assertEquals(true,lectura.contains(res));
     }
 
     @Test
-    public void testPuedoObtenerElPuntajeDeUnJugador() throws IOException {
-        File myFile = new File("src/main/test/edu/fiuba/algo3/modelo/recursos/archivo2.json");
+    public void testPuedoObtenerElPuntajeDeUnJugadorCorrectamente(){
+        File myFile = new File("src/main/test/edu/fiuba/algo3/modelo/recursos/archivo1.txt");
         String path = myFile.getAbsolutePath();
         Archivo a = new Archivo(path);
+        int puntaje = a.obtenerPuntajeJugador("Mateo");
 
-        assertEquals(0,a.obtenerPuntajeJugador("Penelope"));
+        assertEquals(10,puntaje);
+
     }
 }

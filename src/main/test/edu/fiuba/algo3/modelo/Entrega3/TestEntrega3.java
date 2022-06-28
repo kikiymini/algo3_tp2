@@ -14,7 +14,7 @@ public class TestEntrega3 {
     public void testNoPuedoTenerEnMiGPSDosJugadoresConIgualNombre() throws IOException {
         Jugador j1 = new Jugador("Caro");
         Jugador j2 = new Jugador("Caro");
-        GPSFake gps = new GPSFake("archivo4.json");
+        GPSFake gps = new GPSFake("archivo2.txt");
 
         gps.agregarJugador(j1);
         gps.agregarJugador(j2);
