@@ -1,5 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Movimiento.Abajo;
+import edu.fiuba.algo3.modelo.Movimiento.Arriba;
+import edu.fiuba.algo3.modelo.Movimiento.Derecha;
+import edu.fiuba.algo3.modelo.Movimiento.Izquierda;
 import edu.fiuba.algo3.modelo.Vehiculos.EstadoVehiculo;
 
 import java.util.ArrayList;
@@ -38,4 +42,19 @@ public class GPS {
     public EstadoVehiculo otenerEstadoVehiculo() {
         return ciudad.otenerEstadoVehiculo();
     }
+
+    public void moverVehiculoIzquierda() {
+        ciudad.moverVehiculo(new Izquierda());
+    }
+    public void moverVehiculoDerecha() {
+        ciudad.moverVehiculo(new Derecha());
+    }
+    public void moverVehiculoArriba() {
+        ciudad.moverVehiculo(new Arriba());
+    }
+    public void moverVehiculoAbajo() {
+        ciudad.moverVehiculo(new Abajo());
+    }
+
+
 }

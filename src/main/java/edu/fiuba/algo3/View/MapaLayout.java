@@ -14,6 +14,7 @@ import edu.fiuba.algo3.modelo.Vehiculos.Auto;
 import edu.fiuba.algo3.modelo.Vehiculos.EstadoVehiculo;
 import edu.fiuba.algo3.modelo.Vehiculos.Moto;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -34,6 +35,7 @@ public class MapaLayout extends Pane {
     int largoEjeY;
     double separacionEntreCuadras = 32;
     double separacionEntreCuadrasInicio = 20;
+    private Button vehviculo = new Button();
 
     public MapaLayout(Stage window, App app, GPS gps){
         largoEjeX = gps.obtenerTamanioEjesMapa().get(0);
@@ -46,6 +48,7 @@ public class MapaLayout extends Pane {
         insertarPiquetesEnGrilla(gps, largoEjeX, largoEjeY);
         insertarSorpresasEnGrilla(gps, largoEjeX, largoEjeY);
         insertarVehiculo(gps);
+        insertarBootones(gps);
         getChildren().add(canvas);
     }
     public void crearLineasMatriz(GPS gps, GraphicsContext gc, int largoEjeX, int largoEjeY){
@@ -149,23 +152,93 @@ public class MapaLayout extends Pane {
     public void insertarVehiculo(GPS gps){
         Posicion posVehiculo = gps.obtenerPosicionVehiculo();
         EstadoVehiculo estado = gps.otenerEstadoVehiculo();
-        Button boton = new Button();
+
         if (estado.sosEstado(new Auto(posVehiculo))){
-            boton.setGraphic(new ImagenBoton("src/fotos/auto.png", 36, 36));
+            vehviculo.setGraphic(new ImagenBoton("src/fotos/auto.png", 36, 36));
         }
         else if (estado.sosEstado(new Moto(posVehiculo))){
-            boton.setGraphic(new ImagenBoton("src/fotos/moto.jpg", 36, 36));
+            vehviculo.setGraphic(new ImagenBoton("src/fotos/moto.jpg", 36, 36));
         }
         else{
-            boton.setGraphic(new ImagenBoton("src/fotos/4x4.jpg", 36, 36));
+            vehviculo.setGraphic(new ImagenBoton("src/fotos/4x4.jpg", 36, 36));
         }
-        boton.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
-        boton.setLayoutX(separacionEntreCuadras * posVehiculo.obtenerPosX());
-        boton.setLayoutY(separacionEntreCuadras * posVehiculo.obtenerPosY());
-        getChildren().add(boton);
+        vehviculo.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
+        vehviculo.setLayoutX(separacionEntreCuadras * posVehiculo.obtenerPosX());
+        vehviculo.setLayoutY(separacionEntreCuadras * posVehiculo.obtenerPosY());
+        getChildren().add(vehviculo);
     }
 
-    private boolean estaEnEsquina(int x, int y){
-        return (x % 3 == 0 && y % 3 == 0);
+    private void insertarBootones(GPS gps){
+       insertarBotonEste(gps);
+       insertarBotonNorte(gps);
+       insertarBotonOeste(gps);
+       insertarBotonSur(gps);
     }
+
+    private void insertarBotonOeste(GPS gps){
+        Button moverOeste = new Button();
+        moverOeste.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
+        moverOeste.setOnAction(e->{
+            gps.moverVehiculoIzquierda();
+            insertarVehiculo(gps);
+        });
+        moverOeste.setGraphic(new ImagenBoton("src/fotos/Oeste.png", 50, 50));
+        HBox barraInicio = new HBox(moverOeste);
+        barraInicio.setAlignment(Pos.TOP_LEFT);
+        barraInicio.setTranslateX(950);
+        barraInicio.setTranslateY(100);
+        getChildren().addAll(barraInicio);
+    }
+
+    private void insertarBotonEste(GPS gps){
+        Button moverEste = new Button();
+        moverEste.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
+        moverEste.setOnAction(e->{
+            gps.moverVehiculoDerecha();
+            insertarVehiculo(gps);
+        });
+        moverEste.setGraphic(new ImagenBoton("src/fotos/Este.png", 50, 50));
+        HBox barraInicio = new HBox(moverEste);
+        barraInicio.setAlignment(Pos.TOP_LEFT);
+        barraInicio.setTranslateX(1050);
+        barraInicio.setTranslateY(100);
+        getChildren().addAll(barraInicio);
+    }
+
+    private void insertarBotonNorte(GPS gps){
+        Button moverNorte = new Button();
+        moverNorte.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
+        moverNorte.setOnAction(e->{
+            gps.moverVehiculoArriba();
+            insertarVehiculo(gps);
+        });
+        moverNorte.setGraphic(new ImagenBoton("src/fotos/Norte.png", 50, 50));
+        HBox barraInicio = new HBox(moverNorte);
+        barraInicio.setAlignment(Pos.TOP_LEFT);
+        barraInicio.setTranslateX(1000);
+        barraInicio.setTranslateY(30);
+        getChildren().addAll(barraInicio);
+    }
+
+    private void insertarBotonSur(GPS gps){
+        Button moverSur = new Button();
+        moverSur.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
+        moverSur.setOnAction(e->{
+            gps.moverVehiculoAbajo();
+            insertarVehiculo(gps);
+        });
+        moverSur.setGraphic(new ImagenBoton("src/fotos/SUR.png", 50, 50));
+        HBox barraInicio = new HBox(moverSur);
+        barraInicio.setAlignment(Pos.TOP_LEFT);
+        barraInicio.setTranslateX(1000);
+        barraInicio.setTranslateY(175);
+        getChildren().addAll(barraInicio);
+    }
+
+
+
+
+
+
+
 }
