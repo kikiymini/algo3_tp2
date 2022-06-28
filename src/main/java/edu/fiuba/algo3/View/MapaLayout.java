@@ -31,7 +31,7 @@ import java.nio.InvalidMarkException;
 public class MapaLayout extends Pane {
     int largoEjeX;
     int largoEjeY;
-    double separacionEntreCuadras = 25;
+    double separacionEntreCuadras = 32;
     double separacionEntreCuadrasInicio = 20;
 
     public MapaLayout(Stage window, App app, GPS gps){
@@ -66,7 +66,7 @@ public class MapaLayout extends Pane {
                 Accionable accionable = gps.obtenerAccionableEnPosicion(i, j);
                 if(accionable.sosAccionable(new ControlPolicial())){
                     Button boton = new Button();
-                    boton.setGraphic(new ImagenBoton("src/fotos/policia.png", 30, 30));
+                    boton.setGraphic(new ImagenBoton("src/fotos/policia.jpg", 36, 36));
                     boton.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
                     boton.setLayoutX(separacionEntreCuadras * i);
                     boton.setLayoutY(separacionEntreCuadras * j);
@@ -83,7 +83,7 @@ public class MapaLayout extends Pane {
                 Accionable accionable = gps.obtenerAccionableEnPosicion(i, j);
                 if(accionable.sosAccionable(new Pozo())){
                     Button boton = new Button();
-                    boton.setGraphic(new ImagenBoton("src/fotos/pozo.jpeg", 30, 30));
+                    boton.setGraphic(new ImagenBoton("src/fotos/pozo.jpg", 36, 36));
                     boton.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
                     boton.setLayoutX(separacionEntreCuadras * i);
                     boton.setLayoutY(separacionEntreCuadras * j);
@@ -100,7 +100,7 @@ public class MapaLayout extends Pane {
                 Accionable accionable = gps.obtenerAccionableEnPosicion(i, j);
                 if(accionable.sosAccionable(new Piquete())){
                     Button boton = new Button();
-                    boton.setGraphic(new ImagenBoton("src/fotos/piquete2.png", 30, 30));
+                    boton.setGraphic(new ImagenBoton("src/fotos/piquete.jpg", 36, 36));
                     boton.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
                     boton.setLayoutX(separacionEntreCuadras * i);
                     boton.setLayoutY(separacionEntreCuadras * j);
@@ -117,7 +117,7 @@ public class MapaLayout extends Pane {
                 Accionable accionable = gps.obtenerAccionableEnPosicion(i, j);
                 if(accionable.sosAccionable(new Favorable()) || accionable.sosAccionable(new Desfavorable()) || accionable.sosAccionable(new Desfavorable())){
                     Button boton = new Button();
-                    boton.setGraphic(new ImagenBoton("src/fotos/sorpresa2.jpeg", 30, 30));
+                    boton.setGraphic(new ImagenBoton("src/fotos/sorpresa2.jpeg", 36, 36));
                     boton.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
                     boton.setLayoutX(separacionEntreCuadras * i);
                     boton.setLayoutY(separacionEntreCuadras * j);
@@ -132,13 +132,13 @@ public class MapaLayout extends Pane {
         EstadoVehiculo estado = gps.otenerEstadoVehiculo();
         Button boton = new Button();
         if (estado.sosEstado(new Auto(posVehiculo))){
-            boton.setGraphic(new ImagenBoton("src/fotos/auto.jpg", 50, 50));
+            boton.setGraphic(new ImagenBoton("src/fotos/auto.png", 36, 36));
         }
         else if (estado.sosEstado(new Moto(posVehiculo))){
-            boton.setGraphic(new ImagenBoton("src/fotos/moto.jpeg", 50, 50));
+            boton.setGraphic(new ImagenBoton("src/fotos/moto.jpg", 36, 36));
         }
         else{
-            boton.setGraphic(new ImagenBoton("src/fotos/4x4.png", 50, 50));
+            boton.setGraphic(new ImagenBoton("src/fotos/4x4.jpg", 36, 36));
         }
         boton.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
         boton.setLayoutX(separacionEntreCuadras * posVehiculo.obtenerPosX());
