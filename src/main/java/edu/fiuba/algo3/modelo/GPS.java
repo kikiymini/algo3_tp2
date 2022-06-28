@@ -1,5 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Movimiento.Abajo;
+import edu.fiuba.algo3.modelo.Movimiento.Arriba;
+import edu.fiuba.algo3.modelo.Movimiento.Derecha;
+import edu.fiuba.algo3.modelo.Movimiento.Izquierda;
+
 import edu.fiuba.algo3.modelo.Movimiento.Movimiento;
 import edu.fiuba.algo3.modelo.Vehiculos.EstadoVehiculo;
 
@@ -16,9 +21,15 @@ public class GPS {
 
     public GPS() throws IOException {
         this.ciudad = new Ciudad();
+<<<<<<< HEAD
         this.jugador = new Jugador(obtenerJugadadorUnico());
         this.registro = new RegistroJugadores("registroPuntaje.txt");
         this.registro.agregarJugadorAlRegistro(this.jugador);
+=======
+        //this.jugador = new Jugador(obtenerJugadadorUnico());
+        //this.registro = new RegistroJugadores("registroJugadores.json");
+        //this.registro.agregarJugadorAlRegistro(this.jugador);
+>>>>>>> 49587de9df344c6cff4e9e9765203458e2a26d38
     }
 
     private static String obtenerNombreJugador() {
@@ -67,4 +78,19 @@ public class GPS {
         return ciudad.otenerEstadoVehiculo();
 
     }
+
+    public void moverVehiculoIzquierda() {
+        ciudad.moverVehiculo(new Izquierda());
+    }
+    public void moverVehiculoDerecha() {
+        ciudad.moverVehiculo(new Derecha());
+    }
+    public void moverVehiculoArriba() {
+        ciudad.moverVehiculo(new Arriba());
+    }
+    public void moverVehiculoAbajo() {
+        ciudad.moverVehiculo(new Abajo());
+    }
+
+
 }

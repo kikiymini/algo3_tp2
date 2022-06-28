@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.Grilla;
 
 import edu.fiuba.algo3.modelo.Accionable;
 import edu.fiuba.algo3.modelo.Constantes;
+import edu.fiuba.algo3.modelo.Meta;
 import edu.fiuba.algo3.modelo.Obstaculo.*;
 import edu.fiuba.algo3.modelo.Posicion;
 import edu.fiuba.algo3.modelo.Sorpresa.CambioDeVehiculo;
@@ -53,7 +54,13 @@ public class InicializadorGrilla {
         this.insertarSorpresaCambioDeVehiculoEnGrilla();
         this.insertarPozosEnGrilla();
         this.insertarPiquetesEnGrilla();
+        this.insertarMetaEnGrilla();
 
+    }
+
+    private void insertarMetaEnGrilla() {
+        Posicion posMeta = conseguirPosValidaDeMeta();
+        grilla.insertarAccionableEnPosicion(posMeta, new Meta());
     }
 
     private void insertarSorpresasFavEnGrilla(){
@@ -187,12 +194,13 @@ public class InicializadorGrilla {
 
     public Posicion conseguirPosIniValidaDeVehiculo(){
         return new Posicion(Constantes.posIniEnXDeVehiculo,
-                InicializadorGrilla.conseguirPosConMaxYMultiplo(this.grilla.obtenerTamanioEjeY(), 3));
+                InicializadorGrilla.conseguirPosConMaxYMultiplo(grilla.obtenerTamanioEjeY(), 3), grilla.obtenerTamanioEjeX(), grilla.obtenerTamanioEjeY());
     }
 
     public Posicion conseguirPosValidaDeMeta(){
-        return new Posicion(this.grilla.obtenerTamanioEjeX(),
-                InicializadorGrilla.conseguirPosConMaxYMultiplo(this.grilla.obtenerTamanioEjeY(), 3));
+
+        return new Posicion(grilla.obtenerTamanioEjeX() - 2,
+                InicializadorGrilla.conseguirPosConMaxYMultiplo(grilla.obtenerTamanioEjeY() - 1, 3), grilla.obtenerTamanioEjeX(), grilla.obtenerTamanioEjeY());
     }
 
     // Una pos va a ser multiplo de un valor, cuando pos%valorMultiplo == 0.
