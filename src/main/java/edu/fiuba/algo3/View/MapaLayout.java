@@ -48,6 +48,7 @@ public class MapaLayout extends Pane {
         insertarPiquetesEnGrilla(gps, largoEjeX, largoEjeY);
         insertarSorpresasEnGrilla(gps, largoEjeX, largoEjeY);
         insertarVehiculo(gps);
+        insertarMetaEnGrilla(gps, largoEjeX, largoEjeY);
         insertarBootones(gps);
         getChildren().add(canvas);
     }
@@ -152,7 +153,6 @@ public class MapaLayout extends Pane {
     public void insertarVehiculo(GPS gps){
         Posicion posVehiculo = gps.obtenerPosicionVehiculo();
         EstadoVehiculo estado = gps.otenerEstadoVehiculo();
-
         if (estado.sosEstado(new Auto(posVehiculo))){
             vehviculo.setGraphic(new ImagenBoton("src/fotos/auto.png", 36, 36));
         }

@@ -7,16 +7,30 @@ public class Posicion {
     private int posY;
     private int ultimaPosEnEsquinaX;
     private int ultimaPosEnEsquinaY;
+    private int limiteEjeX;
+    private int limiteEjeY;
 
-    private boolean esPosValida(int posX, int posY){
-        return( posX >= 0 && posY >= 0);
-    }
-
+// para pruebas, cambiar despues los tests
     public Posicion(int posX, int posY) {
-        if( !esPosValida(posX, posY) ) throw new PosicionInvalidaError();
-
         this.posX = posX;
         this.posY = posY;
+        this.limiteEjeY = 1000;
+        this.limiteEjeX = 1000;
+        if( !esPosValida(posX, posY) ) throw new PosicionInvalidaError();
+
+    }
+
+    public Posicion(int posX, int posY, int limEjeX, int limEjeY){
+        this.posX = posX;
+        this.posY = posY;
+        limiteEjeX = limEjeX;
+        limiteEjeY = limEjeY;
+        if( !esPosValida(posX, posY) ) throw new PosicionInvalidaError();
+
+    }
+
+    private boolean esPosValida(int posX, int posY){
+        return( (posX >= 0 && posY >= 0) && (posX < limiteEjeX - 1  && posY < limiteEjeY - 1));
     }
 
 
@@ -31,19 +45,25 @@ public class Posicion {
     }
 
     public void incrementarX(){
-        this.establecerPosX(posX + Constantes.valorDeIncrementoDePosicion);
+        if(esPosValida(posX + Constantes.valorDeIncrementoDePosicion, posY)) {
+            this.establecerPosX(posX + Constantes.valorDeIncrementoDePosicion);
+        }
     }
 
     public void decrementarX(){
-        //if(this.posX == 0) return;
-        this.establecerPosX(posX - Constantes.valorDeIncrementoDePosicion);
+        if(esPosValida(posX- Constantes.valorDeIncrementoDePosicion , posY)){
+            this.establecerPosX(posX - Constantes.valorDeIncrementoDePosicion);
+        }
     }
 
     public void incrementarY(){
-        this.establecerPosY(posY + Constantes.valorDeIncrementoDePosicion);
+        if(esPosValida(posX, posY + Constantes.valorDeIncrementoDePosicion)) {
+            this.establecerPosY(posY + Constantes.valorDeIncrementoDePosicion);
+        }
     }
 
     public void decrementarY(){
+        if(esPosValida(posX, posY - Constantes.valorDeIncrementoDePosicion))
         this.establecerPosY(posY - Constantes.valorDeIncrementoDePosicion);
     }
 
