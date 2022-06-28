@@ -21,15 +21,12 @@ public class GPS {
 
     public GPS() throws IOException {
         this.ciudad = new Ciudad();
-<<<<<<< HEAD
-        this.jugador = new Jugador(obtenerJugadadorUnico());
         this.registro = new RegistroJugadores("registroPuntaje.txt");
+        this.jugador = new Jugador(obtenerJugadadorUnico());
         this.registro.agregarJugadorAlRegistro(this.jugador);
-=======
-        //this.jugador = new Jugador(obtenerJugadadorUnico());
-        //this.registro = new RegistroJugadores("registroJugadores.json");
-        //this.registro.agregarJugadorAlRegistro(this.jugador);
->>>>>>> 49587de9df344c6cff4e9e9765203458e2a26d38
+        this.jugador = new Jugador(obtenerJugadadorUnico());
+        this.registro.agregarJugadorAlRegistro(this.jugador);
+
     }
 
     private static String obtenerNombreJugador() {
