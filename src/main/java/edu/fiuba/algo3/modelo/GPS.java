@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Movimiento.Movimiento;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class GPS {
@@ -9,10 +12,10 @@ public class GPS {
     private Posicion posMeta;
     protected RegistroJugadores registro;
 
-    public GPS(){
+    public GPS() throws IOException {
         this.ciudad = new Ciudad();
         this.jugador = new Jugador(obtenerJugadadorUnico());
-        this.registro = new RegistroJugadores();
+        this.registro = new RegistroJugadores("registroJugadores.json");
         this.registro.agregarJugadorAlRegistro(this.jugador);
     }
 
@@ -23,7 +26,7 @@ public class GPS {
         return lectorComandos.nextLine();
     }
 
-    private String obtenerJugadadorUnico(){
+    private String obtenerJugadadorUnico() throws IOException {
         String nombre = obtenerNombreJugador();
         while (registro.existeJugador(nombre)){
             System.out.println("Ya existe un jugador con ese nombre: ");
@@ -32,9 +35,17 @@ public class GPS {
         return nombre;
     }
 
-// id unico
-//    public int obtenerPuntajeJugador(Jugador jugador){
-//        return jugador.puntajeObtenido();
-//    }
+    public void agregarJugador(Jugador j1) throws IOException {
+        String nombre = obtenerJugadadorUnico();
+        registro.agregarJugadorAlRegistro(new Jugador(nombre));
+    }
 
+    public int obtenerPuntaje(String nombre) throws IOException {
+        return registro.obtenerPuntajeJugador(nombre);
+    }
+
+    public void movermeHacia(Movimiento movimiento){
+        ciudad.moverVehiculo(movimiento);
+        jugador.sumarMovimineto();
+    }
 }

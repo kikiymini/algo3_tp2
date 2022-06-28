@@ -1,29 +1,37 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.HashMap;
+import java.io.File;
+import java.io.IOException;
 
 public class RegistroJugadores {
 
-    private HashMap jugadores = new HashMap();
+    private Archivo registro;
 
-    public int obtenerPuntajeJugador(Jugador jugador){
-        if(jugadores.get(jugador.obtenerNombre()) != null){
-            return jugador.puntajeObtenido();
-        }
-        else{
-            return 0;
-        }
+    public RegistroJugadores(String nombreArchivo){
+        File myfile = new File(nombreArchivo).getAbsoluteFile();
+        String s = myfile.getAbsolutePath();
+        this.registro = new Archivo(s);
     }
 
-    public void agregarJugadorAlRegistro(Jugador jugador){
-        jugadores.put(jugador.obtenerNombre(),jugador);
+    public int obtenerPuntajeJugador(Jugador jugador) throws IOException {
+        return registro.obtenerPuntajeJugador(jugador.obtenerNombre());
     }
 
-    public int cantidadDeJugadores(){
-        return jugadores.size();
+    public void agregarJugadorAlRegistro(Jugador jugador) throws IOException {
+        registro.agregarJugador(jugador);
     }
 
-    protected boolean existeJugador(String nombre){
-        return jugadores.containsKey(nombre);
+    public int cantidadDeJugadores() throws IOException {
+        return registro.cantidadDeJugadores();
     }
+
+    protected boolean existeJugador(String nombre) throws IOException {
+        return registro.existeJugador(nombre);
+    }
+
+    public int obtenerPuntajeJugador(String nombre) throws IOException {
+        return registro.obtenerPuntajeJugador(nombre);
+    }
+
+
 }
