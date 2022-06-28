@@ -24,8 +24,6 @@ public class GPS {
         this.registro = new RegistroJugadores("registroPuntaje.txt");
         this.jugador = new Jugador(obtenerJugadadorUnico());
         this.registro.agregarJugadorAlRegistro(this.jugador);
-        this.jugador = new Jugador(obtenerJugadadorUnico());
-        this.registro.agregarJugadorAlRegistro(this.jugador);
 
     }
 

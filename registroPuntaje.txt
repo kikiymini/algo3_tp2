@@ -6,3 +6,5 @@ Susana;0;
 Alma;0;
 lloojsojso;0;
 Carito;0;
+Putita;0;
+Bryan;0;

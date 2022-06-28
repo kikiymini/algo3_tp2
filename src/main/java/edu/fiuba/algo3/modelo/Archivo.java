@@ -21,7 +21,7 @@ public class Archivo {
             while ((linea = br.readLine()) != null) {
                 puntaje += linea;
             }
-            //poner Exepciones
+
         } catch (FileNotFoundException ex) {
             System.out.println(ex.getMessage());
         } catch (IOException ex) {
