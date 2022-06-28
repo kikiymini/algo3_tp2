@@ -75,15 +75,19 @@ public class GPS {
     }
 
     public void moverVehiculoIzquierda() {
+        jugador.sumarMovimineto();
         ciudad.moverVehiculo(new Izquierda());
     }
     public void moverVehiculoDerecha() {
+        jugador.sumarMovimineto();
         ciudad.moverVehiculo(new Derecha());
     }
     public void moverVehiculoArriba() {
+        jugador.sumarMovimineto();
         ciudad.moverVehiculo(new Arriba());
     }
     public void moverVehiculoAbajo() {
+        jugador.sumarMovimineto();
         ciudad.moverVehiculo(new Abajo());
     }
 
