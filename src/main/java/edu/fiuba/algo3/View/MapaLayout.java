@@ -8,6 +8,7 @@ import edu.fiuba.algo3.modelo.Obstaculo.ControlPolicial;
 import edu.fiuba.algo3.modelo.Obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.Obstaculo.Pozo;
 import edu.fiuba.algo3.modelo.Posicion;
+import edu.fiuba.algo3.modelo.Sorpresa.CambioDeVehiculo;
 import edu.fiuba.algo3.modelo.Sorpresa.Desfavorable;
 import edu.fiuba.algo3.modelo.Sorpresa.Favorable;
 import edu.fiuba.algo3.modelo.Vehiculos.Auto;
@@ -112,7 +113,7 @@ public class MapaLayout extends Pane {
         for (int i = 0; i < largoEjeX; i++){
             for (int j = 0; j < largoEjeY; j++) {
                 Accionable accionable = gps.obtenerAccionableEnPosicion(i, j);
-                if(accionable.sosAccionable(new Favorable()) || accionable.sosAccionable(new Desfavorable()) || accionable.sosAccionable(new Desfavorable())){
+                if(accionable.sosAccionable(new Favorable()) || accionable.sosAccionable(new Desfavorable()) || accionable.sosAccionable(new CambioDeVehiculo())){
                     Button boton = new Button();
                     boton.setGraphic(new ImagenBoton("src/fotos/sorpresa2.jpeg", 36, 36));
                     boton.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));

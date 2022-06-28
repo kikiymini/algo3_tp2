@@ -1,7 +1,7 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.View.InicioView;
 import edu.fiuba.algo3.modelo.GPS;
+import edu.fiuba.algo3.View.InicioView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;

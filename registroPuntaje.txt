@@ -5,6 +5,14 @@ lloojsojso;0;
 Susana;0;
 Alma;0;
 lloojsojso;0;
+<<<<<<< HEAD
 Carito;0;
 Putita;0;
 Bryan;0;
+=======
+lloojsojso;0;
+Marcelo;0;
+Tobias;0;
+Marcos;0;
+MAURICIO;0;
+>>>>>>> 75b6557d03e8a6bd6d25dd7dae2d79e92e0cfbfe
