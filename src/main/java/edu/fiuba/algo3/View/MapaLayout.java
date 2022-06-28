@@ -3,6 +3,7 @@ package edu.fiuba.algo3.View;
 import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.Accionable;
 import edu.fiuba.algo3.modelo.GPS;
+import edu.fiuba.algo3.modelo.Meta;
 import edu.fiuba.algo3.modelo.Obstaculo.ControlPolicial;
 import edu.fiuba.algo3.modelo.Obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.Obstaculo.Pozo;
@@ -127,6 +128,24 @@ public class MapaLayout extends Pane {
         }
 
     }
+
+    public void insertarMetaEnGrilla(GPS gps, int largoEjeX, int largoEjeY){
+        for (int i = 0; i < largoEjeX; i++){
+            for (int j = 0; j < largoEjeY; j++) {
+                Accionable accionable = gps.obtenerAccionableEnPosicion(i, j);
+                if(accionable.sosAccionable(new Meta())){
+                    Button boton = new Button();
+                    boton.setGraphic(new ImagenBoton("src/fotos/meta.jpg", 36, 36));
+                    boton.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
+                    boton.setLayoutX(separacionEntreCuadras * i);
+                    boton.setLayoutY(separacionEntreCuadras * j);
+                    getChildren().add(boton);
+                }
+            }
+        }
+
+    }
+
     public void insertarVehiculo(GPS gps){
         Posicion posVehiculo = gps.obtenerPosicionVehiculo();
         EstadoVehiculo estado = gps.otenerEstadoVehiculo();
