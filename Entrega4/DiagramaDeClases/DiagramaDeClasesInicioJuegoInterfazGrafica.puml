@@ -1,0 +1,41 @@
+@startuml
+    'https://plantuml.com/class-diagram'
+
+    class InicioDeJuegoLayout{
+        + {static} InicioDeJuegoLayout(Stage window, App app, GPS gps) : InicioDeJuegoLayout
+    }
+
+    class InicioDeJuegoScene{
+        + {static} InicioDeJuegoScene(Stage window, App app, GPS gps) : InicioDeJuegoScene
+    }
+
+    class InicioView{
+        - window : Stage
+        + {static} InicioView(Stage stage) : InicioView
+        + inicioJuego(Stage window, App app, GPS gps) : void
+    }
+
+    class GPS {
+        + {static} GPS() : GPS
+        + agregarJugador(Jugador j1) : void
+        + movermeHacia(Movimiento movimiento) : void
+    }
+
+    class App {
+        - window : Stage
+        + void start(Stage stage) : void
+    }
+
+
+
+    App ---> InicioView
+    InicioView ..> App: conoce
+    InicioView ..> GPS: conoce
+    InicioDeJuegoLayout ..> App: conoce
+    InicioDeJuegoLayout ..> GPS: conoce
+    InicioDeJuegoScene ..> App: conoce
+    InicioDeJuegoScene ..> GPS: conoce
+
+
+
+@enduml
