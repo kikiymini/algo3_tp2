@@ -30,7 +30,7 @@ public class Posicion {
     }
 
     private boolean esPosValida(int posX, int posY){
-        return( (posX >= 0 && posY >= 0) && (posX < limiteEjeX  && posY < limiteEjeY));
+        return( (posX >= 0 && posY >= 0) && (posX <= limiteEjeX - 1 && posY <= limiteEjeY - 1));
     }
 
 
@@ -45,26 +45,26 @@ public class Posicion {
     }
 
     public void incrementarX(){
-        if(esPosValida(posX + Constantes.valorDeIncrementoDePosicion, posY)) {
+        if(esPosValida(posX + Constantes.valorDeIncrementoDePosicion, posY) && esMovimientoValidoParaCorredorDeMeta(posX + Constantes.valorDeIncrementoDePosicion, posY)) {
             this.establecerPosX(posX + Constantes.valorDeIncrementoDePosicion);
             this.establecerPosY(posY);
         }
     }
 
     public void decrementarX(){
-        if(esPosValida(posX- Constantes.valorDeIncrementoDePosicion , posY)){
+        if(esPosValida(posX- Constantes.valorDeIncrementoDePosicion , posY) && esMovimientoValidoParaCorredorDeMeta(posX- Constantes.valorDeIncrementoDePosicion , posY)){
             this.establecerPosX(posX - Constantes.valorDeIncrementoDePosicion);
         }
     }
 
     public void incrementarY(){
-        if(esPosValida(posX, posY + Constantes.valorDeIncrementoDePosicion)) {
+        if(esPosValida(posX, posY + Constantes.valorDeIncrementoDePosicion) && esPosValidaParteDerecha(posX, posY + Constantes.valorDeIncrementoDePosicion)) {
             this.establecerPosY(posY + Constantes.valorDeIncrementoDePosicion);
         }
     }
 
     public void decrementarY(){
-        if(esPosValida(posX, posY - Constantes.valorDeIncrementoDePosicion))
+        if(esPosValida(posX, posY - Constantes.valorDeIncrementoDePosicion) && esPosValidaParteDerecha(posX, posY - Constantes.valorDeIncrementoDePosicion))
         this.establecerPosY(posY - Constantes.valorDeIncrementoDePosicion);
     }
 
@@ -109,5 +109,14 @@ public class Posicion {
         }
 
         return false;
+    }
+
+    private boolean esMovimientoValidoParaCorredorDeMeta(int x, int y){
+        if((x >= 0 && y == 0) || (x >= 1 && y == limiteEjeY - 1) ) return false;
+        return true;
+    }
+
+    private boolean esPosValidaParteDerecha(int x, int y){
+        return !(x == limiteEjeX - 1);
     }
 }
