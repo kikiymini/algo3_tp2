@@ -48,12 +48,12 @@ public class MapaLayout extends Pane {
     public void crearLineasMatriz(GPS gps, GraphicsContext gc, int largoEjeX, int largoEjeY){
         for(int i = 0; i <= largoEjeX; i++){
             if(i % 3 == 0){
-                gc.strokeLine((separacionEntreCuadras * i) + separacionEntreCuadrasInicio, separacionEntreCuadrasInicio, (separacionEntreCuadras * i) + separacionEntreCuadrasInicio, (largoEjeY * separacionEntreCuadras) + separacionEntreCuadrasInicio);
+                gc.strokeLine((separacionEntreCuadras * i) + separacionEntreCuadrasInicio, separacionEntreCuadrasInicio, (separacionEntreCuadras * i) + separacionEntreCuadrasInicio, ((largoEjeY - 1) * separacionEntreCuadras) + separacionEntreCuadrasInicio);
             }
         }
         for(int j = 0; j <= largoEjeY; j++){
             if(j % 3 == 0){
-                gc.strokeLine(separacionEntreCuadrasInicio, (separacionEntreCuadras * j) + separacionEntreCuadrasInicio, (largoEjeX * separacionEntreCuadras) + separacionEntreCuadrasInicio, (separacionEntreCuadras * j) + separacionEntreCuadrasInicio);
+                gc.strokeLine(separacionEntreCuadrasInicio, (separacionEntreCuadras * j) + separacionEntreCuadrasInicio, ((largoEjeX - 1) * separacionEntreCuadras) + separacionEntreCuadrasInicio, (separacionEntreCuadras * j) + separacionEntreCuadrasInicio);
             }
         }
     }

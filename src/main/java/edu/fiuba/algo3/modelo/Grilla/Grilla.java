@@ -34,7 +34,7 @@ public class Grilla {
     }
 
     private int obtenerCantTotalDePosiciones(){
-        return this.tamanioEjeX * this.tamanioEjeY;
+        return (this.tamanioEjeX - 1) * (this.tamanioEjeY - 1);
     }
 
     private int obtenerCantTotalDeEsquinas(){
@@ -61,7 +61,7 @@ public class Grilla {
     }
 
     private void asignarTamaniosEjes(){
-        this.tamanioEjeX = (this.cantEsquinasEjeX * 3);
+        this.tamanioEjeX = (this.cantEsquinasEjeX * 3) + 1;
         this.tamanioEjeY = this.tamanioEjeX;
     }
 

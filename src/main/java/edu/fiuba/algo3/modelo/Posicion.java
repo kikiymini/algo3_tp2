@@ -30,7 +30,7 @@ public class Posicion {
     }
 
     private boolean esPosValida(int posX, int posY){
-        return( (posX >= 0 && posY >= 0) && (posX < limiteEjeX - 1  && posY < limiteEjeY - 1));
+        return( (posX >= 0 && posY >= 0) && (posX < limiteEjeX  && posY < limiteEjeY));
     }
 
 

@@ -176,14 +176,14 @@ public class InicializadorGrilla {
 
     // Las calles son horizontales cuando Y es multiplo de 3.
     private Posicion conseguirAzarPosEnCalleHorizontal(){
-        return new Posicion(InicializadorGrilla.conseguirPosConMaxYNoMultiplo(this.grilla.obtenerTamanioEjeX(), 3),
-                InicializadorGrilla.conseguirPosConMaxYMultiplo(this.grilla.obtenerTamanioEjeY(), 3));
+        return new Posicion(InicializadorGrilla.conseguirPosConMaxYNoMultiplo(this.grilla.obtenerTamanioEjeX() - 1, 3),
+                InicializadorGrilla.conseguirPosConMaxYMultiplo(this.grilla.obtenerTamanioEjeY() - 1, 3));
     }
 
     // Las calles son verticales cuando X es multiplo de 3.
     private Posicion conseguirAzarPosEnCalleVertical(){
-        return new Posicion(InicializadorGrilla.conseguirPosConMaxYMultiplo(this.grilla.obtenerTamanioEjeX(), 3),
-                InicializadorGrilla.conseguirPosConMaxYNoMultiplo(this.grilla.obtenerTamanioEjeY(), 3));
+        return new Posicion(InicializadorGrilla.conseguirPosConMaxYMultiplo(this.grilla.obtenerTamanioEjeX() - 1, 3),
+                InicializadorGrilla.conseguirPosConMaxYNoMultiplo(this.grilla.obtenerTamanioEjeY() - 1, 3));
     }
 
     private boolean esPosLibreParaAccionable(Posicion pos){
@@ -199,8 +199,8 @@ public class InicializadorGrilla {
 
     public Posicion conseguirPosValidaDeMeta(){
 
-        return new Posicion(grilla.obtenerTamanioEjeX() - 2,
-                InicializadorGrilla.conseguirPosConMaxYMultiplo(grilla.obtenerTamanioEjeY() - 1, 3), grilla.obtenerTamanioEjeX(), grilla.obtenerTamanioEjeY());
+        return new Posicion(grilla.obtenerTamanioEjeX() - 1,
+                InicializadorGrilla.conseguirPosConMaxYMultiplo(grilla.obtenerTamanioEjeY() - 1, 3));
     }
 
     // Una pos va a ser multiplo de un valor, cuando pos%valorMultiplo == 0.
