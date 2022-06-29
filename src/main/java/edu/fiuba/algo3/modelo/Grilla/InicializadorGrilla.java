@@ -194,7 +194,7 @@ public class InicializadorGrilla {
 
     public Posicion conseguirPosIniValidaDeVehiculo(){
         return new Posicion(Constantes.posIniEnXDeVehiculo,
-                InicializadorGrilla.conseguirPosConMaxYMultiplo(grilla.obtenerTamanioEjeY(), 3), grilla.obtenerTamanioEjeX(), grilla.obtenerTamanioEjeY());
+                InicializadorGrilla.conseguirPosConMaxYMultiplo(grilla.obtenerTamanioEjeY() - 1, 3), grilla.obtenerTamanioEjeX(), grilla.obtenerTamanioEjeY());
     }
 
     public Posicion conseguirPosValidaDeMeta(){

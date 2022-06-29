@@ -47,6 +47,7 @@ public class Posicion {
     public void incrementarX(){
         if(esPosValida(posX + Constantes.valorDeIncrementoDePosicion, posY)) {
             this.establecerPosX(posX + Constantes.valorDeIncrementoDePosicion);
+            this.establecerPosY(posY);
         }
     }
 
