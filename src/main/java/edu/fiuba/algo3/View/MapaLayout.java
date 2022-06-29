@@ -166,6 +166,7 @@ public class MapaLayout extends Pane {
        insertarBotonNorte(gps);
        insertarBotonOeste(gps);
        insertarBotonSur(gps);
+       insertarBotonSalir(gps);
     }
 
     private void insertarBotonOeste(GPS gps){
@@ -228,10 +229,18 @@ public class MapaLayout extends Pane {
         getChildren().addAll(barraInicio);
     }
 
-
-
-
-
-
+    private void insertarBotonSalir(GPS gps){
+        Button salida = new Button();
+        salida.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
+        salida.setOnAction(e-> {
+            System.exit(0);
+        });
+        salida.setGraphic(new ImagenBoton("src/fotos/salir.png", 50, 50));
+        HBox barraInicio = new HBox(salida);
+        barraInicio.setAlignment(Pos.TOP_LEFT);
+        barraInicio.setTranslateX(1000);
+        barraInicio.setTranslateY(250);
+        getChildren().addAll(barraInicio);
+    }
 
 }
