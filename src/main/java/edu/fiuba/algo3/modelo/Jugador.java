@@ -26,7 +26,7 @@ public class Jugador{
         return puntaje.obtenerPuntaje();
     }
 
-    public void sumarMovimineto() {
+    public void sumarMovimiento() {
         cantMovimientos++;
     }
 }

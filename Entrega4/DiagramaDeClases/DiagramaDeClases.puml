@@ -6,24 +6,40 @@
         # tamanioEjeY: int
         # cantEsquinasEjeX: int
         # cantEsquinasEjeY: int
-
         + {static} Grilla() : Grilla
         + moverVehiculo( Vehiculo vehiculo ) : void
         + insertarAccionableEnPosicion ( Posicion pos, Accionable objeto ) : void
         + obtenerAccionableEnPosicion ( Posicion pos ) : Accionable
     }
 
+    class Archivo{
+        - nombre : string
+        + {static} Archivo(String nombre) : void
+        + leer() : String
+        + agregarJugador(Jugador jugador) : void
+        + existeJugador(String nombre) : boolean
+        + cantidadDeJugadores() : int
+    }
+
     class GPS {
-        - jugador : Jugador
-        - ciudad : Ciudad
-        - posMeta : Posicion
         + {static} GPS() : GPS
+        + agregarJugador(Jugador j1) : void
+        + movermeHacia(Movimiento movimiento) : void
+    }
+
+    class RegistroJugadores{
+        + {static} RegistroJugadores(String nombreArchivo) : RegistroJugadores
+        + agregarJugadorAlRegistro(Jugador jugador) : void
+        + obtenerPuntajeJugador(String nombre) : int
+        # existeJugador(String nombre) : Boolean
     }
 
     class Jugador{
         - nombre : string
-        - cantMovimientos : int
+        # cantMovimientos : int
+        # puntaje : Puntaje
         + {static} Jugador(String nombre) : Jugador
+        + sumarMovimiento() : void
     }
 
     abstract Vehiculo{
@@ -51,9 +67,6 @@
     }
 
     class Ciudad{
-        # grilla : Grilla
-        # posIniVehiculo : Posicion
-        # vehiculo : Vehiculo
         # inicializador : InicializadorGrilla
         + {static} Ciudad() : Ciudad
         + moverVehiculo( Movimiento movimiento ) : void
@@ -89,7 +102,7 @@
     Vehiculo --> Posicion
 
     Grilla "1" --> "*" Accionable
-    Ciudad --> Vehiculo
+    Ciudad -> Vehiculo
     Ciudad --> Grilla
 
 
@@ -102,7 +115,10 @@
         +mover( Posicion posicion ) : void
     }
 
-
-    Vehiculo --> Movimiento
+    Vehiculo -> Movimiento
+    GPS -> RegistroJugadores
+    RegistroJugadores --> Archivo
+    Ciudad -> Posicion
+    GPS -> Posicion
 
 @enduml

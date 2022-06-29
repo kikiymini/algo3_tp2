@@ -24,7 +24,6 @@ public class GPS {
         this.registro = new RegistroJugadores("registroPuntaje.txt");
         this.jugador = new Jugador(obtenerJugadadorUnico());
         this.registro.agregarJugadorAlRegistro(this.jugador);
-
     }
 
     private static String obtenerNombreJugador() {
@@ -58,7 +57,7 @@ public class GPS {
 
     public void movermeHacia(Movimiento movimiento) {
         ciudad.moverVehiculo(movimiento);
-        jugador.sumarMovimineto();
+        jugador.sumarMovimiento();
     }
 
     public Accionable obtenerAccionableEnPosicion(int x, int y){
@@ -75,19 +74,19 @@ public class GPS {
     }
 
     public void moverVehiculoIzquierda() {
-        jugador.sumarMovimineto();
+        jugador.sumarMovimiento();
         ciudad.moverVehiculo(new Izquierda());
     }
     public void moverVehiculoDerecha() {
-        jugador.sumarMovimineto();
+        jugador.sumarMovimiento();
         ciudad.moverVehiculo(new Derecha());
     }
     public void moverVehiculoArriba() {
-        jugador.sumarMovimineto();
+        jugador.sumarMovimiento();
         ciudad.moverVehiculo(new Arriba());
     }
     public void moverVehiculoAbajo() {
-        jugador.sumarMovimineto();
+        jugador.sumarMovimiento();
         ciudad.moverVehiculo(new Abajo());
     }
 
