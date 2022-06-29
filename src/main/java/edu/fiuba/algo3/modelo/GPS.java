@@ -19,10 +19,11 @@ public class GPS {
     private Posicion posMeta;
     protected RegistroJugadores registro;
 
-    public GPS() throws IOException {
+    public GPS(String nombreJuagdor) throws IOException {
+        System.out.println(nombreJuagdor);
         this.ciudad = new Ciudad();
         this.registro = new RegistroJugadores("registroPuntaje.txt");
-        this.jugador = new Jugador(obtenerJugadadorUnico());
+        this.jugador = new Jugador(nombreJuagdor);
         this.registro.agregarJugadorAlRegistro(this.jugador);
     }
 
@@ -33,10 +34,11 @@ public class GPS {
         return lectorComandos.nextLine();
     }
 
-    public ArrayList<Integer> obtenerTamanioEjesMapa(){
-       return ciudad.obtenerTamanioEjesMapa();
+    public ArrayList<Integer> obtenerTamanioEjesMapa() {
+        return ciudad.obtenerTamanioEjesMapa();
     }
 
+    /*
     private String obtenerJugadadorUnico() throws IOException {
         String nombre = obtenerNombreJugador();
         while (registro.existeJugador(nombre)){
@@ -46,10 +48,12 @@ public class GPS {
         return nombre;
     }
 
+
     public void agregarJugador(Jugador j1) throws IOException {
         String nombre = obtenerJugadadorUnico();
         registro.agregarJugadorAlRegistro(new Jugador(nombre));
     }
+    */
 
     public int obtenerPuntaje(String nombre) throws IOException {
         return registro.obtenerPuntajeJugador(nombre);

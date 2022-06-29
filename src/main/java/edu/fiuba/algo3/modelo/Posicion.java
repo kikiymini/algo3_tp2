@@ -17,7 +17,6 @@ public class Posicion {
         this.limiteEjeY = 1000;
         this.limiteEjeX = 1000;
         if( !esPosValida(posX, posY) ) throw new PosicionInvalidaError();
-
     }
 
     public Posicion(int posX, int posY, int limEjeX, int limEjeY){

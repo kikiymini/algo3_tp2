@@ -15,7 +15,6 @@ import java.io.IOException;
  */
 public class App extends Application {
 
-    private GPS gps;
     private Stage window;
     private InicioView inicio;
 
@@ -27,11 +26,10 @@ public class App extends Application {
 
         var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
         var scene = new Scene(new StackPane(label), 640, 480);
-        gps = new GPS();
         window = stage;
         window.setTitle("GPS");
         inicio = new InicioView(window);
-        inicio.inicioJuego(window, this, gps);
+        inicio.inicioJuego(window, this);
         //stage.setScene(scene);
         stage.show();
     }

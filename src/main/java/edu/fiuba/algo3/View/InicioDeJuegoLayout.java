@@ -5,15 +5,38 @@ import edu.fiuba.algo3.modelo.GPS;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
 import javafx.stage.Stage;
 
-public class InicioDeJuegoLayout extends VBox {
+import java.io.IOException;
 
-    public InicioDeJuegoLayout(Stage window, App app, GPS gps){
-        Button buttonStart = new Button();
+public class InicioDeJuegoLayout extends VBox {
+    private GPS gps;
+
+    public InicioDeJuegoLayout(Stage window, App app){
+
+
+        Label label1 = new Label("Ingrese su nombre:");
+        TextField textField = new TextField ();
+        HBox hb = new HBox();
+        hb.setSpacing(10);
+        hb.setTranslateX(350);
+        Button botonNombre = new Button("Enter");
+        hb.getChildren().addAll(label1, textField, botonNombre);
+        botonNombre.setOnAction( e ->{
+            try {
+                gps = new GPS(textField.getText());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+        Button buttonStart = new Button("Presione Start para empezar a jugar");
         buttonStart.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
         buttonStart.setOnAction(e->{
             MapaLayout mapaLayout = new MapaLayout(window, app, gps);
@@ -24,7 +47,7 @@ public class InicioDeJuegoLayout extends VBox {
         HBox barraInicio = new HBox(buttonStart);
         barraInicio.setAlignment(Pos.CENTER);
         barraInicio.setTranslateY(400);
-        getChildren().addAll(barraInicio);
+        getChildren().addAll(barraInicio, hb);
     }
 
 }

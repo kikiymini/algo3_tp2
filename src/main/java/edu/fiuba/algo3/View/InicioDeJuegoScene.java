@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class InicioDeJuegoScene extends Scene {
-    public InicioDeJuegoScene(Stage window, App app, GPS gps) {
-        super(new InicioDeJuegoLayout(window, app, gps), 1200, 900);
+    public InicioDeJuegoScene(Stage window, App app) {
+        super(new InicioDeJuegoLayout(window, app), 1200, 900);
     }
 }

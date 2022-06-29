@@ -11,8 +11,8 @@ public class InicioView {
         window = stage;
     }
 
-    public void inicioJuego(Stage window, App app, GPS gps){
-        InicioDeJuegoScene inicioJuego = new InicioDeJuegoScene(window, app, gps);
+    public void inicioJuego(Stage window, App app){
+        InicioDeJuegoScene inicioJuego = new InicioDeJuegoScene(window, app);
         window.setScene(inicioJuego);
         window.show();
     }

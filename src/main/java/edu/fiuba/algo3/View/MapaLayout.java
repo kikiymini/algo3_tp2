@@ -43,8 +43,15 @@ public class MapaLayout extends Pane {
         insertarVehiculo(gps);
         insertarMetaEnGrilla(gps, largoEjeX, largoEjeY);
         insertarBootones(gps);
+        insertarPuntaje(gps);
         getChildren().add(canvas);
     }
+
+    private void insertarPuntaje(GPS gps) {
+        HBox hb = new HBox();
+
+    }
+
     public void crearLineasMatriz(GPS gps, GraphicsContext gc, int largoEjeX, int largoEjeY){
         for(int i = 0; i <= largoEjeX; i++){
             if(i % 3 == 0){
@@ -142,6 +149,9 @@ public class MapaLayout extends Pane {
         }
 
     }
+
+
+
 
     public void insertarVehiculo(GPS gps){
         Posicion posVehiculo = gps.obtenerPosicionVehiculo();
