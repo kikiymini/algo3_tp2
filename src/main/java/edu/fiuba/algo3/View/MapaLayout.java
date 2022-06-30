@@ -22,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class MapaLayout extends Pane {
@@ -184,8 +185,8 @@ public class MapaLayout extends Pane {
         moverOeste.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
         moverOeste.setOnAction(e->{
             gps.moverVehiculoIzquierda();
-            insertarVehiculo(gps);
             actualizarPuntaje(gps);
+            insertarVehiculo(gps);
             juegoTerminado(gps);
         });
         moverOeste.setGraphic(new ImagenBoton("src/fotos/Oeste.png", 50, 50));
@@ -201,8 +202,8 @@ public class MapaLayout extends Pane {
         moverEste.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
         moverEste.setOnAction(e->{
             gps.moverVehiculoDerecha();
-            insertarVehiculo(gps);
             actualizarPuntaje(gps);
+            insertarVehiculo(gps);
             juegoTerminado(gps);
         });
         moverEste.setGraphic(new ImagenBoton("src/fotos/Este.png", 50, 50));
@@ -218,8 +219,8 @@ public class MapaLayout extends Pane {
         moverNorte.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
         moverNorte.setOnAction(e->{
             gps.moverVehiculoArriba();
-            insertarVehiculo(gps);
             actualizarPuntaje(gps);
+            insertarVehiculo(gps);
             juegoTerminado(gps);
         });
         moverNorte.setGraphic(new ImagenBoton("src/fotos/Norte.png", 50, 50));
@@ -241,8 +242,8 @@ public class MapaLayout extends Pane {
         moverSur.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
         moverSur.setOnAction(e->{
             gps.moverVehiculoAbajo();
-            insertarVehiculo(gps);
             actualizarPuntaje(gps);
+            insertarVehiculo(gps);
             juegoTerminado(gps);
         });
         moverSur.setGraphic(new ImagenBoton("src/fotos/SUR.png", 50, 50));
@@ -268,10 +269,9 @@ public class MapaLayout extends Pane {
     }
 
     private void contadorDePuntos(){
-
-
-        Label tf = new Label("Cantidad de movimientos: 0 ");
-        puntaje.setTranslateX(600);
+        Label tf = new Label("Cantidad de movimientos: 0");
+        tf.setFont(new Font("Serif", 25));
+        puntaje.setTranslateX(850);
         puntaje.setTranslateY(600);
         puntaje.getChildren().add(tf);
         getChildren().add(puntaje);
@@ -283,6 +283,7 @@ public class MapaLayout extends Pane {
     private void actualizarPuntaje(GPS gps){
         int movimientosActuales = gps.obtenerMovimientos();
         Label lb = new Label("Cantidad de movimientos: " + movimientosActuales);
+        lb.setFont(new Font("Serif", 25));
         puntaje.getChildren().clear();
         puntaje.getChildren().add(lb);
 

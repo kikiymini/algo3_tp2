@@ -9,9 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,6 +21,8 @@ public class InicioDeJuegoLayout extends VBox {
 
 
         Label label1 = new Label("Ingrese su nombre:");
+        label1.setFont(new Font("Serif", 20));
+
         TextField textField = new TextField ();
         HBox hb = new HBox();
         hb.setSpacing(10);
@@ -37,6 +37,7 @@ public class InicioDeJuegoLayout extends VBox {
             }
         });
         Button buttonStart = new Button("Presione Start para empezar a jugar");
+        buttonStart.setFont(new Font("Serif", 25));
         buttonStart.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
         buttonStart.setOnAction(e->{
             MapaLayout mapaLayout = new MapaLayout(window, app, gps);
