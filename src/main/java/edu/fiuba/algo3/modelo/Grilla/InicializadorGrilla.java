@@ -227,7 +227,7 @@ public class InicializadorGrilla {
         return posIniVehiculo;
     }
 
-    private void colocarEsquinasEnGrilla(){
+    public void colocarEsquinasEnGrilla(){
         Posicion posicion;
         Esquina esquina = new Esquina();
         for(int i = 0; i < this.grilla.obtenerTamanioEjeX(); i++){

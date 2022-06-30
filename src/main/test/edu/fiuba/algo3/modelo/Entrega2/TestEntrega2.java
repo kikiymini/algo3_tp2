@@ -22,9 +22,9 @@ public class TestEntrega2 {
 
     @Test
     public void autoAtraviesaLaCiudadYSeEncuentraUnaSorpresaFavorable(){
-        Posicion pos = new Posicion(0, 0);
+        Posicion pos = new Posicion(3, 3);
         CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new Auto(pos)));
-        ciudad.ponerAccionableEnPosicion(14, 0, new Favorable());
+        ciudad.ponerAccionableEnPosicion(14, 3, new Favorable());
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculo(new Derecha());
         }
@@ -33,9 +33,9 @@ public class TestEntrega2 {
 
     @Test
     public void motoAtraviesaLaCiudadYSeEncuentraUnaSorpresaFavorable(){
-        Posicion pos = new Posicion(0, 0);
+        Posicion pos = new Posicion(3, 3);
         CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new Moto(pos)));
-        ciudad.ponerAccionableEnPosicion(14, 0, new Favorable());
+        ciudad.ponerAccionableEnPosicion(14, 3, new Favorable());
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculo(new Derecha());
         }
@@ -44,9 +44,9 @@ public class TestEntrega2 {
 
     @Test
     public void todoTerrenoAtraviesaLaCiudadYSeEncuentraUnaSorpresaFavorable(){
-        Posicion pos = new Posicion(0, 0);
+        Posicion pos = new Posicion(3, 3);
         CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new TodoTerreno(pos)));
-        ciudad.ponerAccionableEnPosicion(14, 0, new Favorable());
+        ciudad.ponerAccionableEnPosicion(14, 3, new Favorable());
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculo(new Derecha());
         }
@@ -55,9 +55,9 @@ public class TestEntrega2 {
 
     @Test
     public void autoAtraviesaLaCiudadYSeEncuentraUnaSorpresaDesfavorable(){
-        Posicion pos = new Posicion(0, 0);
+        Posicion pos = new Posicion(3, 3);
         CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new Auto(pos)));
-        ciudad.ponerAccionableEnPosicion(14, 0, new Desfavorable());
+        ciudad.ponerAccionableEnPosicion(16, 3, new Desfavorable());
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculo(new Derecha());
         }
@@ -66,9 +66,9 @@ public class TestEntrega2 {
 
     @Test
     public void motoAtraviesaLaCiudadYSeEncuentraUnaSorpresaDesfavorable(){
-        Posicion pos = new Posicion(0, 0);
+        Posicion pos = new Posicion(3, 3);
         CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new Moto(pos)));
-        ciudad.ponerAccionableEnPosicion(14, 0, new Desfavorable());
+        ciudad.ponerAccionableEnPosicion(16, 3, new Desfavorable());
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculo(new Derecha());
         }
@@ -77,9 +77,9 @@ public class TestEntrega2 {
 
     @Test
     public void todoTerrenoAtraviesaLaCiudadYSeEncuentraUnaSorpresaDesfavorable(){
-        Posicion pos = new Posicion(0, 0);
+        Posicion pos = new Posicion(3, 3);
         CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new TodoTerreno(pos)));
-        ciudad.ponerAccionableEnPosicion(14, 0, new Desfavorable());
+        ciudad.ponerAccionableEnPosicion(16, 3, new Desfavorable());
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculo(new Derecha());
         }
@@ -88,10 +88,10 @@ public class TestEntrega2 {
 
     @Test
     public void autoAtraviesaLaCiudadYSeEncuentraUnaCambioDeVehiculoYSeTransformaEnTodoTerreno(){
-        Posicion pos = new Posicion(0, 0);
+        Posicion pos = new Posicion(3, 3);
         VehiculoFake vehiculo = new VehiculoFake(pos, new Auto(pos));
         CiudadFake ciudad = new CiudadFake(vehiculo);
-        ciudad.ponerAccionableEnPosicion(14, 0, new CambioDeVehiculo());
+        ciudad.ponerAccionableEnPosicion(14, 3, new CambioDeVehiculo());
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculo(new Derecha());
         }
@@ -100,10 +100,10 @@ public class TestEntrega2 {
 
     @Test
     public void motoAtraviesaLaCiudadYSeEncuentraUnaCambioDeVehiculoYSeTransformaEnAuto(){
-        Posicion pos = new Posicion(0, 0);
+        Posicion pos = new Posicion(3, 3);
         VehiculoFake vehiculo = new VehiculoFake(pos, new Moto(pos));
         CiudadFake ciudad = new CiudadFake(vehiculo);
-        ciudad.ponerAccionableEnPosicion(14, 0, new CambioDeVehiculo());
+        ciudad.ponerAccionableEnPosicion(14, 3, new CambioDeVehiculo());
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculo(new Derecha());
         }
@@ -112,10 +112,10 @@ public class TestEntrega2 {
 
     @Test
     public void todoTerrenoAtraviesaLaCiudadYSeEncuentraUnaCambioDeVehiculoYSeTransformaEnMoto(){
-        Posicion pos = new Posicion(0, 0);
+        Posicion pos = new Posicion(3, 3);
         VehiculoFake vehiculo = new VehiculoFake(pos, new TodoTerreno(pos));
         CiudadFake ciudad = new CiudadFake(vehiculo);
-        ciudad.ponerAccionableEnPosicion(14, 0, new CambioDeVehiculo());
+        ciudad.ponerAccionableEnPosicion(14, 3, new CambioDeVehiculo());
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculo(new Derecha());
         }
@@ -126,11 +126,11 @@ public class TestEntrega2 {
     // propios
     @Test
     public void autoAtraviesaLaCiudadYSeEncuentraDosCambioDeVehiculoYSeTransformaEnMoto(){
-        Posicion pos = new Posicion(0, 0);
+        Posicion pos = new Posicion(3, 3);
         VehiculoFake vehiculo = new VehiculoFake(pos, new Auto(pos));
         CiudadFake ciudad = new CiudadFake(vehiculo);
-        ciudad.ponerAccionableEnPosicion(14, 0, new CambioDeVehiculo());
-        ciudad.ponerAccionableEnPosicion(13, 0, new CambioDeVehiculo());
+        ciudad.ponerAccionableEnPosicion(14, 3, new CambioDeVehiculo());
+        ciudad.ponerAccionableEnPosicion(13, 3, new CambioDeVehiculo());
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculo(new Derecha());
         }
@@ -139,11 +139,11 @@ public class TestEntrega2 {
 
     @Test
     public void motoAtraviesaLaCiudadYSeEncuentraDosCambioDeVehiculoYSeTransformaEnTodoTerreno(){
-        Posicion pos = new Posicion(0, 0);
+        Posicion pos = new Posicion(3, 3);
         VehiculoFake vehiculo = new VehiculoFake(pos, new Moto(pos));
         CiudadFake ciudad = new CiudadFake(vehiculo);
-        ciudad.ponerAccionableEnPosicion(14, 0, new CambioDeVehiculo());
-        ciudad.ponerAccionableEnPosicion(13, 0, new CambioDeVehiculo());
+        ciudad.ponerAccionableEnPosicion(14, 3, new CambioDeVehiculo());
+        ciudad.ponerAccionableEnPosicion(13, 3, new CambioDeVehiculo());
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculo(new Derecha());
         }
@@ -152,11 +152,11 @@ public class TestEntrega2 {
 
     @Test
     public void todoTerrenoAtraviesaLaCiudadYSeEncuentraDosCambioDeVehiculoYSeTransformaEnAuto(){
-        Posicion pos = new Posicion(0, 0);
+        Posicion pos = new Posicion(3, 3);
         VehiculoFake vehiculo = new VehiculoFake(pos, new TodoTerreno(pos));
         CiudadFake ciudad = new CiudadFake(vehiculo);
-        ciudad.ponerAccionableEnPosicion(14, 0, new CambioDeVehiculo());
-        ciudad.ponerAccionableEnPosicion(13, 0, new CambioDeVehiculo());
+        ciudad.ponerAccionableEnPosicion(14, 3, new CambioDeVehiculo());
+        ciudad.ponerAccionableEnPosicion(13, 3, new CambioDeVehiculo());
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculo(new Derecha());
         }
@@ -165,10 +165,10 @@ public class TestEntrega2 {
 
     @Test
     public void autoAtraviesaLaCiudadYSeEncuentraUnaSorpresaFavorableYOtraDesfavorable(){
-        Posicion pos = new Posicion(0, 0);
+        Posicion pos = new Posicion(3, 3);
         CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new Auto(pos)));
-        ciudad.ponerAccionableEnPosicion(14, 0, new Favorable());
-        ciudad.ponerAccionableEnPosicion(13, 0, new Desfavorable());
+        ciudad.ponerAccionableEnPosicion(17, 3, new Favorable());
+        ciudad.ponerAccionableEnPosicion(16, 3, new Desfavorable());
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculo(new Derecha());
         }

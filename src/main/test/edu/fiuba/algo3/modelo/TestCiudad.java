@@ -16,16 +16,16 @@ public class TestCiudad {
     @Test
     public void moverVehiculoDerecha(){
         CiudadFake ciudad = new CiudadFake();
-        ciudad.setearVehiculoOrigen();
+        ciudad.setearVehiculoEn(3, 3);
         ciudad.moverVehiculo(new Derecha());
         Derecha derecha = new Derecha();
         int posX = ciudad.obtenerPosVehiculoEnX();
-        assertEquals(3, posX);
+        assertEquals(6, posX);
     }
     @Test
     public void moverVehiculoIzquierda(){
         CiudadFake ciudad = new CiudadFake();
-        ciudad.setearVehiculoEn(3, 0);
+        ciudad.setearVehiculoEn(3, 3);
         ciudad.moverVehiculo(new Izquierda());
         int posX = ciudad.obtenerPosVehiculoEnX();
         assertEquals(0, posX);

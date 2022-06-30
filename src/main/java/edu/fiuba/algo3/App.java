@@ -42,6 +42,7 @@ public class App extends Application {
     public void terminarJuego(GPS gps) {
         JuegoFinalizadoScene  jf = new JuegoFinalizadoScene(window, this, gps);
         window.setScene(jf);
+        window.toFront();
         window.show();
     }
 }

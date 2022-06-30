@@ -9,16 +9,16 @@ public class TestMovimiento {
     @Test
     public void movimientoDerechaIncrementaEnUnoLaCoordenadaX(){
         Movimiento mov = new Derecha();
-        Posicion pos = new Posicion(0, 0);
+        Posicion pos = new Posicion(1, 3);
         mov.mover(pos);
-        assertEquals(1, pos.obtenerPosX());
+        assertEquals(2, pos.obtenerPosX());
 
     }
 
     @Test
     public void movimientoIzquierdaReduceEnUnoLaCoordenadaX(){
         Movimiento mov = new Izquierda();
-        Posicion pos = new Posicion(1, 0);
+        Posicion pos = new Posicion(1, 3);
         mov.mover(pos);
         assertEquals(0, pos.obtenerPosX());
     }

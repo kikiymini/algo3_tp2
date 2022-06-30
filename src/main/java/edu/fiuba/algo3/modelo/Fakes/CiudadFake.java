@@ -3,8 +3,10 @@ package edu.fiuba.algo3.modelo.Fakes;
 import edu.fiuba.algo3.modelo.Accionable;
 import edu.fiuba.algo3.modelo.Ciudad;
 import edu.fiuba.algo3.modelo.Grilla.Grilla;
+import edu.fiuba.algo3.modelo.Obstaculo.Calle;
 import edu.fiuba.algo3.modelo.Obstaculo.Pozo;
 import edu.fiuba.algo3.modelo.Posicion;
+import edu.fiuba.algo3.modelo.Sorpresa.CambioDeVehiculo;
 import edu.fiuba.algo3.modelo.Vehiculos.Moto;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 
@@ -17,6 +19,8 @@ public class CiudadFake extends Ciudad {
     }
     public CiudadFake(VehiculoFake v){
         vehiculo = v;
+        llenarGrillaDe(new Calle());
+        inicializador.colocarEsquinasEnGrilla();
     }
 
     public ArrayList<Integer> obtenerPosVehiculo(){

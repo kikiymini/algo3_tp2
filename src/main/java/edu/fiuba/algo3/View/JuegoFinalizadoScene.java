@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 public class JuegoFinalizadoScene extends Scene {
     public JuegoFinalizadoScene(Stage window, App app, GPS gps) {
-            super(new JuegoFinalizadoLayout(window, app, gps), 1200, 900);
+            super(new JuegoFinalizadoLayout(window, app, gps), 1000, 1000);
         }
 }
 

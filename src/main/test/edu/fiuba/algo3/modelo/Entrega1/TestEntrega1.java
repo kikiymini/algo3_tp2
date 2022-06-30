@@ -20,9 +20,9 @@ public class TestEntrega1 {
 
     @Test
     public void motoRealiza5MovimientosALaDerechaYSeEncuentraConUnPozo(){
-        Posicion pos = new Posicion(0, 0);
+        Posicion pos = new Posicion(3, 3);
         CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new Moto(pos)));
-        ciudad.ponerAccionableEnPosicion(1, 0, new Pozo());
+        ciudad.ponerAccionableEnPosicion(4, 3, new Pozo());
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculo(new Derecha());
         }
@@ -53,9 +53,9 @@ public class TestEntrega1 {
     }
     @Test
     public void autoRealiza5MovimientosALaDerechaYSeEncuentraConUnPozo(){
-        Posicion pos = new Posicion(0, 0);
+        Posicion pos = new Posicion(3, 03);
         CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new Moto(pos)));
-        ciudad.ponerAccionableEnPosicion(1, 0, new Pozo());
+        ciudad.ponerAccionableEnPosicion(4, 3, new Pozo());
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculo(new Derecha());
         }
@@ -74,13 +74,11 @@ public class TestEntrega1 {
     }
     @Test
     public void todoTerrenoRealiza5MovimientosALaDerechaYSeEncuentraConTresPozosYEsPenalizado(){
-        Posicion pos = new Posicion(0, 0);
+        Posicion pos = new Posicion(3, 3);
         CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new TodoTerreno(pos)));
-        for(int i = 1; i< 5; i++){
-            if (i % 3 != 0) {
-                ciudad.ponerAccionableEnPosicion(i, 0, new Pozo());
-            }
-        }
+        ciudad.ponerAccionableEnPosicion(4, 3, new Pozo());
+        ciudad.ponerAccionableEnPosicion(5, 3, new Pozo());
+        ciudad.ponerAccionableEnPosicion(7, 3, new Pozo());
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculo(new Derecha());
         }
@@ -91,9 +89,9 @@ public class TestEntrega1 {
 
     @Test
     public void motoRealiza5MovimientosYSeCruzaConUnPiquetePenalizaDosMovimientos(){
-        Posicion pos = new Posicion(0, 0);
+        Posicion pos = new Posicion(3, 3);
         CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new Moto(pos)));
-        ciudad.ponerAccionableEnPosicion(1, 0, new Piquete());
+        ciudad.ponerAccionableEnPosicion(4, 3, new Piquete());
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculo(new Derecha());
         }
@@ -102,9 +100,9 @@ public class TestEntrega1 {
 
     @Test
     public void autoRealiza5MovimientosYSeCruzaConUnPiqueteNoPuedePasar(){
-        Posicion pos = new Posicion(0, 0);
+        Posicion pos = new Posicion(3, 3);
         CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new Auto(pos)));
-        ciudad.ponerAccionableEnPosicion(14, 0, new Piquete()); //ver pos con cambio de esquina
+        ciudad.ponerAccionableEnPosicion(16, 3, new Piquete()); //ver pos con cambio de esquina
 
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculo(new Derecha());
