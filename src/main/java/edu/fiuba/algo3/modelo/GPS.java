@@ -95,4 +95,12 @@ public class GPS {
     }
 
 
+    public int obtenerMovimientos() {
+        return ciudad.obtenerCantidadDeMovimientosVehiculo();
+    }
+
+    public boolean juegoTermiando() {
+        boolean bol = ciudad.juegoFinalizado();
+       return bol;
+    }
 }

@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo.Vehiculos;
 
+import edu.fiuba.algo3.modelo.EstadoDeJuego.EnCurso;
+import edu.fiuba.algo3.modelo.EstadoDeJuego.EstadoJuego;
+import edu.fiuba.algo3.modelo.EstadoDeJuego.Ganado;
 import edu.fiuba.algo3.modelo.Movimiento.Movimiento;
 import edu.fiuba.algo3.modelo.Obstaculo.Obstaculo;
 import edu.fiuba.algo3.modelo.Posicion;
@@ -13,7 +16,7 @@ public class Vehiculo {
     protected int movimientos;
     protected static Random RNG = new Random(); //0-1 penalizacion
     protected EstadoVehiculo estado;
-
+    private EstadoJuego estadoJuego = new EnCurso();
 
     public Vehiculo (Posicion pos){
         this.posicion = pos;
@@ -71,5 +74,13 @@ public class Vehiculo {
 
     public EstadoVehiculo obtenerEstado() {
         return estado;
+    }
+
+    public void ganaste() {
+        estadoJuego = new Ganado();
+    }
+
+    public boolean juegoFinalizado() {
+        return estadoJuego.juegoFinalizado();
     }
 }

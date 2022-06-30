@@ -60,4 +60,12 @@ public class Ciudad {
     public EstadoVehiculo otenerEstadoVehiculo() {
         return vehiculo.obtenerEstado();
     }
+
+    public int obtenerCantidadDeMovimientosVehiculo() {
+        return vehiculo.obtenerCantidadDeMovimientos();
+    }
+
+    public boolean juegoFinalizado() {
+        return vehiculo.juegoFinalizado();
+    }
 }

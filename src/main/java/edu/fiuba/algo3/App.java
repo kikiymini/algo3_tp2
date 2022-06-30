@@ -1,5 +1,6 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.View.JuegoFinalizadoScene;
 import edu.fiuba.algo3.modelo.GPS;
 import edu.fiuba.algo3.View.InicioView;
 import javafx.application.Application;
@@ -31,11 +32,16 @@ public class App extends Application {
         inicio = new InicioView(window);
         inicio.inicioJuego(window, this);
         //stage.setScene(scene);
-        stage.show();
+        window.show();
     }
 
     public static void main(String[] args) {
         launch();
     }
 
+    public void terminarJuego(GPS gps) {
+        JuegoFinalizadoScene  jf = new JuegoFinalizadoScene(window, this, gps);
+        window.setScene(jf);
+        window.show();
+    }
 }
