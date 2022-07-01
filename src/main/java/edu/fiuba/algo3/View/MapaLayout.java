@@ -25,6 +25,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class MapaLayout extends Pane {
     int largoEjeX;
     int largoEjeY;
@@ -48,7 +50,6 @@ public class MapaLayout extends Pane {
         insertarVehiculo(gps);
         insertarMetaEnGrilla(gps, largoEjeX, largoEjeY);
         insertarBootones(gps);
-        contadorDePuntos();
         getChildren().add(canvas);
     }
 
@@ -184,10 +185,10 @@ public class MapaLayout extends Pane {
         Button moverOeste = new Button();
         moverOeste.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
         moverOeste.setOnAction(e->{
+            juegoTerminado(gps);
             gps.moverVehiculoIzquierda();
             actualizarPuntaje(gps);
             insertarVehiculo(gps);
-            juegoTerminado(gps);
         });
         moverOeste.setGraphic(new ImagenBoton("src/fotos/Oeste.png", 50, 50));
         HBox barraInicio = new HBox(moverOeste);
@@ -201,10 +202,10 @@ public class MapaLayout extends Pane {
         Button moverEste = new Button();
         moverEste.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
         moverEste.setOnAction(e->{
+            juegoTerminado(gps);
             gps.moverVehiculoDerecha();
             actualizarPuntaje(gps);
             insertarVehiculo(gps);
-            juegoTerminado(gps);
         });
         moverEste.setGraphic(new ImagenBoton("src/fotos/Este.png", 50, 50));
         HBox barraInicio = new HBox(moverEste);
@@ -218,10 +219,10 @@ public class MapaLayout extends Pane {
         Button moverNorte = new Button();
         moverNorte.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
         moverNorte.setOnAction(e->{
+            juegoTerminado(gps);
             gps.moverVehiculoArriba();
             actualizarPuntaje(gps);
             insertarVehiculo(gps);
-            juegoTerminado(gps);
         });
         moverNorte.setGraphic(new ImagenBoton("src/fotos/Norte.png", 50, 50));
         HBox barraInicio = new HBox(moverNorte);
@@ -232,19 +233,26 @@ public class MapaLayout extends Pane {
     }
 
     private void juegoTerminado(GPS gps) {
-        //if (gps.juegoTermiando()){
+        if (gps.juegoTermiando()) {
             app.terminarJuego(gps);
-        //}
+            try {
+                gps.guardarJugador();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
     }
 
     private void insertarBotonSur(GPS gps){
         Button moverSur = new Button();
         moverSur.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
         moverSur.setOnAction(e->{
+            juegoTerminado(gps);
             gps.moverVehiculoAbajo();
             actualizarPuntaje(gps);
             insertarVehiculo(gps);
-            juegoTerminado(gps);
+
         });
         moverSur.setGraphic(new ImagenBoton("src/fotos/SUR.png", 50, 50));
         HBox barraInicio = new HBox(moverSur);

@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.Excepciones.NombreVacioError;
 public class Jugador{
 
     private String nombre;
-    protected int cantMovimientos;
     protected Puntaje puntaje;
 
     public Jugador(String nombre){
@@ -13,7 +12,6 @@ public class Jugador{
             throw new NombreVacioError();
         }
         this.nombre = nombre;
-        this.cantMovimientos = 0;
         this.puntaje = new Puntaje();
 
     }
@@ -22,11 +20,12 @@ public class Jugador{
         return this.nombre;
     }
 
-    protected int puntajeObtenido(){
+    protected int calcularPuntaje(int movimientos){
+        puntaje.calcularPuntaje(movimientos);
         return puntaje.obtenerPuntaje();
     }
 
-    public void sumarMovimiento() {
-        cantMovimientos++;
+    public int puntajeObtenido(){
+        return puntaje.obtenerPuntaje();
     }
 }

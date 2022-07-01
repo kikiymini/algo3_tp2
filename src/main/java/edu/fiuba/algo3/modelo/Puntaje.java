@@ -13,7 +13,7 @@ public class Puntaje {
 
     }
 
-    private void calcularPuntajePorMovimientos(int movimientos){
+    public void calcularPuntaje(int movimientos){
         puntaje = movimientos;
     }
 

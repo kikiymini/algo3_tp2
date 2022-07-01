@@ -24,36 +24,11 @@ public class GPS {
         this.ciudad = new Ciudad();
         this.registro = new RegistroJugadores("registroPuntaje.txt");
         this.jugador = new Jugador(nombreJuagdor);
-        this.registro.agregarJugadorAlRegistro(this.jugador);
-    }
-
-    private static String obtenerNombreJugador() {
-        Scanner lectorComandos = new Scanner(System.in);
-        System.out.println("Ingrese su nombre: ");
-
-        return lectorComandos.nextLine();
     }
 
     public ArrayList<Integer> obtenerTamanioEjesMapa() {
         return ciudad.obtenerTamanioEjesMapa();
     }
-
-    /*
-    private String obtenerJugadadorUnico() throws IOException {
-        String nombre = obtenerNombreJugador();
-        while (registro.existeJugador(nombre)){
-            System.out.println("Ya existe un jugador con ese nombre");
-            nombre = obtenerNombreJugador();
-        }
-        return nombre;
-    }
-
-
-    public void agregarJugador(Jugador j1) throws IOException {
-        String nombre = obtenerJugadadorUnico();
-        registro.agregarJugadorAlRegistro(new Jugador(nombre));
-    }
-    */
 
     public int obtenerPuntaje(String nombre) throws IOException {
         return registro.obtenerPuntajeJugador(nombre);
@@ -61,7 +36,6 @@ public class GPS {
 
     public void movermeHacia(Movimiento movimiento) {
         ciudad.moverVehiculo(movimiento);
-        jugador.sumarMovimiento();
     }
 
     public Accionable obtenerAccionableEnPosicion(int x, int y){
@@ -78,19 +52,15 @@ public class GPS {
     }
 
     public void moverVehiculoIzquierda() {
-        jugador.sumarMovimiento();
         ciudad.moverVehiculo(new Izquierda());
     }
     public void moverVehiculoDerecha() {
-        jugador.sumarMovimiento();
         ciudad.moverVehiculo(new Derecha());
     }
     public void moverVehiculoArriba() {
-        jugador.sumarMovimiento();
         ciudad.moverVehiculo(new Arriba());
     }
     public void moverVehiculoAbajo() {
-        jugador.sumarMovimiento();
         ciudad.moverVehiculo(new Abajo());
     }
 
@@ -102,5 +72,10 @@ public class GPS {
     public boolean juegoTermiando() {
        boolean bol = ciudad.juegoFinalizado();
        return bol;
+    }
+
+    public void guardarJugador() throws IOException {
+        jugador.calcularPuntaje(obtenerMovimientos());
+        registro.agregarJugadorAlRegistro(jugador);
     }
 }
