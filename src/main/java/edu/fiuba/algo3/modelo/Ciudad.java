@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.Grilla.Grilla;
 import edu.fiuba.algo3.modelo.Grilla.InicializadorGrilla;
 import edu.fiuba.algo3.modelo.Movimiento.Movimiento;
@@ -32,7 +31,7 @@ public class Ciudad {
     public void moverVehiculo(Movimiento movimiento){
         boolean estaEnEsquina = false;
         int i = 0;
-        while(i < 3 && !estaEnEsquina){
+        while(i < 3 && !estaEnEsquina && !(vehiculo.juegoFinalizado())){
             vehiculo.movermeHacia(movimiento);
             grilla.moverVehiculo(vehiculo);
             estaEnEsquina = vehiculo.estasEnEsquiana();

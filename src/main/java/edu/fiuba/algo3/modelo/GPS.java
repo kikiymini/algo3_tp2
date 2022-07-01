@@ -100,7 +100,7 @@ public class GPS {
     }
 
     public boolean juegoTermiando() {
-        boolean bol = ciudad.juegoFinalizado();
+       boolean bol = ciudad.juegoFinalizado();
        return bol;
     }
 }

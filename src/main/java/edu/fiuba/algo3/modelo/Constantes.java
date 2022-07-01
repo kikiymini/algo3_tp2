@@ -6,7 +6,7 @@ public final class Constantes {
     public static final int penalizacionDeMovimientosPorPozoParaTodoterreno = 2;
     public static final int cantidadDePozosParaAplicarPenalizacionTodoterreno = 3;
     public static final int penalizacionDeMovimientosPorPiqueteParaMoto = 2;
-    public static final int penalizacionDeMovimientosPorPiqueteParaAutoYTodoterreno = 0;
+    public static final int penalizacionDeMovimientosPorPiqueteParaAutoYTodoterreno = 1;
     public static final int penalizacionDeMovimientosPorControlPolicial = 3;
     public static final int penalizacionDeMovimientosPorControlPolicialEsquivado = 0;
     public static final double probabilidadDePenalizarEnControlPolicialParaMoto = 0.8;
