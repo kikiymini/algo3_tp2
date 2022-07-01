@@ -22,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -52,6 +53,10 @@ public class MapaLayout extends Pane {
         insertarMetaEnGrilla(gps, largoEjeX, largoEjeY);
         insertarBootones(gps);
         getChildren().add(canvas);
+        puntaje.setTranslateX(900);
+        puntaje.setTranslateY(500);
+        puntaje.getChildren().add(new Label("Cantidad de mocimientos: 0"));
+        getChildren().add(puntaje);
     }
 
 
@@ -276,13 +281,8 @@ public class MapaLayout extends Pane {
 
     private void actualizarPuntaje(GPS gps) {
         int movimientosActuales = gps.obtenerMovimientos();
-        Label lb = new Label("Cantidad de movimientos: " + movimientosActuales);
-        lb.setFont(new Font("Serif", 20));
-        lb.setTranslateY(300);
-        lb.setTranslateX(900);
         puntaje.getChildren().clear();
-        puntaje.getChildren().add(lb);
-
+        puntaje.getChildren().add(new Label("Cantidad de movimientos: " + movimientosActuales));
     }
 
 }
