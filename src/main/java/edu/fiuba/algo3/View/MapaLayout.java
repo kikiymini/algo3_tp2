@@ -23,7 +23,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -235,22 +234,13 @@ public class MapaLayout extends Pane {
 
     private void juegoTerminado(GPS gps) {
         if (gps.juegoTermiando()) {
-            app.terminarJuego(gps);
-            /*Label tf = new Label();
-            tf.setGraphic(new ImagenBoton("src/fotos/victoria.jpg", 100, 100));
-            puntaje.setTranslateX(500);
-            puntaje.setTranslateY(500);
-            puntaje.getChildren().add(tf);
-            getChildren().add(puntaje);*/
             try {
                 gps.guardarJugador();
+                app.terminarJuego(gps);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-
-        //app.terminarJuego(gps);
-
     }
 
     private void insertarBotonSur(GPS gps){
