@@ -7,7 +7,7 @@ public class RegistroJugadores {
 
     private Archivo registro;
 
-    public RegistroJugadores(String nombreArchivo){
+    public RegistroJugadores(String nombreArchivo) {
         File myfile = new File(nombreArchivo).getAbsoluteFile();
         String s = myfile.getAbsolutePath();
         this.registro = new Archivo(s);

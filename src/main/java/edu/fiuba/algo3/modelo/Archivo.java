@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -66,6 +67,5 @@ public class Archivo {
         Object ob = jugadores.get(nombre);
         return (int) ob;
     }
-
 
 }

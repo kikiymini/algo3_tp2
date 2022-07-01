@@ -17,10 +17,9 @@ public class GPS {
     protected Jugador jugador;
     private Ciudad ciudad;
     private Posicion posMeta;
-    protected RegistroJugadores registro;
+    public RegistroJugadores registro;
 
     public GPS(String nombreJuagdor) throws IOException {
-        System.out.println(nombreJuagdor);
         this.ciudad = new Ciudad();
         this.registro = new RegistroJugadores("registroPuntaje.txt");
         this.jugador = new Jugador(nombreJuagdor);

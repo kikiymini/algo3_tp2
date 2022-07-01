@@ -23,6 +23,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -34,6 +35,7 @@ public class MapaLayout extends Pane {
     double separacionEntreCuadrasInicio = 20;
     private Button vehviculo = new Button();
     private StackPane puntaje = new StackPane();
+    //private HBox puntaje = new HBox();
     private App app;
 
     public MapaLayout(Stage window, App a, GPS gps){
@@ -158,6 +160,7 @@ public class MapaLayout extends Pane {
     public void insertarVehiculo(GPS gps){
         Posicion posVehiculo = gps.obtenerPosicionVehiculo();
         EstadoVehiculo estado = gps.obtenerEstadoVehiculo();
+        juegoTerminado(gps);
         if (estado.sosEstado(new Auto(posVehiculo))){
             vehviculo.setGraphic(new ImagenBoton("src/fotos/auto.png", 36, 36));
         }
@@ -185,10 +188,10 @@ public class MapaLayout extends Pane {
         Button moverOeste = new Button();
         moverOeste.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
         moverOeste.setOnAction(e->{
-            juegoTerminado(gps);
             gps.moverVehiculoIzquierda();
             actualizarPuntaje(gps);
             insertarVehiculo(gps);
+
         });
         moverOeste.setGraphic(new ImagenBoton("src/fotos/Oeste.png", 50, 50));
         HBox barraInicio = new HBox(moverOeste);
@@ -202,7 +205,6 @@ public class MapaLayout extends Pane {
         Button moverEste = new Button();
         moverEste.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
         moverEste.setOnAction(e->{
-            juegoTerminado(gps);
             gps.moverVehiculoDerecha();
             actualizarPuntaje(gps);
             insertarVehiculo(gps);
@@ -219,7 +221,6 @@ public class MapaLayout extends Pane {
         Button moverNorte = new Button();
         moverNorte.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
         moverNorte.setOnAction(e->{
-            juegoTerminado(gps);
             gps.moverVehiculoArriba();
             actualizarPuntaje(gps);
             insertarVehiculo(gps);
@@ -233,9 +234,14 @@ public class MapaLayout extends Pane {
     }
 
     private void juegoTerminado(GPS gps) {
-<<<<<<< HEAD
         if (gps.juegoTermiando()) {
             app.terminarJuego(gps);
+            /*Label tf = new Label();
+            tf.setGraphic(new ImagenBoton("src/fotos/victoria.jpg", 100, 100));
+            puntaje.setTranslateX(500);
+            puntaje.setTranslateY(500);
+            puntaje.getChildren().add(tf);
+            getChildren().add(puntaje);*/
             try {
                 gps.guardarJugador();
             } catch (IOException e) {
@@ -243,26 +249,17 @@ public class MapaLayout extends Pane {
             }
         }
 
-=======
         //app.terminarJuego(gps);
-        Label tf = new Label();
-        tf.setGraphic(new ImagenBoton("src/fotos/victoria.jpg", 100, 100));
-        puntaje.setTranslateX(500);
-        puntaje.setTranslateY(500);
-        puntaje.getChildren().add(tf);
-        getChildren().add(puntaje);
->>>>>>> 8fdcb0c35fad31efc2b0dc50fe5e6c99fcda5b67
+
     }
 
     private void insertarBotonSur(GPS gps){
         Button moverSur = new Button();
         moverSur.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
         moverSur.setOnAction(e->{
-            juegoTerminado(gps);
             gps.moverVehiculoAbajo();
             actualizarPuntaje(gps);
             insertarVehiculo(gps);
-
         });
         moverSur.setGraphic(new ImagenBoton("src/fotos/SUR.png", 50, 50));
         HBox barraInicio = new HBox(moverSur);
@@ -286,24 +283,16 @@ public class MapaLayout extends Pane {
         getChildren().addAll(barraInicio);
     }
 
-    private void contadorDePuntos(){
-        Label tf = new Label("Cantidad de movimientos: 0");
-        tf.setFont(new Font("Serif", 25));
-        puntaje.setTranslateX(850);
-        puntaje.setTranslateY(600);
-        puntaje.getChildren().add(tf);
-        getChildren().add(puntaje);
 
-    }
-
-
-
-    private void actualizarPuntaje(GPS gps){
+    private void actualizarPuntaje(GPS gps) {
         int movimientosActuales = gps.obtenerMovimientos();
         Label lb = new Label("Cantidad de movimientos: " + movimientosActuales);
-        lb.setFont(new Font("Serif", 25));
+        lb.setFont(new Font("Serif", 20));
+        lb.setTranslateY(300);
+        lb.setTranslateX(900);
         puntaje.getChildren().clear();
         puntaje.getChildren().add(lb);
+
     }
 
 }

@@ -102,13 +102,13 @@ public class TestEntrega1 {
     public void autoRealiza5MovimientosYSeCruzaConUnPiqueteNoPuedePasar(){
         Posicion pos = new Posicion(3, 3);
         CiudadFake ciudad = new CiudadFake(new VehiculoFake(pos, new Auto(pos)));
-        ciudad.ponerAccionableEnPosicion(16, 3, new Piquete()); //ver pos con cambio de esquina
+        ciudad.ponerAccionableEnPosicion(16, 3, new Piquete());
 
         for (int i = 0; i < 5; i++){
             ciudad.moverVehiculo(new Derecha());
         }
 
-        assertEquals(4, ciudad.obtenerCantidadDeMovVehiculo());
+        assertEquals(5, ciudad.obtenerCantidadDeMovVehiculo());
 
     }
 }
