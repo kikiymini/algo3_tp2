@@ -233,6 +233,7 @@ public class MapaLayout extends Pane {
     }
 
     private void juegoTerminado(GPS gps) {
+<<<<<<< HEAD
         if (gps.juegoTermiando()) {
             app.terminarJuego(gps);
             try {
@@ -242,6 +243,15 @@ public class MapaLayout extends Pane {
             }
         }
 
+=======
+        //app.terminarJuego(gps);
+        Label tf = new Label();
+        tf.setGraphic(new ImagenBoton("src/fotos/victoria.jpg", 100, 100));
+        puntaje.setTranslateX(500);
+        puntaje.setTranslateY(500);
+        puntaje.getChildren().add(tf);
+        getChildren().add(puntaje);
+>>>>>>> 8fdcb0c35fad31efc2b0dc50fe5e6c99fcda5b67
     }
 
     private void insertarBotonSur(GPS gps){
@@ -294,8 +304,6 @@ public class MapaLayout extends Pane {
         lb.setFont(new Font("Serif", 25));
         puntaje.getChildren().clear();
         puntaje.getChildren().add(lb);
-
-
     }
 
 }
