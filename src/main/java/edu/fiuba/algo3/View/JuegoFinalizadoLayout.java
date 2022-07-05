@@ -25,7 +25,7 @@ public class JuegoFinalizadoLayout extends VBox {
         barraInicio.setAlignment(Pos.CENTER);
         barraInicio.setTranslateY(100);
         getChildren().addAll(barraInicio);
-        leerArchivoExterno("C:/Carolina/Facu/2022/Algo3/TP2/registroPuntaje.txt");
+        leerArchivoExterno("src/main/java/edu/fiuba/algo3/recursos/registroPuntaje.txt");
     }
     public void leerArchivoExterno(String rutaArchivo) {
         try {

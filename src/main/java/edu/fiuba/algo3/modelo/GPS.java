@@ -21,7 +21,7 @@ public class GPS {
 
     public GPS(String nombreJuagdor) throws IOException {
         this.ciudad = new Ciudad();
-        this.registro = new RegistroJugadores("registroPuntaje.txt");
+        this.registro = new RegistroJugadores("src/main/java/edu/fiuba/algo3/recursos/registroPuntaje.txt");
         this.jugador = new Jugador(nombreJuagdor);
     }
 

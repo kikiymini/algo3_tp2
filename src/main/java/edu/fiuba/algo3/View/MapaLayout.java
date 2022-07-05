@@ -22,8 +22,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -32,18 +30,21 @@ public class MapaLayout extends Pane {
     int largoEjeX;
     int largoEjeY;
     double separacionEntreCuadras = 32;
+    int pixDeCuadrasVisibles = 72;
     double separacionEntreCuadrasInicio = 20;
     private Button vehviculo = new Button();
     private StackPane puntaje = new StackPane();
-    //private HBox puntaje = new HBox();
     private App app;
+    GraphicsContext gc;
+
 
     public MapaLayout(Stage window, App a, GPS gps){
         app = a;
         largoEjeX = gps.obtenerTamanioEjesMapa().get(0);
         largoEjeY = gps.obtenerTamanioEjesMapa().get(1);
         Canvas canvas = new Canvas(900, 900);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc = canvas.getGraphicsContext2D();
+        gc.setFill(Color.BLACK);
         crearLineasMatriz(gps, gc, largoEjeX, largoEjeY);
         insertarPoliciasEnGrilla(gps, largoEjeX, largoEjeY);
         insertarPozosEnGrilla(gps, largoEjeX, largoEjeY);
@@ -57,6 +58,9 @@ public class MapaLayout extends Pane {
         puntaje.setTranslateY(500);
         puntaje.getChildren().add(new Label("Cantidad de mocimientos: 0"));
         getChildren().add(puntaje);
+        Posicion pos = gps.obtenerPosicionVehiculo();
+        gc.fillRect(20, 20,800, 800);
+        gc.clearRect(pos.obtenerPosX() * separacionEntreCuadras - 100, pos.obtenerPosY() * separacionEntreCuadras - 200, 100, 100);
     }
 
 
@@ -192,7 +196,11 @@ public class MapaLayout extends Pane {
         Button moverOeste = new Button();
         moverOeste.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
         moverOeste.setOnAction(e->{
+            gc.fillRect(20,20, 800, 800);
             gps.moverVehiculoIzquierda();
+            Posicion pos2 = gps.obtenerPosicionVehiculo();
+            gc.clearRect(pos2.obtenerPosX() * separacionEntreCuadras - 100, pos2.obtenerPosY() * separacionEntreCuadras - 100, 200, 200);
+            crearLineasMatriz(gps, gc, largoEjeX, largoEjeY);
             actualizarPuntaje(gps);
             insertarVehiculo(gps);
 
@@ -209,7 +217,11 @@ public class MapaLayout extends Pane {
         Button moverEste = new Button();
         moverEste.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
         moverEste.setOnAction(e->{
+            gc.fillRect(20,20, 800, 800);
             gps.moverVehiculoDerecha();
+            Posicion pos2 = gps.obtenerPosicionVehiculo();
+            gc.clearRect(pos2.obtenerPosX() * separacionEntreCuadras - 100, pos2.obtenerPosY() * separacionEntreCuadras - 100, 200, 200);
+            crearLineasMatriz(gps, gc, largoEjeX, largoEjeY);
             actualizarPuntaje(gps);
             insertarVehiculo(gps);
         });
@@ -225,7 +237,11 @@ public class MapaLayout extends Pane {
         Button moverNorte = new Button();
         moverNorte.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
         moverNorte.setOnAction(e->{
+            gc.fillRect(20,20, 800, 800);
             gps.moverVehiculoArriba();
+            Posicion pos2 = gps.obtenerPosicionVehiculo();
+            gc.clearRect(pos2.obtenerPosX() * separacionEntreCuadras - 100, pos2.obtenerPosY() * separacionEntreCuadras - 100, 200, 200);
+            crearLineasMatriz(gps, gc, largoEjeX, largoEjeY);
             actualizarPuntaje(gps);
             insertarVehiculo(gps);
         });
@@ -252,7 +268,11 @@ public class MapaLayout extends Pane {
         Button moverSur = new Button();
         moverSur.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, new Insets(5))));
         moverSur.setOnAction(e->{
+            gc.fillRect(20,20, 800, 800);
             gps.moverVehiculoAbajo();
+            Posicion pos2 = gps.obtenerPosicionVehiculo();
+            gc.clearRect(pos2.obtenerPosX() * separacionEntreCuadras - 100, pos2.obtenerPosY() * separacionEntreCuadras - 100, 200, 200);
+            crearLineasMatriz(gps, gc, largoEjeX, largoEjeY);
             actualizarPuntaje(gps);
             insertarVehiculo(gps);
         });
