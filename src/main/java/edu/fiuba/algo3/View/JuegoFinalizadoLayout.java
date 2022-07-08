@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.View;
 
 import edu.fiuba.algo3.App;
+import edu.fiuba.algo3.ArchivoOrdenado;
 import edu.fiuba.algo3.modelo.GPS;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -25,16 +26,19 @@ public class JuegoFinalizadoLayout extends VBox {
         barraInicio.setAlignment(Pos.CENTER);
         barraInicio.setTranslateY(100);
         getChildren().addAll(barraInicio);
-        leerArchivoExterno("src/main/java/edu/fiuba/algo3/recursos/registroPuntaje.txt");
+        ordenarArchivoExterno("registroPuntaje.txt");
+        leerArchivoExterno("rankingPuntaje2.txt");
+    }
+
+    public void ordenarArchivoExterno(String rutaArchivo){
+        ArchivoOrdenado archivo = new ArchivoOrdenado();
+        archivo.leerArchivo(rutaArchivo);
     }
     public void leerArchivoExterno(String rutaArchivo) {
         try {
             Scanner input = new Scanner(new File(rutaArchivo));
             int i = 0;
             while (input.hasNextLine() && i<=10) {
-                //String linea = input.nextLine();
-                //String [] partes = linea.split(";");
-                //String lineaCompleta = partes[0]+" "+partes[1];
                 Label texto = new Label(input.nextLine());
                 texto.setFont(new Font("Serif", 20));
                 Label ranking = new Label();
@@ -50,5 +54,3 @@ public class JuegoFinalizadoLayout extends VBox {
         }
     }
 }
-
-
