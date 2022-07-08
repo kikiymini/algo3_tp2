@@ -39,10 +39,16 @@ public class JuegoFinalizadoLayout extends VBox {
             Scanner input = new Scanner(new File(rutaArchivo));
             int i = 0;
             while (input.hasNextLine() && i<=10) {
-                Label texto = new Label(input.nextLine());
-                texto.setFont(new Font("Serif", 20));
+                String puntaje = input.nextLine();
+                String[] aux = puntaje.split(";");
+                Label texto1 = new Label("N°"+i + "): "+aux[0]);
+                Label texto2 = new Label(" - " + aux[1]);
+                texto1.setFont(new Font("Serif", 20));
+                texto2.setFont(new Font("Serif",20));
                 Label ranking = new Label();
-                HBox barraRanking = new HBox(ranking,texto);
+                HBox barraTextos = new HBox(texto1,texto2);
+                barraTextos.setAlignment(Pos.CENTER_LEFT);
+                HBox barraRanking = new HBox(ranking,barraTextos);
                 barraRanking.setAlignment(Pos.CENTER);
                 barraRanking.setTranslateY(110);
                 getChildren().addAll(barraRanking);

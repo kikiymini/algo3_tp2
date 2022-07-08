@@ -32,11 +32,45 @@ public class Archivo {
         return puntaje;
     }
 
+    private void escribirArchivo(String nombre, int puntaje){
+        HashMap jugadores = obtenerJugadores();
+        if(jugadores.containsKey(nombre)){
+            jugadores.replace(nombre,puntaje);
+        }
+        else {
+            jugadores.put(nombre,puntaje);
+        }
+        try{
+            BufferedWriter buffer = new BufferedWriter(new FileWriter(this.nombre));
+            jugadores.forEach((k,v) -> {
+                try {
+                    buffer.write(k + ";" + v + ";" + "\n");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            buffer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
     public void agregarJugador(Jugador jugador) throws IOException {
         try {
-            BufferedWriter buffer = new BufferedWriter(new FileWriter(this.nombre,true));
-            buffer.write(jugador.obtenerNombre() + ";" + jugador.puntajeObtenido() + ";" + "\n");
-            buffer.close();
+            BufferedReader br = new BufferedReader(new FileReader(this.nombre));
+            String linea;
+            boolean encontrado = false;
+            int puntajeTotal = jugador.puntajeObtenido();
+            while ((linea = br.readLine()) != null && !encontrado) {
+                String[] j = linea.split(";");
+                if(j[0] == jugador.obtenerNombre()){
+                    puntajeTotal = Integer.parseInt(j[1]);
+                    encontrado = true;
+                }
+            }
+            escribirArchivo(jugador.obtenerNombre(),puntajeTotal);
         }
         catch (IOException e){
             e.printStackTrace();

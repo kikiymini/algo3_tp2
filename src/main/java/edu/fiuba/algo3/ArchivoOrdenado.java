@@ -28,7 +28,7 @@ public class ArchivoOrdenado {
                     return ((j1.getPuntos()).compareTo((j2.getPuntos())));
                 }
             });
-
+            borrarArchivo();
             for(JugadorArchivo aux: jugadores){
                 escribirNuevoArchivo(aux);
             }
@@ -41,6 +41,13 @@ public class ArchivoOrdenado {
         String ruta = "rankingPuntaje2.txt";
         BufferedWriter buffer = new BufferedWriter(new FileWriter(ruta,true));
         buffer.write(jugador.getNombre() +";" + jugador.getPuntos() + "\n");
+        buffer.close();
+    }
+
+    private void borrarArchivo() throws IOException {
+        String ruta = "rankingPuntaje2.txt";
+        BufferedWriter buffer = new BufferedWriter(new FileWriter(ruta));
+        buffer.write("");
         buffer.close();
     }
 }

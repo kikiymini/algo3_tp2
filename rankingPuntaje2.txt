@@ -1,0 +1,6 @@
+Juan;12
+Carolina;13
+Azul;20
+Juancito;22
+Josefa;24
+Sofia;27
