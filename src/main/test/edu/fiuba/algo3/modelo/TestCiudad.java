@@ -22,14 +22,6 @@ public class TestCiudad {
         int posX = ciudad.obtenerPosVehiculoEnX();
         assertEquals(6, posX);
     }
-    @Test
-    public void moverVehiculoIzquierda(){
-        CiudadFake ciudad = new CiudadFake();
-        ciudad.setearVehiculoEn(3, 3);
-        ciudad.moverVehiculo(new Izquierda());
-        int posX = ciudad.obtenerPosVehiculoEnX();
-        assertEquals(0, posX);
-    }
 
     @Test
     public void moverVehiculoAbajo(){
